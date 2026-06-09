@@ -279,99 +279,150 @@ vector<int> Intersection_2(int n1 , int n2 , vector<int> a , vector<int> b){
     return ans ;
 }
 
-// UNION & INTERSECTION :-
+// Finding Missing Number ->
+int MissingNum(int n , int arr[]){
+    int sum = (n*(n+1))/2;
+    int Asum = 0;
+    for(int i = 0 ; i < n-1 ; i++){
+        Asum = Asum + arr[i] ;
+    }
+    int Missing_Number = sum - Asum ;
+    return Missing_Number ;
+}
 
-// int main(){
-//     int n1 ; 
-//     int n2 ;
-//     cout << "Enter the number of elements in the 1st array : "  ;
-//     cin >> n1 ;
-//     cout << "Enter the number of elements in the 2nd array : "  ;
-//     cin >> n2 ;
-//     int a[n1];
-//     int b[n2];
-//     cout << "Enter the elements in the 1st array : " << endl;
-//     for(int i = 0 ; i < n1 ; i++){
-//         cin >> a[i];
-//     }
-//     cout << "Enter the elements in the 2nd array : " << endl;
-//     for(int i = 0 ; i < n2 ; i++){
-//         cin >> b[i];
-//     }
+// Maximum consecutive ones ->
+int Ones(int n , int arr[]){
+    int maxi = 0 ;
+    int cnt = 0 ;
+    for(int i = 0 ; i < n-1 ; i++){
+        if(arr[i] == 1){
+            cnt ++ ;
+            maxi = max(maxi , cnt);
+        }
+        else{
+            cnt = 0 ;
+        }
+    } 
+    return maxi ;
+} 
 
-//     // vector<int> result = Union_1(n1 , n2 , a , b);
-
-//     // vector<int> v1(a, a + n1);
-//     // vector<int> v2(b, b + n2);
-//     // vector<int> result = Union_2(v1, v2);
-
-//     // vector<int> v1(a, a + n1);
-//     // vector<int> v2(b, b + n2);
-//     // vector<int> result = Intersection_1(n1 , n2 , v1 , v2);
-
-//     // vector<int> v1(a, a + n1);
-//     // vector<int> v2(b, b + n2);
-//     // vector<int> result = Intersection_2(n1 , n2 , v1 , v2);
-
-//     for(int x : result){
-//         cout << x << " ";
-//     }
-//     return 0 ;
-// }
+// Element appearing once in an array containing all elements twice ->
+int Once(int n , int arr[]){
+    for(int i = 0 ; i < n ; i++){
+        int num = arr[i];
+        int cnt = 0 ;
+        for(int j = 0 ; j < n ; j++){
+            if(arr[j] == num){
+                cnt ++;
+            }
+        }
+        if(cnt == 1){
+            return num ; 
+        }
+    }
+}
 
 // NORMAL :-
 
-// int main(){
-//     int n ; 
-//     cout << "Enter the number of elements in the array : ";
-//     cin >> n ;
-//     int arr[n];
-//     cout << "Enter the elements in the array : " << endl ;
-//     for(int i = 0 ; i < n ; i++){
-//         cin >> arr[i];
-//     }
-//     cout << endl ;
-
-//     // LE(n , arr);
-
-//     // SLE_1(n , arr);
-//     // SLE_2(n , arr);
-
-//     // Sorted(n , arr);
-
-//     // unique_1(n , arr);
-
-//     // int k = unique_2(n , arr);
-//     // cout << "Unique elements are : ";
-//     // for(int i = 0; i < k; i++){
-//     //     cout << arr[i] << " ";
-//     // }
-//     // cout << "\nNumber of unique elements are : " << k ;
-
-//     // One_left(n, arr);
-//     // for(int i = 0 ; i < n ; i++){
-//     //     cout << arr[i] << " ";
-//     // }
+int main(){
+    int n ; 
+    cout << "Enter the number of elements in the array : ";
+    cin >> n ;
+    int arr[n];
+    cout << "Enter the elements in the array : " << endl ;
+    for(int i = 0 ; i < n ; i++){
+        cin >> arr[i];
+    }
+    cout << endl ;
     
-//     // int k ;
-//     // cout << "Enter the numbers of steps the array should be rotated : ";
-//     // cin >> k;
-//     // K_left(n , arr , k);
-
-//     // Zeroes_1(n , arr);
-//     // Zeroes_2(n , arr);
-
-//     // int num ; 
+    // LE(n , arr);
+    
+    // SLE_1(n , arr);
+    // SLE_2(n , arr);
+    
+    // Sorted(n , arr);
+    
+    // unique_1(n , arr);
+    
+    // int k = unique_2(n , arr);
+    // cout << "Unique elements are : ";
+    // for(int i = 0; i < k; i++){
+        //     cout << arr[i] << " ";
+        // }
+        // cout << "\nNumber of unique elements are : " << k ;
+        
+        // One_left(n, arr);
+        // for(int i = 0 ; i < n ; i++){
+            //     cout << arr[i] << " ";
+            // }
+            
+            // int k ;
+            // cout << "Enter the numbers of steps the array should be rotated : ";
+            // cin >> k;
+            // K_left(n , arr , k);
+            
+            // Zeroes_1(n , arr);
+            // Zeroes_2(n , arr);
+            
+            // int num ; 
 //     // cout << "Enter the number to be searched : ";
 //     // cin >> num ;
 //     // int index = LS(n, arr, num);
 //     // if(index != -1){
-//     //     cout << "Element found at index: " << index;
-//     // }
-//     // else{
-//     //     cout << "Element not found";
-//     // }
+    //     //     cout << "Element found at index: " << index;
+    //     // }
+    //     // else{
+        //     //     cout << "Element not found";
+        //     // }
+        
+        // cout << "Missing Number is : " << MissingNum(n , arr) << " " ;
+        
+        // cout << "Maximum number of consecutive ones are : " << Ones(n , arr);
+        
+        // cout << "Element appearing once is : " << Once(n , arr);
+        
+        return 0 ;
+        
+    }
 
-//     return 0 ;
 
-// }
+
+    // UNION & INTERSECTION :-
+    
+    // int main(){
+    //     int n1 ; 
+    //     int n2 ;
+    //     cout << "Enter the number of elements in the 1st array : "  ;
+    //     cin >> n1 ;
+    //     cout << "Enter the number of elements in the 2nd array : "  ;
+    //     cin >> n2 ;
+    //     int a[n1];
+    //     int b[n2];
+    //     cout << "Enter the elements in the 1st array : " << endl;
+    //     for(int i = 0 ; i < n1 ; i++){
+    //         cin >> a[i];
+    //     }
+    //     cout << "Enter the elements in the 2nd array : " << endl;
+    //     for(int i = 0 ; i < n2 ; i++){
+    //         cin >> b[i];
+    //     }
+    
+    //     // vector<int> result = Union_1(n1 , n2 , a , b);
+    
+    //     // vector<int> v1(a, a + n1);
+    //     // vector<int> v2(b, b + n2);
+    //     // vector<int> result = Union_2(v1, v2);
+    
+    //     // vector<int> v1(a, a + n1);
+    //     // vector<int> v2(b, b + n2);
+    //     // vector<int> result = Intersection_1(n1 , n2 , v1 , v2);
+    
+    //     // vector<int> v1(a, a + n1);
+    //     // vector<int> v2(b, b + n2);
+    //     // vector<int> result = Intersection_2(n1 , n2 , v1 , v2);
+    
+    //     for(int x : result){
+    //         cout << x << " ";
+    //     }
+    //     return 0 ;
+    // }
