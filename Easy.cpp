@@ -322,13 +322,41 @@ int Once(int n , int arr[]){
     }
 }
 
+// Longest Sub Array with sum -> 
+int LongestSubArray(vector<int> arr , long long k ){
+    map<long long , int> PreSumMap ;
+    long long sum = 0 ;
+    int maxLen = 0 ;
+
+    for(int i = 0 ; i < arr.size() ; i++){
+        sum = sum + arr[i] ;
+
+        if(sum == k){
+            maxLen = max(maxLen , i+1);
+        }
+
+        long long rem = sum - k ;
+
+        if(PreSumMap.find(rem) != PreSumMap.end()){
+            int len = i - PreSumMap[rem];
+            maxLen = max(maxLen , len);
+        }
+
+        if(PreSumMap.find(sum) == PreSumMap.end()){
+            PreSumMap[sum] = i ;
+        }
+    }
+    return maxLen ;
+}
+
+
 // NORMAL :-
 
 int main(){
     int n ; 
     cout << "Enter the number of elements in the array : ";
     cin >> n ;
-    int arr[n];
+    vector<int> arr(n);
     cout << "Enter the elements in the array : " << endl ;
     for(int i = 0 ; i < n ; i++){
         cin >> arr[i];
@@ -351,37 +379,41 @@ int main(){
         // }
         // cout << "\nNumber of unique elements are : " << k ;
         
-        // One_left(n, arr);
-        // for(int i = 0 ; i < n ; i++){
-            //     cout << arr[i] << " ";
+    // One_left(n, arr);
+    // for(int i = 0 ; i < n ; i++){
+        //     cout << arr[i] << " ";
+        // }
+            
+    // int k ;
+    // cout << "Enter the numbers of steps the array should be rotated : ";
+    // cin >> k;
+    // K_left(n , arr , k);
+                    
+    // Zeroes_1(n , arr);
+    // Zeroes_2(n , arr);
+            
+    // int num ; 
+    // cout << "Enter the number to be searched : ";
+    // cin >> num ;     // int index = LS(n, arr, num);
+    // if(index != -1){
+            //     cout << "Element found at index: " << index;
             // }
-            
-            // int k ;
-            // cout << "Enter the numbers of steps the array should be rotated : ";
-            // cin >> k;
-            // K_left(n , arr , k);
-            
-            // Zeroes_1(n , arr);
-            // Zeroes_2(n , arr);
-            
-            // int num ; 
-//     // cout << "Enter the number to be searched : ";
-//     // cin >> num ;
-//     // int index = LS(n, arr, num);
-//     // if(index != -1){
-    //     //     cout << "Element found at index: " << index;
-    //     // }
-    //     // else{
-        //     //     cout << "Element not found";
-        //     // }
+        // else{
+            //     cout << "Element not found";
+            // }
         
-        // cout << "Missing Number is : " << MissingNum(n , arr) << " " ;
+    // cout << "Missing Number is : " << MissingNum(n , arr) << " " ;
         
-        // cout << "Maximum number of consecutive ones are : " << Ones(n , arr);
+    // cout << "Maximum number of consecutive ones are : " << Ones(n , arr);
         
-        // cout << "Element appearing once is : " << Once(n , arr);
+    // cout << "Element appearing once is : " << Once(n , arr);
         
-        return 0 ;
+    long long k ;
+    cout << "Enter the target sum : ";
+    cin >> k ;
+    cout << "Length of longest SubArray is : " << LongestSubArray(arr , k); 
+
+     return 0 ;
         
     }
 
