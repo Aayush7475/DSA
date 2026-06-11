@@ -349,6 +349,35 @@ int LongestSubArray(vector<int> arr , long long k ){
     return maxLen ;
 }
 
+// 2 sum problem and returning numbers ->
+bool S_1(int n , int target , vector<int> arr){
+    sort(arr.begin() , arr.end());
+    int left = 0 ;
+    int right = n-1 ;
+    while(left < right){
+        if(arr[left] + arr[right] == target){
+         cout << arr[left] << " + " << arr[right] << " = " << target ;
+         return true ;
+        }
+        else if(arr[left] + arr[right] < target) left ++ ;
+        else right -- ;
+    }
+    return false ;
+}
+
+// 2 sum problem and returning indices ->
+vector<int> S_2(int n , int target , vector<int> arr){
+    map<int , int> mpp;
+    for(int i = 0 ; i < n ; i++){
+        int a = arr[i];
+        int more = target - a ;
+        if(mpp.find(more) != mpp.end()){
+            cout << mpp[more] << " & " << i ;
+        }
+        mpp[a] = i ;
+    }
+    return {-1 , 1};
+}
 
 // NORMAL :-
 
@@ -408,16 +437,20 @@ int main(){
         
     // cout << "Element appearing once is : " << Once(n , arr);
         
-    long long k ;
-    cout << "Enter the target sum : ";
-    cin >> k ;
-    cout << "Length of longest SubArray is : " << LongestSubArray(arr , k); 
+    // long long k ;
+    // cout << "Enter the target sum : ";
+    // cin >> k ;
+    // cout << "Length of longest SubArray is : " << LongestSubArray(arr , k); 
 
-     return 0 ;
+    // int target ;
+    // cout << "Enter the target element : ";
+    // cin >> target ;
+    // S_1(n , target , arr);
+    // S_2(n , target , arr);
+
+    return 0 ;
         
     }
-
-
 
     // UNION & INTERSECTION :-
     
