@@ -115,7 +115,26 @@ vector<int> Spiral(vector<vector<int>> &matrix){
     return ans ;
 }
 
+// Pascal Triangle ->
+vector<vector<int>> pascalTriangle(int n){
+    vector<vector<int>> ans ;
 
+    for(int row = 0 ; row < n ; row++){
+
+        long long val = 1 ;
+
+        vector<int> ansRow ;
+        ansRow.push_back(1) ;
+
+        for(int col = 1 ; col < row ; col++){
+            val = val * (row - col);
+            val = val / (col) ;
+            ansRow.push_back(val) ;
+        }
+        ans.push_back(ansRow) ;
+    }
+    return ans ;
+}
 
 int main(){
 
@@ -146,6 +165,14 @@ int main(){
     // setZeroes_2(nums);
 
     // Rotating(matrix);
+
+    // vector<vector<int>> result = pascalTriangle(n) ;
+    // for(auto row : result) {
+    //     for(auto x : row) {
+    //         cout << x << " ";
+    //     }
+    //     cout << endl;
+    // }
 
 
     cout << "Array is: \n";
