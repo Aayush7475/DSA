@@ -334,11 +334,11 @@ int main(){
     // int ans = Longest(arr);
     // cout << "Longest Consecutive Sub Array : " << ans ;
     
-    int k ;
-    cout << "Enter the value of K : ";
-    cin >> k ;
-    int ans = SubArraySum(arr , k );
-    cout << "Number of Sub Arrays with sum k is : " << ans;
+    // int k ;
+    // cout << "Enter the value of K : ";
+    // cin >> k ;
+    // int ans = SubArraySum(arr , k );
+    // cout << "Number of Sub Arrays with sum k is : " << ans;
 
     return 0 ;
 }
