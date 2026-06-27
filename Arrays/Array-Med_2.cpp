@@ -119,7 +119,7 @@ vector<int> Spiral(vector<vector<int>> &matrix){
 vector<vector<int>> pascalTriangle(int n){
     vector<vector<int>> ans ;
 
-    for(int row = 0 ; row < n ; row++){
+    for(int row = 1 ; row < n ; row++){
 
         long long val = 1 ;
 
