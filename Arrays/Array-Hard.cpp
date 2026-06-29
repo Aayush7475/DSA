@@ -324,6 +324,66 @@ vector<int> Finding(vector<int> nums){
     return {(int) x , (int) y} ;
 }
 
+// Finding the numbers of Reverse Pairs ->
+void Merge(vector<int> &nums , int low , int mid , int high){
+    int left = low;
+    int right = mid+1 ;
+    vector<int> temp ;
+
+    while(left <= mid && right <= high){
+        if(nums[left] < nums[right]){
+            temp.push_back(nums[left]);
+            left++;
+        }
+        else{
+            temp.push_back(nums[right]);
+            right++;
+        }
+    }
+    while(left <= mid){
+        temp.push_back(nums[left]);
+        left++;
+    }
+    while(right <= high){
+        temp.push_back(nums[right]);
+        right++;
+    }
+    for(int i = low ; i <= high ; i++){
+        nums[i] = temp[i-low];
+    }
+}
+int countPairs(vector<int> &nums , int low , int mid , int high){
+    int right = mid + 1 ;
+    int cnt = 0 ;
+    for(int i = low ; i <= mid ; i++){
+        while(right <= high && (long long)nums[i] > 2LL*nums[right]){
+            right ++ ;
+        }
+        cnt = cnt + (right - (mid+1)) ;
+    }
+    return cnt ;
+}
+int MS(vector<int> &nums , int low , int high ){
+    int cnt = 0 ;
+    if( low >= high ) return cnt ;
+
+    int mid = (low + high)/2 ;
+
+    cnt += MS(nums, low, mid);
+    cnt += MS(nums, mid+1, high);
+    cnt += countPairs(nums ,low , mid ,high);
+    Merge(nums, low, mid, high);
+    return cnt ; 
+}
+int mergeSort(vector<int> &nums , int n){
+    return MS(nums , 0 , n-1);
+}
+
+
+
+
+
+
 
 // NORMAL ->
 int main(){
@@ -394,12 +454,16 @@ int main(){
     // int ans = XOR(k, nums);
     // cout << "Number of subarrays = " << ans << endl;
     
-    vector<int> result = MissingRepeating(nums);
-    for(int x : result){
-        cout << x << " ";
-    }
+    // vector<int> result = MissingRepeating(nums);
+    // for(int x : result){
+    //     cout << x << " ";
+    // }
 
-    return 0 ;
+    int cnt = mergeSort(nums, n);
+    cout << "The number of reverse pair is: " << cnt << endl;
+
+
+    return 0;
 
 }
 
@@ -423,7 +487,7 @@ int main(){
 //     return 0;
 // }
 
-// MERGE SORTEDE ARRAYS ->
+// MERGE SORTED ARRAYS ->
 // int main(){
 //     int n ; 
 //     cout << "Enter the number of elements in the array 1 : ";
