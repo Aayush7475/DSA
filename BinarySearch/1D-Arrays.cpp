@@ -75,23 +75,6 @@ int floor(vector<int>& nums , int target){
 }
 
 // Returning index of the first and the last occurence ->
-int LowerBound(vector<int>& nums , int target){
-    int n = nums.size() ;
-    int low = 0 ; 
-    int high = n-1 ;
-    int ans = n ;
-    while(low <= high){
-        int mid = (low + high) / 2 ;
-        if(nums[mid] >= target){
-            ans = mid ;
-            high = mid - 1 ;
-        }
-        else{
-            low = mid + 1 ;
-        }
-    }
-    return ans ;
-}
 int UpperBound(vector<int>& nums , int target){
     int n = nums.size() ;
     int low = 0 ; 
@@ -126,6 +109,7 @@ int search(vector<int>& nums , int target){
     int high = n-1 ;
     while(low <= high){
         int mid = (low + high) / 2 ;
+
         if(nums[mid] == target) return mid ;
         
         if(nums[low] < nums[mid]){
@@ -148,6 +132,66 @@ int search(vector<int>& nums , int target){
     return -1 ;
 }
 
+// Searching element in a rotated array containing duplicates  ->
+int Searching(vector<int>& nums , int target){
+    int n = nums.size() ;
+    int low = 0 ;
+    int high = n-1 ;
+    while(low <= high){
+        int mid = (low + high) / 2 ;
+
+        if(nums[mid] == target) return mid ;
+
+        if(nums[low] == nums[mid] && nums[mid] == nums[high]){
+            low ++ ;
+            high -- ;
+            continue ;
+        }
+        
+        if(nums[low] < nums[mid]){
+            if(target >= nums[low] && target <= nums[mid]){
+                high = mid - 1 ;
+            }
+            else{
+                low = mid + 1 ;
+            }
+        }
+        else{
+            if(target >= nums[mid] && target <= nums[high]){
+                low = mid + 1 ;
+            }
+            else{
+                high = mid - 1 ;
+            }
+        }
+    }
+    return -1 ;
+}
+
+// Searching smallest element in the rotated array ->
+int Smallest(vector<int>& nums){
+    int n = nums.size() ;
+    int low = 0 ; 
+    int high = n-1 ;
+    int ans = INT_MAX ;
+    while(low < high){
+        int mid = (low + high) / 2 ;
+        if(nums[low] <= nums[mid]){
+            ans = min(ans , nums[low]);
+            low = mid + 1 ;
+        }
+        else{
+            high = mid  ;
+            ans = min(ans , nums[mid]);
+        }
+    }
+    return ans ;
+}
+
+
+
+
+
 
 
 int main(){
@@ -161,9 +205,9 @@ int main(){
         cin >> nums[i]  ;
     }
 
-    int target ;
-    cout << "Enter the target element to be searched : ";
-    cin >> target ;
+    // int target ;
+    // cout << "Enter the target element to be searched : ";
+    // cin >> target ;
 
     // cout << "Searched element " << target << " is at : " << BS1(nums , target);
     
@@ -176,6 +220,26 @@ int main(){
     // cout << "Index of the first and last occurence of the target element is : " ;
     // vector<int> result = Occurence(nums , target);
     // cout << result[0] << " & " << result[1] << endl;
+
+    // int result = search(nums , target) ;
+    // if(result != -1){
+    //     cout << "Target found at index : " << result ;
+    // }
+    // else{
+    //     cout << "Target not found" ;
+    // }
+
+    // int result = Searching(nums , target) ;
+    // if(result != -1){
+    //     cout << "Target found at index : " << result ;
+    // }
+    // else{
+    //     cout << "Target not found" ;
+    // }
+    
+    // int result = Smallest(nums) ;
+    // cout << "Smallest element in the sorted rotated array is : " ;
+    // cout << result ;
 
 
 return 0 ;
