@@ -176,6 +176,7 @@ int Smallest(vector<int>& nums){
     int ans = INT_MAX ;
     while(low < high){
         int mid = (low + high) / 2 ;
+
         if(nums[low] <= nums[mid]){
             ans = min(ans , nums[low]);
             low = mid + 1 ;
@@ -188,10 +189,87 @@ int Smallest(vector<int>& nums){
     return ans ;
 }
 
+// Finding the number of times an array is rotated ->
+int Rotated(vector<int>& nums){
+    int n = nums.size() ;
+    int low = 0 ; 
+    int high = n-1 ;
+    int ans = INT_MAX ;
+    int index = -1 ;
+    while(low <= high){
+        int mid = (low + high) / 2 ;
+        if(nums[low] <= nums[mid]){
+            if(nums[low] < ans){
+                index = low ;
+                ans = nums[low] ;
+            }
+            low = mid + 1 ;
+        }
+        else{
+            if(nums[mid] <= nums[high]){
+                index = mid ;
+                ans = nums[mid] ;
+            }
+            high = mid - 1 ;
+        }
+    }
+    return index ;
+}
 
+// Finding Single element in the sorted array ->
+int Single(vector<int> nums){
+    int n = nums.size() ;
+    int low = 1 ;
+    int high = n-2 ;
 
+    if(n == 1) return nums[0] ;
+    if(nums[0] != nums[1]) return nums[0] ;
+    if(nums[n-1] != nums[n-2]) return nums[n-1] ;
 
+    while(low <= high){
+        int mid = (low + high) / 2 ;
 
+        if(nums[mid] != nums[mid+1] && nums[mid] != nums[mid-1]){
+            return mid ;            // checking whether mid is the single element or not 
+        }                          
+
+        if((mid % 2 == 1  && nums[mid] != nums[mid-1]) || (mid % 2 == 0 && nums[mid] != nums[mid+1])){
+            low = mid + 1 ;         // eliminate left half 
+        }
+        else{
+            high = mid - 1 ;       // eliminate right half 
+        }
+    }
+    return -1 ;
+}
+
+// Finding Peak element in the array ->
+int peak(vector<int>& nums){
+    int n = nums.size() ;
+    int low = 1 ;
+    int high = n-2 ;
+
+    if(n == 1) return 0 ;
+    if(nums[0] > nums[1]) return 0 ;
+    if(nums[n-1] > nums[n-2]) return n-1 ;
+
+    while(low <= high){
+        int mid = (low + high) / 2 ;
+        if(nums[mid] > nums[mid-1] && nums[mid] > nums[mid+1]){
+            return mid ;
+        }
+        else if(nums[mid] > nums[mid-1]){
+            low = mid + 1 ;
+        }
+        else if(nums[mid] > nums[mid+1]){
+            high = mid - 1 ;
+        }
+        else{
+            low = mid + 1 ;
+        }
+    }
+    return -1 ;
+    }
 
 
 int main(){
@@ -241,6 +319,23 @@ int main(){
     // cout << "Smallest element in the sorted rotated array is : " ;
     // cout << result ;
 
+    // cout << "Number of times the arary is rotated is : " << Rotated(nums) ;
+
+    // int result = Single(nums) ;
+    // if(result != -1){
+    //     cout << "Single element in the array is : " << result ; 
+    // }
+    // else{
+    //     cout << "No single element in the array :" ; 
+    // }
+    
+    // int result = peak(nums) ;
+    // if(result != -1){
+    //     cout << "Peak element in the array is : " << result ; 
+    // }
+    // else{
+    //     cout << "No peak element in the array :" ; 
+    // }
 
 return 0 ;
 }
