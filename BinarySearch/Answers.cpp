@@ -82,6 +82,42 @@ int minEatingSpeed(vector<int>& nums , int h){
     return low ;
 }
 
+// Minimum days to make a bouquets ->
+int Possiblities(vector<int>& nums , int day , int m , int k){
+    int n = nums.size() ;
+    int count = 0 ;
+    int bouquets = 0 ;
+    for(int i = 0 ; i < n ; i++){
+        if(nums[i] <= day){
+            count ++ ;
+        }
+        else{
+            bouquets += count / k ;
+            count = 0 ;
+        }
+    }
+    bouquets += count / k ;
+    if(bouquets >= m) return true ;
+    else return false ;
+}
+int minDay(vector<int>& nums , int m , int k){
+    long long totalFlowers = 1LL * m * k ;
+
+    if(totalFlowers > nums.size()) return -1 ;
+
+    int low = *min_element(nums.begin() , nums.end());
+    int high = *max_element(nums.begin() , nums.end());
+
+    for(int i = low ; i <= high ; i++){
+        if(Possiblities(nums , i , m , k)){
+        return i ;
+        }
+    }
+    return -1 ;
+}
+
+// 
+
 
 
 int main(){
@@ -99,19 +135,30 @@ int main(){
     // cout << "Enter the target element : ";
     // cin >> target ;
 
-    // int root ;
+    // int root ;   //Nth root of a number
     // cout << "Enter the number of root to be calculated : " ;
     // cin >> root ;
 
-    int h ;
-    cout << "Enter the value of h : ";
-    cin >> h ;
+    // int h ;     // Hours required by koko to eat bananas 
+    // cout << "Enter the value of h : ";
+    // cin >> h ;
+
+    int m ;        // Number of bouquets to be made
+    cout << "Enter the number of bouquets to be made : ";
+    cin >> m ;
+
+    int k ;        // Number of adjacent flowers required to make a bouquet
+    cout << "Enter the number of flowers required in the bouquet : ";
+    cin >> k ;
+
 
     // cout << "Floor value of square root of the target is  = " << squareRoot(target) ;
 
     // cout << "Nth root of " << target << " is : " << nRoot(target , root);
 
-    cout << "Minimum time in which koko can eat all the bananas : " << minEatingSpeed(nums , h) ;
+    // cout << "Minimum time in which koko can eat all the bananas : " << minEatingSpeed(nums , h) ;
+
+    cout << "Minimum time required to make " << m << " bouquets with " << k << " flowers is : " << minDay(nums , m , k); 
 
 
     return 0 ;
