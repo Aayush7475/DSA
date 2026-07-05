@@ -116,7 +116,10 @@ int minDay(vector<int>& nums , int m , int k){
     return -1 ;
 }
 
-// 
+// Find smallest divisor ->
+int small(){
+    
+}
 
 
 
