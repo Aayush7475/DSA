@@ -117,11 +117,57 @@ int minDay(vector<int>& nums , int m , int k){
 }
 
 // Find smallest divisor ->
-int small(){
-    
+int divisor(vector<int>& nums , int div){
+    int n = nums.size() ;
+    int sum = 0 ;
+    for(int i = 0 ; i < n ; i++){
+        sum += ceil((double)nums[i] / (double)div) ;
+    }
+    return sum ; 
+}
+int small(vector<int>& nums , int limit){
+    int n = nums.size() ;
+    int low = 1 ;
+    int high = *max_element(nums.begin() , nums.end());
+    while(low <= high){
+        int mid = (low + high) / 2 ;
+        if(divisor(nums , mid) <= limit){
+            high = mid - 1 ;
+        }
+        else{
+            low = mid + 1 ;
+        }
+    }
+    return low ;
 }
 
-
+// Capacity to ship packages within D days ->
+int requiresDays(vector<int>& nums , int capacity){
+    int days = 1 ;
+    int load = 0 ;
+    for(int i = 0 ; i < nums.size() ; i++){
+        if(load + nums[i] > capacity){
+            days = days + 1 ;
+            load = nums[i] ;
+        }
+        else{
+            load += nums[i] ;
+        }
+    }
+    return days ;
+}
+int shipWithinDays(vector<int>& nums , int days){
+    int n = nums.size() ;
+    int left = *max_element(nums.begin() , nums.end());
+    int right = (n*(n+1)) / 2 ;
+    for(int capacity = left ; capacity <= right ; capacity++){
+        int needed = requiresDays(nums , capacity) ;
+        if(needed <= days){
+            return capacity ;
+        }
+    }
+    return right ;
+}
 
 int main(){
     int n ; 
@@ -138,21 +184,31 @@ int main(){
     // cout << "Enter the target element : ";
     // cin >> target ;
 
-    // int root ;   //Nth root of a number
+    // int root ;      // Nth root of a number
     // cout << "Enter the number of root to be calculated : " ;
     // cin >> root ;
 
-    // int h ;     // Hours required by koko to eat bananas 
+    // int h ;         // Hours required by koko to eat bananas 
     // cout << "Enter the value of h : ";
     // cin >> h ;
 
-    int m ;        // Number of bouquets to be made
-    cout << "Enter the number of bouquets to be made : ";
-    cin >> m ;
+    // int m ;         // Number of bouquets to be made
+    // cout << "Enter the number of bouquets to be made : ";
+    // cin >> m ;
 
-    int k ;        // Number of adjacent flowers required to make a bouquet
-    cout << "Enter the number of flowers required in the bouquet : ";
-    cin >> k ;
+    // int k ;         // Number of adjacent flowers required to make a bouquet
+    // cout << "Enter the number of flowers required in the bouquet : ";
+    // cin >> k ;
+
+    // int limit ;     // Limit so that divisor should be smaller than it
+    // cout << "Enter the limit from which the divisor should be small : " ;
+    // cin >> limit ;
+
+    int days ;         // Number of days to ship the goods 
+    cout << "Enter the number of days to ship the goods : ";
+    cin >> days ;
+
+
 
 
     // cout << "Floor value of square root of the target is  = " << squareRoot(target) ;
@@ -161,8 +217,11 @@ int main(){
 
     // cout << "Minimum time in which koko can eat all the bananas : " << minEatingSpeed(nums , h) ;
 
-    cout << "Minimum time required to make " << m << " bouquets with " << k << " flowers is : " << minDay(nums , m , k); 
+    // cout << "Minimum time required to make " << m << " bouquets with " << k << " flowers is : " << minDay(nums , m , k); 
 
+    // cout << "Smallest divisor : " << small(nums , limit) ;
+
+    cout << "Minimum Capacity of the ship to move the goods is : " << shipWithinDays(nums , days) ;
 
     return 0 ;
 
