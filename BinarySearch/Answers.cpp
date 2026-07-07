@@ -187,6 +187,7 @@ int missingK(vector<int>& nums , int k){
     return k + high + 1 ;
 }
 
+// Aggresive Cows ->
 
 
 
@@ -230,9 +231,9 @@ int main(){
     // cout << "Enter the number of days to ship the goods : ";
     // cin >> days ;
 
-int k ;
-cout << "Enter the position of missing element : ";
-cin >> k ;
+// int k ;
+// cout << "Enter the position of missing element : ";
+// cin >> k ;
 
 
     // cout << "Floor value of square root of the target is  = " << squareRoot(target) ;
@@ -247,9 +248,9 @@ cin >> k ;
 
     // cout << "Minimum Capacity of the ship to move the goods is : " << shipWithinDays(nums , days) ;
 
-    cout << "The " << k << " missing number is : " << missingK(nums , k) ;
+    // cout << "The " << k << " missing number is : " << missingK(nums , k) ;
 
-    
+
     return 0 ;
 
 }
