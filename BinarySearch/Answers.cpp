@@ -169,6 +169,28 @@ int shipWithinDays(vector<int>& nums , int days){
     return right ;
 }
 
+// Missing the Kth positive number ->
+int missingK(vector<int>& nums , int k){
+    int n = nums.size() ;
+    int low = 0 ;
+    int high = n-1 ;
+    while(low <= high){
+        int mid = (low + high) / 2 ;
+        int missing = nums[mid] - (mid + 1) ;
+        if(missing < k){
+            low = mid + 1 ;
+        }
+        else{
+            high = mid - 1 ;
+        }
+    }
+    return k + high + 1 ;
+}
+
+
+
+
+
 int main(){
     int n ; 
     cout << "Enter the number of elements in the array : " ;
@@ -204,11 +226,13 @@ int main(){
     // cout << "Enter the limit from which the divisor should be small : " ;
     // cin >> limit ;
 
-    int days ;         // Number of days to ship the goods 
-    cout << "Enter the number of days to ship the goods : ";
-    cin >> days ;
+    // int days ;      // Number of days to ship the goods 
+    // cout << "Enter the number of days to ship the goods : ";
+    // cin >> days ;
 
-
+int k ;
+cout << "Enter the position of missing element : ";
+cin >> k ;
 
 
     // cout << "Floor value of square root of the target is  = " << squareRoot(target) ;
@@ -221,8 +245,11 @@ int main(){
 
     // cout << "Smallest divisor : " << small(nums , limit) ;
 
-    cout << "Minimum Capacity of the ship to move the goods is : " << shipWithinDays(nums , days) ;
+    // cout << "Minimum Capacity of the ship to move the goods is : " << shipWithinDays(nums , days) ;
 
+    cout << "The " << k << " missing number is : " << missingK(nums , k) ;
+
+    
     return 0 ;
 
 }
