@@ -188,7 +188,34 @@ int missingK(vector<int>& nums , int k){
 }
 
 // Aggresive Cows ->
-
+bool canWePlace(vector<int>& nums , int dist , int cows){
+    int cntCows = 1 ;
+    int last = nums[0] ;
+    for(int i = 0 ; i < nums.size() ; i++){
+        if(nums[i]-last >= dist){
+            cntCows ++ ;
+            last = nums[i] ;
+        }
+        if(cntCows >= cows) return true ;
+    }
+    return false ;
+}
+int aggressiveCows(vector<int>& nums , int k){
+    sort(nums.begin() , nums.end());
+    int n = nums.size() ;
+    int low = 0 ;
+    int high = nums[n-1] - nums[0] ;
+    while(low <= high){
+        int mid = (low + high) / 2 ;
+        if(canWePlace(nums , mid , k) == true){
+            low = mid + 1 ;
+        }
+        else{
+            high = mid - 1 ;
+        }
+    }
+    return high ;
+}
 
 
 
@@ -231,9 +258,15 @@ int main(){
     // cout << "Enter the number of days to ship the goods : ";
     // cin >> days ;
 
-// int k ;
+    // int k ;         // Position of the missing number in the array 
 // cout << "Enter the position of missing element : ";
 // cin >> k ;
+
+    // int k ;            // Number of cows to be placed in between the stalls 
+    // cout << "Enter the number of cows to be placed in between : ";
+    // cin >> k ;
+
+
 
 
     // cout << "Floor value of square root of the target is  = " << squareRoot(target) ;
@@ -249,6 +282,9 @@ int main(){
     // cout << "Minimum Capacity of the ship to move the goods is : " << shipWithinDays(nums , days) ;
 
     // cout << "The " << k << " missing number is : " << missingK(nums , k) ;
+
+    // cout << "Maximum distance at which " << k << " Cows can be placed is : " << aggressiveCows(nums , k) ;
+
 
 
     return 0 ;
