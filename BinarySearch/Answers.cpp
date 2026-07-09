@@ -217,6 +217,43 @@ int aggressiveCows(vector<int>& nums , int k){
     return high ;
 }
 
+// Books allocation ->
+int countStudents(vector<int>& nums , int pages){
+    int students = 1 ;
+    long long pagesStudent = 0 ;
+    for(int i = 0 ; i < nums.size() ; i++){
+        if(pagesStudent + nums[i] <= pages){
+            pagesStudent += nums[i] ;
+        }
+        else{
+            students += 1 ;
+            pagesStudent = nums[i] ;
+        }
+    }
+    return students ;
+}
+int findpages(vector<int>& nums , int k , int m){
+    if(m > k) return -1 ;
+    int low = *max_element(nums.begin() , nums.end()) ;
+    int high = accumulate(nums.begin() , nums.end() , 0LL) ;
+    while(low <= high){
+        int mid = (low + high) / 2 ;
+        int students = countStudents(nums , mid) ;
+        if(students > m){
+            low = mid + 1 ;
+        }
+        else{
+            high = mid - 1 ;
+        }
+    }
+    return low ;
+}
+
+// 
+
+
+
+
 
 
 int main(){
@@ -259,14 +296,20 @@ int main(){
     // cin >> days ;
 
     // int k ;         // Position of the missing number in the array 
-// cout << "Enter the position of missing element : ";
-// cin >> k ;
+    // cout << "Enter the position of missing element : ";
+    // cin >> k ;
 
-    // int k ;            // Number of cows to be placed in between the stalls 
+    // int k ;         // Number of cows to be placed in between the stalls 
     // cout << "Enter the number of cows to be placed in between : ";
     // cin >> k ;
 
+    int k ;
+    cout << "Enter the value of k : " ;
+    cin >> k ;
 
+    int m ;
+    cout << "Enter the value of m : " ;
+    cin >> m ;
 
 
     // cout << "Floor value of square root of the target is  = " << squareRoot(target) ;
@@ -285,7 +328,7 @@ int main(){
 
     // cout << "Maximum distance at which " << k << " Cows can be placed is : " << aggressiveCows(nums , k) ;
 
-
+    cout << "The answer is : " << findpages(nums , k , m) ;
 
     return 0 ;
 
