@@ -249,8 +249,36 @@ int findpages(vector<int>& nums , int k , int m){
     return low ;
 }
 
-// 
-
+// Split array into largest sum ->
+int countPartitons(vector<int>& nums , int maxSum){
+    int partition = 1 ;
+    long long subArraySum = 0 ;
+    for(int i = 0 ; i < nums.size() ; i++){
+        if(subArraySum + nums[i] <= maxSum){
+            subArraySum += nums[i] ;
+        }
+        else{
+            partition ++ ;
+            subArraySum = nums[i] ;
+        }
+    }
+    return partition ;
+}
+int largestSubArray(vector<int>& nums , int k){
+    int low = *max_element(nums.begin() , nums.end()) ;
+    int high = accumulate(nums.begin() , nums.end() , 0) ;
+    while(low <= high){
+        int mid = (low + high) / 2 ;
+        int partition = countPartitons(nums , mid) ;
+        if(partition > k){
+            low = mid + 1 ;
+        }
+        else{
+            high = mid - 1 ;
+        }
+    }
+    return low ;
+}
 
 
 
@@ -303,13 +331,18 @@ int main(){
     // cout << "Enter the number of cows to be placed in between : ";
     // cin >> k ;
 
-    int k ;
-    cout << "Enter the value of k : " ;
-    cin >> k ;
+    // int k ;         // Number of books to be distributed 
+    // cout << "Enter the value of k : " ;
+    // cin >> k ;
 
-    int m ;
-    cout << "Enter the value of m : " ;
-    cin >> m ;
+    // int m ;         // Number of people in which books will be distributed 
+    // cout << "Enter the value of m : " ;
+    // cin >> m ;
+
+    // int k ;            // Number of subarrays in which the array will be divided 
+    // cout << "Enter the number of Sub Arrays in which the Array will be divided : ";
+    // cin >> k ;
+
 
 
     // cout << "Floor value of square root of the target is  = " << squareRoot(target) ;
@@ -328,7 +361,9 @@ int main(){
 
     // cout << "Maximum distance at which " << k << " Cows can be placed is : " << aggressiveCows(nums , k) ;
 
-    cout << "The answer is : " << findpages(nums , k , m) ;
+    // cout << "The answer is : " << findpages(nums , k , m) ; 
+
+    // cout << "Largest SubArray with minimum sum is : " << largestSubArray(nums , k) ;
 
     return 0 ;
 
