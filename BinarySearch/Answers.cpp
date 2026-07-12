@@ -280,7 +280,25 @@ int largestSubArray(vector<int>& nums , int k){
     return low ;
 }
 
-// 
+// Minimize maximum distance between two Gas Stations ->
+long double MinimizeMaxDistance(vector<int>& nums , int k){
+    int n = nums.size() ;
+    vector<int> howMany(n-1 , 0) ;
+    priority_queue<pair<long double , int>> pq ;
+    for(int i = 0 ; i <= n-1 ; i++){
+        pq.push({nums[i+1] - nums[i] , i}) ;
+    }
+
+    for(int gasStation = 1 ; gasStation <= k ; gasStation++){
+        auto x = pq.top() ; pq.pop() ;
+        int secIndex = x.second ;
+        howMany[secIndex] ++ ;
+        long double iniDiff = nums[secIndex + 1] - nums[secIndex] ;
+        long double newSecLen = iniDiff / (long double) (howMany[secIndex] + 1) ;
+        pq.push({newSecLen , secIndex}) ;
+    }
+    return pq.top().first ;
+}
 
 
 
@@ -340,11 +358,13 @@ int main(){
     // cout << "Enter the value of m : " ;
     // cin >> m ;
 
-    // int k ;            // Number of subarrays in which the array will be divided 
+    // int k ;         // Number of subarrays in which the array will be divided 
     // cout << "Enter the number of Sub Arrays in which the Array will be divided : ";
     // cin >> k ;
 
-
+    int k ;            // Number of Gas Station to be added in between 
+    cout << "Enter the number of Gas Stations to be added :" ;
+    cin >> k ;
 
     // cout << "Floor value of square root of the target is  = " << squareRoot(target) ;
 
@@ -366,6 +386,8 @@ int main(){
 
     // cout << "Largest SubArray with minimum sum is : " << largestSubArray(nums , k) ;
 
+    cout << "Minimized maximum distance between the Gas Stations is :" << MinimizeMaxDistance(nums , k) ;
+    
     return 0 ;
 
 }
