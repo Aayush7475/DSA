@@ -280,8 +280,8 @@ int largestSubArray(vector<int>& nums , int k){
     return low ;
 }
 
-// Minimize maximum distance between two Gas Stations ->
-long double MinimizeMaxDistance(vector<int>& nums , int k){
+// Minimize maximum distance between two Gas Stations Method 1 ->
+long double minimizeMaxDistance(vector<int>& nums , int k){
     int n = nums.size() ;
     vector<int> howMany(n-1 , 0) ;
     priority_queue<pair<long double , int>> pq ;
@@ -300,7 +300,39 @@ long double MinimizeMaxDistance(vector<int>& nums , int k){
     return pq.top().first ;
 }
 
+// Minimize maximum distance between two Gas Stations Method 2 ->
+int numberOfGasStationsRequired(vector<int>& nums , long double dist){
+    int cnt = 0 ;
+    for(int i = 1 ; i <= nums.size() ; i++){
+        int numberInBetween = ((nums[i] - nums[i+1]) / dist) ;
+        if((nums[i] - nums[i-1]) / dist == numberInBetween * dist ){
+            numberInBetween ++ ;
+        }
+        cnt += numberInBetween ;
+    }
+    return cnt ;
+}
+long double MinimizeMaxDistance(vector<int>& nums , int k){
+    int n = nums.size() ;
+    long double low = 0 ;
+    long double high = 0 ;
+    for(int i = 1 ; i < n-1 ; i++){
+        high = max(high , (long double) (nums[i+1] - nums[i])) ;
+    }
 
+    long double diff = 1e-6 ;
+    while(high - low > diff){
+        long double mid = (low + high) / (2.0) ;
+        int cnt = numberOfGasStationsRequired(nums , mid); 
+        if(cnt > k){
+            low = mid ;
+        }
+        else{
+            high = mid ;
+        }
+    }
+    return high ;
+}
 
 
 int main(){
@@ -386,7 +418,7 @@ int main(){
 
     // cout << "Largest SubArray with minimum sum is : " << largestSubArray(nums , k) ;
 
-    cout << "Minimized maximum distance between the Gas Stations is :" << MinimizeMaxDistance(nums , k) ;
+    cout << "Minimized maximum distance between the Gas Stations is : " << MinimizeMaxDistance(nums , k) ;
     
     return 0 ;
 
