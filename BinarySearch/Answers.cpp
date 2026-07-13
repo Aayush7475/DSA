@@ -334,6 +334,43 @@ long double MinimizeMaxDistance(vector<int>& nums , int k){
     return high ;
 }
 
+// Median of two sorted array of different sizes ->
+double findMedianSortedArray(vector<int>& nums1 , vector<int>& nums2){
+    if(nums1.size() > nums2.size()) return findMedianSortedArray(nums2 , nums1) ;
+    int n1 = nums1.size() ;
+    int n2 = nums2.size() ;
+    int low = 0 ;
+    int high = n1 ;
+
+    while(low <= high){
+        int cnt1 = (low + high) >> 1 ;
+        int cnt2 = ((n1 + n2 + 1) / 2) - cnt1 ;
+
+        int left1 = cnt1 == 0 ? INT_MIN : nums1[cnt1 - 1] ;
+        int left2 = cnt2 == 0 ? INT_MIN : nums2[cnt2 - 1] ;
+
+        int right1 = cnt1 == n1 ? INT_MAX : nums1[cnt1] ;
+        int right2 = cnt2 == n2 ? INT_MAX : nums2[cnt2] ;
+
+        if(left1 <= right2 && left2 <= right1){
+            if((n1 + n2) % 2 == 0){
+                return(max(left1 , left2) + min(right1 , right2)) / 2.0 ;
+            }
+            else{
+                return max(left1 , left2) ;
+            }
+        }
+        else if(left1 >= right2){
+            high = cnt1 - 1 ;
+        }
+        else{
+            low = cnt1 + 1 ;
+        }
+    }
+    return 0.0 ;
+} 
+
+
 
 int main(){
     int n ; 
@@ -346,7 +383,7 @@ int main(){
         cin >> nums[i] ;
     }
 
-    // int target ;
+    // int target ;    // Square root of a number 
     // cout << "Enter the target element : ";
     // cin >> target ;
 
@@ -394,10 +431,28 @@ int main(){
     // cout << "Enter the number of Sub Arrays in which the Array will be divided : ";
     // cin >> k ;
 
-    int k ;            // Number of Gas Station to be added in between 
-    cout << "Enter the number of Gas Stations to be added :" ;
-    cin >> k ;
+    // int k ;         // Number of Gas Station to be added in between 
+    // cout << "Enter the number of Gas Stations to be added :" ;
+    // cin >> k ;
 
+    // int n1 ;        // Entering the elements in the arrays for median
+    // cout << "Enter the number of elements in the array 1 : ";
+    // cin >> n1 ;
+    // vector<int> nums1(n1) ;
+    // cout << "Enter the elements in the array 1 : " << endl ;
+    // for(int i = 0 ; i < n1 ; i++){
+    //     cin >> nums1[i] ;
+    // }
+    // int n2 ;
+    // cout << "Enter the number of elements in the array 2 : " ;
+    // cin >> n2 ;
+    // vector<int> nums2(n2) ;
+    // cout << "Enter the elements in the array 2 : " << endl ;
+    // for(int i = 0 ; i < n2 ; i++){
+    //     cin >> nums2[i] ;
+    // }
+
+    
     // cout << "Floor value of square root of the target is  = " << squareRoot(target) ;
 
     // cout << "Nth root of " << target << " is : " << nRoot(target , root);
@@ -418,8 +473,10 @@ int main(){
 
     // cout << "Largest SubArray with minimum sum is : " << largestSubArray(nums , k) ;
 
-    cout << "Minimized maximum distance between the Gas Stations is : " << MinimizeMaxDistance(nums , k) ;
+    // cout << "Minimized maximum distance between the Gas Stations is : " << MinimizeMaxDistance(nums , k) ;
     
+    // cout << "Median of the two sorted array is : " << findMedianSortedArray(nums1 , nums2) << endl ;
+
     return 0 ;
 
 }
