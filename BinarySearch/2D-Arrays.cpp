@@ -79,7 +79,41 @@ bool SearchMatrix(vector<vector<int>>& matrix , int target){
      return false ;  
 }
 
-// 
+// Finding the peak element 
+int FindMaxIndex(vector<vector<int>>& matrix , int n , int m , int col){
+    int maxValue = INT_MIN ;
+    int index = -1 ;
+
+    for(int i = 0 ; i < n ; i++){
+        if(matrix[i][col] > maxValue){
+            maxValue = matrix[i][col] ;
+            index = i ;
+        }
+    }
+    return index ;
+}
+vector<int> peak(vector<vector<int>>& matrix ){
+    int n = matrix.size() ;
+    int m = matrix[0].size() ;
+    int low = 0 ;
+    int high = m-1 ;
+    while(low <= high){
+        int mid = low + (high - low) / 2 ;
+        int maxRowIndex = FindMaxIndex(matrix , n , m , mid) ;
+        int left = mid - 1 >= 0 ? matrix[maxRowIndex][mid - 1] : -1 ;
+        int right = mid + 1 < m ? matrix[maxRowIndex][mid + 1] : -1 ;
+        if(matrix[maxRowIndex][mid] > left && matrix[maxRowIndex][mid] > right){
+            return {maxRowIndex , mid} ;
+        }
+        else if (matrix[maxRowIndex][mid] < left){
+            high = mid -1 ;
+        }
+        else{
+            low = mid + 1 ;
+        }
+    }
+    return {-1 , -1} ;
+}
 
 int main(){
     int n;
@@ -102,9 +136,10 @@ int main(){
     }
     cout << endl ;
     
-    int target ;         // Searching element in the matrix 
-    cout << "Enter the number of be searched in the matrix : " ;
-    cin >> target ;
+    // int target ;         // Searching element in the matrix 
+    // cout << "Enter the number of be searched in the matrix : " ;
+    // cin >> target ;
+
 
     // cout << "Row with maximum number of ones is : " << rowWithMax_1s(matrix , n , m) ;
 
@@ -116,14 +151,17 @@ int main(){
     //     cout << "Searched element is not in the matrix " ;
     // }
 
-    bool result = SearchMatrix(matrix , target) ;
-    if(result == true ){
-        cout << "Searched element exists in the matrix " ;
-    }
-    else{
-        cout << "Searched element is not in the matrix " ;
-    }
+    // bool result = SearchMatrix(matrix , target) ;
+    // if(result == true ){
+    //     cout << "Searched element exists in the matrix " ;
+    // }
+    // else{
+    //     cout << "Searched element is not in the matrix " ;
+    // }
 
-    
+    // vector<int> ans = peak(matrix) ;
+    // cout << "Peak element occurs at : " << ans[0] << " , " << ans[1] ;
+
+
     return 0 ;
 }
