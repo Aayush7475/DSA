@@ -106,7 +106,7 @@ vector<int> peak(vector<vector<int>>& matrix ){
             return {maxRowIndex , mid} ;
         }
         else if (matrix[maxRowIndex][mid] < left){
-            high = mid -1 ;
+            high = mid - 1 ;
         }
         else{
             low = mid + 1 ;
@@ -114,6 +114,51 @@ vector<int> peak(vector<vector<int>>& matrix ){
     }
     return {-1 , -1} ;
 }
+
+// Finding the median of a matrix  
+int upperBound(vector<int>& nums , int x ,int n){
+    int low = 0 ;
+    int high = n-1 ; 
+    int ans = n ;
+    while(low <= high){
+        int mid = (low + high) / 2 ;
+        if(nums[mid] > x){
+            ans = mid ;
+            high = mid - 1 ;
+        }
+        else{
+            low = mid + 1 ;
+        }
+    }
+    return ans ;
+} 
+int countSmallEqual(vector<vector<int>>& matrix , int n , int m , int x){
+    int cnt = 0 ;
+    for(int i = 0 ; i < n ; i++){
+        cnt += upperBound(matrix[i] , x , m) ;
+    }
+    return cnt ;
+}
+int median(vector<vector<int>>& matrix ){
+    int n = matrix.size() ;
+    int m = matrix[0].size() ;
+    int low = matrix[0][0] ;
+    int high = matrix[0][m-1] ;
+
+    while(low < high){
+        int mid = low + (high - low) / 2 ;
+        int count = countSmallEqual(matrix , n , m , mid) ;
+        if(count < (n*m + 1) / 2)
+             low = mid + 1 ;
+        else 
+            high = mid ;
+    } 
+    return low ;
+}
+
+
+
+
 
 int main(){
     int n;
@@ -162,6 +207,7 @@ int main(){
     // vector<int> ans = peak(matrix) ;
     // cout << "Peak element occurs at : " << ans[0] << " , " << ans[1] ;
 
+    // cout << "The Median of the given Matrix is : " << median(matrix) ;
 
     return 0 ;
 }
