@@ -82,11 +82,25 @@ string largestCommonPrefix(vector<string>& s){
     return ans ;
 }
 
+// Isomorphic Stings 
+bool Isomorphic(string s , string t){
+    if(s.length() != t.length()) return false ;
+    int m1[256] = {0} ;
+    int m2[256] = {0} ;
+    int n = s.size() ;
+
+    for(int i = 0 ; i < n ; i++){
+        if(m1[s[i]] != m2[t[i]]) return false ;
+        m1[s[i]] = i+1 ;
+        m2[t[i]] = i+1 ;
+    }
+    return true ;
+}
 
 int main(){
-    string s ;
-    cout << "Enter the string  : " ;
-    getline(cin , s) ;
+    // string s ;
+    // cout << "Enter the string  : " ;
+    // getline(cin , s) ;
 
     // int n;        // Taking number of strings and strings also
     // cout << "Enter number of strings: ";
@@ -97,7 +111,13 @@ int main(){
     //     cin >> s[i];
     // }
 
-
+    string s ;
+    cout << "Enter the string  : " ;
+    cin >> s ;
+    string t ;
+    cout << "Enter the string  : " ;
+    cin >> t ;
+    
     // cout << "After removing the outermost parenthesis given parenthesis is : " << removeOuterParentheses(s) ;
 
     // cout << "String in the reverse order is : " << reverseWords(s) ;
@@ -106,5 +126,14 @@ int main(){
 
     // cout << "Largest common string : " << largestCommonPrefix(s) ;
     
+    int result = Isomorphic(s , t) ;
+    if(result = true){
+        cout << "Given strings are isomorphic" ; 
+    }
+    else{
+        cout << "Given strings are not isomorphic" ;
+    }
+
+
     return 0 ;
 }
