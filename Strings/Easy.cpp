@@ -97,6 +97,20 @@ bool Isomorphic(string s , string t){
     return true ;
 }
 
+// Checking if one string is rotation of another 
+bool Rotation(string s , string goal){
+    if(s.length() != goal.length()){
+        return false ;
+    }
+    for(int i = 0 ; i < s.length() ; i++){
+        string rotated = s.substr(i) + s.substr(0 , i) ;
+        if(goal == rotated){
+            return true ;
+        }
+    }
+    return false ;
+}
+
 int main(){
     // string s ;
     // cout << "Enter the string  : " ;
@@ -114,9 +128,9 @@ int main(){
     string s ;
     cout << "Enter the string  : " ;
     cin >> s ;
-    string t ;
+    string goal ;
     cout << "Enter the string  : " ;
-    cin >> t ;
+    cin >> goal ;
     
     // cout << "After removing the outermost parenthesis given parenthesis is : " << removeOuterParentheses(s) ;
 
@@ -126,14 +140,22 @@ int main(){
 
     // cout << "Largest common string : " << largestCommonPrefix(s) ;
     
-    int result = Isomorphic(s , t) ;
+    // int result = Isomorphic(s , t) ;
+    // if(result = true){
+    //     cout << "Given strings are isomorphic" ; 
+    // }
+    // else{
+    //     cout << "Given strings are not isomorphic" ;
+    // }
+
+    int result = Rotation(s , goal);
     if(result = true){
-        cout << "Given strings are isomorphic" ; 
+        cout << "Entered string can be achieved by rotating  " ;
     }
     else{
-        cout << "Given strings are not isomorphic" ;
+        cout << "Entered string cannot be achieved by rotating " ;
     }
 
-
+    
     return 0 ;
 }
