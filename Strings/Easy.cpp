@@ -111,6 +111,19 @@ bool Rotation(string s , string goal){
     return false ;
 }
 
+bool isAnagram(string str1 , string str2){
+    if(str1.length() != str2.length()) return false ;
+
+    sort(str1.begin() , str1.end()) ;
+    sort(str2.begin() , str2.end()) ;
+
+    for(int i = 0 ; i < str1.length() ; i++){
+        if(str1[i] != str2[i]){
+            return false ;
+        }
+    }
+    return false ;
+}
 int main(){
     // string s ;
     // cout << "Enter the string  : " ;
@@ -125,12 +138,12 @@ int main(){
     //     cin >> s[i];
     // }
 
-    string s ;
+    string str1 ;
     cout << "Enter the string  : " ;
-    cin >> s ;
-    string goal ;
+    cin >> str1 ;
+    string str2 ;
     cout << "Enter the string  : " ;
-    cin >> goal ;
+    cin >> str2 ;
     
     // cout << "After removing the outermost parenthesis given parenthesis is : " << removeOuterParentheses(s) ;
 
@@ -148,12 +161,20 @@ int main(){
     //     cout << "Given strings are not isomorphic" ;
     // }
 
-    int result = Rotation(s , goal);
+    // int result = Rotation(s , goal);
+    // if(result = true){
+    //     cout << "Entered string can be achieved by rotating  " ;
+    // }
+    // else{
+    //     cout << "Entered string cannot be achieved by rotating " ;
+    // }
+
+    int result = isAnagram(str1 , str2);
     if(result = true){
-        cout << "Entered string can be achieved by rotating  " ;
+        cout << "Entered string is an anagram " ;
     }
     else{
-        cout << "Entered string cannot be achieved by rotating " ;
+        cout << "Entered string is not an anagram " ;
     }
 
     
