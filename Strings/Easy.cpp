@@ -111,6 +111,7 @@ bool Rotation(string s , string goal){
     return false ;
 }
 
+// Checking whether an string is Anagram or not 
 bool isAnagram(string str1 , string str2){
     if(str1.length() != str2.length()) return false ;
 
@@ -124,12 +125,46 @@ bool isAnagram(string str1 , string str2){
     }
     return false ;
 }
-int main(){
-    // string s ;
-    // cout << "Enter the string  : " ;
-    // getline(cin , s) ;
 
-    // int n;        // Taking number of strings and strings also
+// Sorting characters by firstly frequency and if frequency is same then by alphabetical order 
+string frequencySort(string s) {
+    unordered_map<char,int> freq ;
+
+    for(char ch : s){
+        freq[ch] ++ ;
+    }
+
+    vector<pair<char , int>> v ;
+    for(auto &it : freq){
+        v.push_back({it.first , it.second}) ;
+    }
+
+    sort(v.begin() , v.end() , [](pair<char , int> a , pair<char , int> b){
+        if(a.second != b.second){
+            return a.second > b.second ;
+        }
+        else{
+            return a.first < b.first ;
+        }
+    });
+
+     string ans;
+
+    for (auto &it : v) {
+        ans += it.first;
+    }
+
+    return ans ;
+}
+
+
+
+int main(){
+    string s ;
+    cout << "Enter the string  : " ;
+    getline(cin , s) ;
+
+    // int n;               // Taking number of strings and strings also
     // cout << "Enter number of strings: ";
     // cin >> n;
     // vector<string> s(n);
@@ -138,13 +173,15 @@ int main(){
     //     cin >> s[i];
     // }
 
-    string str1 ;
-    cout << "Enter the string  : " ;
-    cin >> str1 ;
-    string str2 ;
-    cout << "Enter the string  : " ;
-    cin >> str2 ;
+    // string str1 ;        // Taking the strings to chk whether it's Anagram or not 
+    // cout << "Enter the string  : " ;
+    // cin >> str1 ;
+    // string str2 ;
+    // cout << "Enter the string  : " ;
+    // cin >> str2 ;
     
+
+
     // cout << "After removing the outermost parenthesis given parenthesis is : " << removeOuterParentheses(s) ;
 
     // cout << "String in the reverse order is : " << reverseWords(s) ;
@@ -169,14 +206,16 @@ int main(){
     //     cout << "Entered string cannot be achieved by rotating " ;
     // }
 
-    int result = isAnagram(str1 , str2);
-    if(result = true){
-        cout << "Entered string is an anagram " ;
-    }
-    else{
-        cout << "Entered string is not an anagram " ;
-    }
+    // int result = isAnagram(str1 , str2);
+    // if(result = true){
+    //     cout << "Entered string is an anagram " ;
+    // }
+    // else{
+    //     cout << "Entered string is not an anagram " ;
+    // }
 
-    
+    // string result = frequencySort(s) ;
+    // cout << "Output is :" << result ;
+
     return 0 ;
 }
