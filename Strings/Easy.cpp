@@ -157,6 +157,23 @@ string frequencySort(string s) {
     return ans ;
 }
 
+// Returing the highest depth of parenthesis 
+int maxDepth(string s){
+    int ans = 0 ;
+    int count = 0 ;
+    for(char x : s){
+        if(x == '(' ){
+            count ++ ;
+            ans = max(ans , count) ;
+        }
+        else if(x == ')' ){
+            count -- ;
+        }
+    }
+    return ans ;
+} 
+
+// 
 
 
 int main(){
@@ -216,6 +233,9 @@ int main(){
 
     // string result = frequencySort(s) ;
     // cout << "Output is :" << result ;
+
+    // cout<< "Max depth of teh parenthesis is : " << maxDepth(s) ;
+
 
     return 0 ;
 }
