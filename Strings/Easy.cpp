@@ -196,7 +196,7 @@ int RomantoInt(string s){
     return ans ;
 }
 
-// Recursive implementation of atoi 
+// Recursive implementation of ATOI( ASCII VAlue into Integer )
 int Myatoi(string s){
     int i = 0  ;
     int n = s.length() ;
@@ -210,20 +210,21 @@ int Myatoi(string s){
     if(i < n && (s[i] == '+' || s[i] == '-')){
         if(s[i] == '-'){
             sign = -1 ;
-            i++ ;
         }
+        i++ ;
     }
 
-    long long num ;
+    long long num = 0;
 
     while(i < n && isdigit(s[i])){
         int digit = s[i] - '0' ;
 
-        if(num > INT_MAX / 10 || (num > INT_MAX / 10 && digit > 7)){
-            return 1 ? INT_MAX : INT_MIN ;
+        if(num > INT_MAX / 10 || (num == INT_MAX / 10 && digit > (sign == 1 ? 7 : 8))){
+            return sign == 1 ? INT_MAX : INT_MIN ;
         }
         
         num = num * 10 + digit ;
+        i++ ;
     }
     return sign * num ;
 
@@ -293,7 +294,7 @@ int main(){
 
     // cout << "Roman number in integer is :  " << RomantoInt(s) ;
 
-    cout << s << "in Integer is : " << Myatoi(s) ;
+    // cout << s << " in Integer is : " << Myatoi(s) ;
 
     return 0 ;
 }
