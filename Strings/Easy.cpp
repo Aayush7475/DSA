@@ -230,6 +230,42 @@ int Myatoi(string s){
 
 }
 
+// Longest palindromic substring 
+string PalindromicSubstring(string s){
+    if(s.length() < 1){
+        return s ;
+    }
+    string LPS = "" ;
+
+    for(int i = 0 ; i < s.length() ; i++){
+
+        // Even 
+        int low = i ;
+        int high = i ;
+        while(low >= 0 && high <= s.length() && s[low] == s[high]){
+            low -- ;
+            high ++ ;
+        }
+        string palindrome = s.substr(low+1 , high-low-1) ;
+        if(palindrome.length() > LPS.length()){
+            LPS = palindrome ;
+        }
+
+        // Odd
+        low = i ;
+        high = i+1 ;
+        while(low >= 0 && high <= s.length() && s[low] == s[high]){
+            low -- ;
+            high ++ ;
+        }
+        palindrome = s.substr(low+1 , high-low-1);
+        if(palindrome.length() > LPS.length()){
+            LPS = palindrome ;
+        }
+    }
+    return LPS ;
+}
+
 // 
 
 int main(){
@@ -295,6 +331,8 @@ int main(){
     // cout << "Roman number in integer is :  " << RomantoInt(s) ;
 
     // cout << s << " in Integer is : " << Myatoi(s) ;
+
+    // cout << "Longest Palindromic Substring is : " << PalindromicSubstring(s) ;  
 
     return 0 ;
 }
