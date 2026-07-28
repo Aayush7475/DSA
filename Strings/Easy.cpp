@@ -266,7 +266,33 @@ string PalindromicSubstring(string s){
     return LPS ;
 }
 
-// 
+// Return difference between the frequency of the most frequent character and the least frequent character
+int BeautySum(string s){
+    int n = s.length() ;
+    int ans = 0 ;
+
+    for(int i = 0 ; i < n ; i++){
+        vector<int> freq(26,0) ;
+        
+        for(int j = i ; j < n ; j++){
+            freq[s[j] - 'a'] ++ ;
+
+            int maxi = 0 ;
+            int mini = INT_MAX ;
+
+            for(int k = 0 ; k < 26 ; k++){
+                if(freq[k] > 0){
+                    maxi = max(maxi , freq[k]) ;
+                    mini = min(mini , freq[k]) ;
+                }
+            }
+            ans += (maxi - mini) ;
+        }
+    }
+    return ans ;
+}
+
+
 
 int main(){
     string s ;
@@ -332,7 +358,9 @@ int main(){
 
     // cout << s << " in Integer is : " << Myatoi(s) ;
 
-    // cout << "Longest Palindromic Substring is : " << PalindromicSubstring(s) ;  
+    // cout << "Longest Palindromic Substring is : " << PalindromicSubstring(s) ;   
+
+    // cout << "Beauty sum is : " << BeautySum(s) ;
 
     return 0 ;
 }
