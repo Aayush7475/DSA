@@ -108,6 +108,36 @@ vector<vector<int>> triplets(int n , vector<int> nums){
     return ans ;
 }
 
+// 3 Sum closet ->
+int ClosetSum(vector<int> nums , int target){
+    sort(nums.begin() , nums.end());
+
+    int n = nums.size() ;
+    int closetSum = nums[0] + nums[1] + nums[2] ;
+
+    for(int i = 0 ; i < n-2 ; i++){
+        int left = i+1 ;
+        int right = n-1 ;
+
+        while(left < right){
+            int currentSum = nums[i] + nums[left] + nums[right] ;
+
+            if(abs(currentSum - target) < abs(closetSum - target)){
+                closetSum = currentSum ;
+            }
+
+            if(currentSum == target) return currentSum ;
+
+            else if(currentSum < target) left ++ ;
+
+            else right -- ;
+        }
+    }
+    return closetSum ;
+}
+
+
+
 // 4 Sum Problem Method 1 ->
 vector<vector<int>> fourth(int target , vector<int> nums){
     set<vector<int>> st ;
@@ -445,7 +475,6 @@ int main(){
             //     }
             //     cout << endl ;
             // }
-            
     // SubArray(n , nums) ;
             
     // int k ;
@@ -459,9 +488,15 @@ int main(){
     //     cout << x << " ";
     // }
 
-    int cnt = mergeSort(nums, n);
-    cout << "The number of reverse pair is: " << cnt << endl;
+    // int cnt = mergeSort(nums, n);
+    // cout << "The number of reverse pair is: " << cnt << endl;
 
+    // int target ;
+    // cout << "Enter the target element to be searched : " ;
+    // cin >> target ;
+    // int ans = ClosetSum(nums , target) ;
+    // cout << "Closet Sum is : " << ans << endl ;
+    
 
     return 0;
 
