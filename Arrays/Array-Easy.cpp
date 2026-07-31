@@ -455,7 +455,6 @@ int main(){
      }
 
     // UNION & INTERSECTION :-
-    
     // int main(){
     //     int n1 ; 
     //     int n2 ;
@@ -473,21 +472,16 @@ int main(){
     //     for(int i = 0 ; i < n2 ; i++){
     //         cin >> b[i];
     //     }
-    
     //     // vector<int> result = Union_1(n1 , n2 , a , b);
-    
     //     // vector<int> v1(a, a + n1);
     //     // vector<int> v2(b, b + n2);
     //     // vector<int> result = Union_2(v1, v2);
-    
     //     // vector<int> v1(a, a + n1);
     //     // vector<int> v2(b, b + n2);
     //     // vector<int> result = Intersection_1(n1 , n2 , v1 , v2);
-    
     //     // vector<int> v1(a, a + n1);
     //     // vector<int> v2(b, b + n2);
     //     // vector<int> result = Intersection_2(n1 , n2 , v1 , v2);
-    
     //     for(int x : result){
     //         cout << x << " ";
     //     }
