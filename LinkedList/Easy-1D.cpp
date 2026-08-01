@@ -43,6 +43,17 @@ int Length(Node* head){
     return cnt ;
 }
 
+// Searching a element in LL ->
+int Search(Node* head , int value){
+    Node* temp = head  ;
+    while(temp){
+        if(temp -> data == value) return 1 ;
+        temp = temp -> next ;
+    }
+    return 0 ;
+}
+
+
 int main(){
     int n ;
     cout << "Enter the number of elements in the array : "   ;
@@ -78,6 +89,19 @@ int main(){
     // cout << "Length of the LinkedList is : " ;
     // cout << Length(head) ;
  
+    // Searching an element in LL ->
+    // int value ;
+    // cout << "Enter the value to be searched : ";
+    // cin >> value ;
+    // Node* head = convertArr2LL(nums) ;
+    // int result = Search(head , value);
+    // if(result == 1){
+    //     cout << "Searched element is found " ; 
+    // }
+    // else{
+    //     cout << "Searched element is not found " ;
+    // }
+    
 
     return 0 ;
 
