@@ -32,7 +32,16 @@ Node* convertArr2LL(vector<int> &nums){
     return head ;
 }
 
-
+// Length of a LinkedList ->
+int Length(Node* head){
+    int cnt = 0 ;
+    Node* temp = head ;
+    while(temp){
+        cnt ++ ;
+        temp = temp -> next ;
+    }
+    return cnt ;
+}
 
 int main(){
     int n ;
@@ -46,13 +55,29 @@ int main(){
         cin >> nums[i];
     }
 
+    // First Element of LL ->
     // Node* y = new Node{nums[0]} ;
     // cout << "First element is : " ;
     // cout << y -> data ;
 
-    Node* head = convertArr2LL(nums) ;
-    cout << "1st element in the LinkedList is : " ;
-    cout << head -> data ;
+    // Array into LL ->
+    // Node* head = convertArr2LL(nums) ;
+    // cout << "1st element in the LinkedList is : " ;
+    // cout << head -> data ;
+
+    // Traversal in LL ->
+    // Node* head = convertArr2LL(nums) ;
+    // Node* temp = head ;
+    // while(temp){
+    //     cout << temp -> data  << " " ;
+    //     temp = temp -> next ;
+    // }
+
+    // Length of LL ->
+    // Node* head = convertArr2LL(nums) ;
+    // cout << "Length of the LinkedList is : " ;
+    // cout << Length(head) ;
+ 
 
     return 0 ;
 
