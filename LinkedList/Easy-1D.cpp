@@ -53,6 +53,22 @@ int Search(Node* head , int value){
     return 0 ;
 }
 
+// Head deletion in LL ->
+void print(Node* head){
+    while(head != NULL){
+        cout << head -> data ;
+        head =  head -> next ;
+    }
+    cout << endl ;
+}
+Node* removeHead(Node* head){
+    if(head == NULL) return head ;
+    Node* temp = head ;
+    head = head -> next ;
+    delete temp ;
+    return head ;
+}
+
 
 int main(){
     int n ;
@@ -102,6 +118,10 @@ int main(){
     //     cout << "Searched element is not found " ;
     // }
     
+    // Deleting the head of LL ->
+    // Node* head = convertArr2LL(nums) ;
+    // head = removeHead(head) ;
+    // print(head) ;
 
     return 0 ;
 
