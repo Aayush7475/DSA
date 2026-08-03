@@ -53,7 +53,6 @@ int Search(Node* head , int value){
     return 0 ;
 }
 
-// Head deletion in LL ->
 void print(Node* head){
     while(head != NULL){
         cout << head -> data ;
@@ -61,6 +60,8 @@ void print(Node* head){
     }
     cout << endl ;
 }
+
+// Head deletion in LL ->
 Node* removeHead(Node* head){
     if(head == NULL) return head ;
     Node* temp = head ;
@@ -69,6 +70,18 @@ Node* removeHead(Node* head){
     return head ;
 }
 
+// Tail deletion in LL ->
+Node* removeTail(Node* head){
+    if(head == NULL || head -> next == NULL) return NULL ;
+    Node* temp = head ;
+    while(temp -> next -> next != NULL){
+        temp = temp -> next ;
+    }
+    delete temp -> next ;
+    temp -> next = nullptr ;
+
+    return head ;
+}
 
 int main(){
     int n ;
@@ -122,6 +135,12 @@ int main(){
     // Node* head = convertArr2LL(nums) ;
     // head = removeHead(head) ;
     // print(head) ;
+
+    // Deleteing the tail of LL ->
+    // Node* head = convertArr2LL(nums) ;
+    // head = removeTail(head) ;
+    // print(head);
+
 
     return 0 ;
 
