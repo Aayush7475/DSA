@@ -83,6 +83,32 @@ Node* removeTail(Node* head){
     return head ;
 }
 
+// Deleting given Kth element in LL ->
+Node* removeK(Node* head , int k){
+    if(head == NULL) return head ;
+    if (k == 1){
+        Node* temp = head ;
+        head = head -> next ;
+        free(temp) ;
+        return head ;
+    }
+    int cnt = 0 ;
+    Node* temp = head ;
+    Node* prev = NULL ;
+    while(temp != NULL){
+        cnt ++ ;
+        if(cnt == k){
+            prev -> next = prev -> next -> next ;
+            free(temp) ;
+            break ;
+        }
+        prev = temp ;
+        temp = temp -> next ; 
+    }
+    return head ;
+}
+
+
 int main(){
     int n ;
     cout << "Enter the number of elements in the array : "   ;
@@ -139,6 +165,11 @@ int main(){
     // Deleteing the tail of LL ->
     // Node* head = convertArr2LL(nums) ;
     // head = removeTail(head) ;
+    // print(head);
+
+    // Deleteing the Kth element of LL ->
+    // Node* head = convertArr2LL(nums) ;
+    // head = removeK(head , 3) ;
     // print(head);
 
 
