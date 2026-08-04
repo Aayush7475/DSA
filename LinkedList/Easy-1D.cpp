@@ -53,12 +53,14 @@ int Search(Node* head , int value){
     return 0 ;
 }
 
-void print(Node* head){
-    while(head != NULL){
-        cout << head -> data ;
-        head =  head -> next ;
+void print(Node* head) {
+    Node* temp = head;
+
+    while (temp != NULL) {
+        cout << temp->data << " ";   // Space after each element
+        temp = temp->next;
     }
-    cout << endl ;
+    cout << endl;
 }
 
 // Head deletion in LL ->
@@ -108,6 +110,29 @@ Node* removeK(Node* head , int k){
     return head ;
 }
 
+// Deleting given value in LL ->
+Node* removeValue(Node* head , int value){
+    if(head == NULL) return head ;
+    if (head -> data == 1){
+        Node* temp = head ;
+        head = head -> next ;
+        free(temp) ;
+        return head ;
+    }
+    Node* temp = head ;
+    Node* prev = NULL ;
+    while(temp != NULL){
+        
+        if(temp -> data == value){
+            prev -> next = prev -> next -> next ;
+            free(temp) ;
+            break ;
+        }
+        prev = temp ;
+        temp = temp -> next ; 
+    }
+    return head ;
+}
 
 int main(){
     int n ;
@@ -168,12 +193,23 @@ int main(){
     // print(head);
 
     // Deleteing the Kth element of LL ->
+    // int k ; 
+    // cout << "Enter the index to be deleted : ";
+    // cin >> k;
     // Node* head = convertArr2LL(nums) ;
-    // head = removeK(head , 3) ;
+    // head = removeK(head , k) ;
     // print(head);
 
+    // Deleting the given element in LL ->
+    int value ;
+    cout << "Enter the element to be deleted : ";
+    cin >> value ;
+    Node* head = convertArr2LL(nums) ;
+    head = removeValue(head , value);
+    print(head) ;
 
     return 0 ;
+
 
 
 } 
