@@ -140,6 +140,17 @@ Node* insertHead(Node* head , int value){
     return temp ;
 }
 
+// Inserting given value at tail ->
+Node* insertTail(Node* head , int value){
+    if(head == NULL) return new Node(value) ;
+    Node* temp = head ;
+    while(temp -> next != NULL){
+        temp = temp -> next ;
+    }
+    Node* newNode = new Node(value);
+    temp -> next = newNode ;
+    return head ;
+}
 
 int main(){
     int n ;
@@ -223,6 +234,14 @@ int main(){
     // head = insertHead(head , value) ;
     // print(head) ;
     
+    // Inserting value at the tail of LL ->
+    // int value ;
+    // cout << "Enter the value to be inserted : " ;
+    // cin >> value ;
+    // Node* head = convertArr2LL(nums) ;
+    // head = insertTail(head , value);
+    // print(head) ;
+
     return 0 ;
 
 
