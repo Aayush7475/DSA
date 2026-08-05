@@ -152,6 +152,22 @@ Node* insertTail(Node* head , int value){
     return head ;
 }
 
+// Inserting given value at given position ->
+Node* insertBeforeValue(Node* head , int el , int value){
+    if(head == NULL) return NULL ;
+    if(head -> data == value) return new Node(el , head) ;
+    Node* temp = head ;
+    while(temp -> next != NULL){
+        if(temp -> next -> data == value){
+            Node* x = new Node(el , temp -> next);
+            temp -> next = x ;
+            break ;
+        }
+        temp = temp -> next ;
+    }
+    return head ; 
+}
+
 int main(){
     int n ;
     cout << "Enter the number of elements in the array : "   ;
@@ -240,6 +256,17 @@ int main(){
     // cin >> value ;
     // Node* head = convertArr2LL(nums) ;
     // head = insertTail(head , value);
+    // print(head) ;
+
+    // Inserting value before the given index in LL ->
+    // int value  ;
+    // cout << "Enter the value to be inserted : " ;
+    // cin >> value  ;
+    // int el ;
+    // cout << "Enter the index before which the value should be inserted : " ;
+    // cin >> el ;
+    // Node* head = convertArr2LL(nums) ;
+    // head = insertBeforeValue(head , value , el) ;
     // print(head) ;
 
     return 0 ;
