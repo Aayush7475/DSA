@@ -134,6 +134,13 @@ Node* removeValue(Node* head , int value){
     return head ;
 }
 
+// Inserting given value at head ->
+Node* insertHead(Node* head , int value){
+    Node* temp = new Node(value , head);
+    return temp ;
+}
+
+
 int main(){
     int n ;
     cout << "Enter the number of elements in the array : "   ;
@@ -201,13 +208,21 @@ int main(){
     // print(head);
 
     // Deleting the given element in LL ->
-    int value ;
-    cout << "Enter the element to be deleted : ";
-    cin >> value ;
-    Node* head = convertArr2LL(nums) ;
-    head = removeValue(head , value);
-    print(head) ;
+    // int value ;
+    // cout << "Enter the element to be deleted : ";
+    // cin >> value ;
+    // Node* head = convertArr2LL(nums) ;
+    // head = removeValue(head , value);
+    // print(head) ;
 
+    // Inserting value at the head of LL ->
+    // int value ;
+    // cout << "Enter the value to be inserted : ";
+    // cin >> value ;
+    // Node* head = convertArr2LL(nums) ;
+    // head = insertHead(head , value) ;
+    // print(head) ;
+    
     return 0 ;
 
 
