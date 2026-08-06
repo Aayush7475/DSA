@@ -168,6 +168,7 @@ Node* insertBeforeValue(Node* head , int el , int value){
     return head ; 
 }
 
+// Inserting given value at 
 int main(){
     int n ;
     cout << "Enter the number of elements in the array : "   ;
@@ -259,14 +260,14 @@ int main(){
     // print(head) ;
 
     // Inserting value before the given index in LL ->
-    // int value  ;
+    // int el  ;
     // cout << "Enter the value to be inserted : " ;
-    // cin >> value  ;
-    // int el ;
+    // cin >> el  ;
+    // int value  ;
     // cout << "Enter the index before which the value should be inserted : " ;
-    // cin >> el ;
+    // cin >> value ;
     // Node* head = convertArr2LL(nums) ;
-    // head = insertBeforeValue(head , value , el) ;
+    // head = insertBeforeValue(head , el , value) ;
     // print(head) ;
 
     return 0 ;
