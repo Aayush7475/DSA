@@ -152,7 +152,7 @@ Node* insertTail(Node* head , int value){
     return head ;
 }
 
-// Inserting given value at given position ->
+// Inserting given value at before given position ->
 Node* insertBeforeValue(Node* head , int el , int value){
     if(head == NULL) return NULL ;
     if(head -> data == value) return new Node(el , head) ;
@@ -168,7 +168,29 @@ Node* insertBeforeValue(Node* head , int el , int value){
     return head ; 
 }
 
-// Inserting given value at 
+// Inserting given value at given position ->
+Node* insertPosition(Node* head , int el , int k){
+    if(k == 1) return new Node(el , head);
+    if(head == NULL) return NULL ;
+       
+    int cnt = 1 ;
+    Node* temp = head ;
+
+    while(temp != NULL){
+        if(cnt == (k-1)){
+            Node* x = new Node(el , temp->next) ;
+            temp -> next = x ;
+            break ;
+            }
+            cnt++ ;
+            temp = temp -> next ;
+    }
+    return head ;
+}
+
+
+
+
 int main(){
     int n ;
     cout << "Enter the number of elements in the array : "   ;
@@ -269,6 +291,18 @@ int main(){
     // Node* head = convertArr2LL(nums) ;
     // head = insertBeforeValue(head , el , value) ;
     // print(head) ;
+    
+    // Inxerting value at the given position in LL ->
+    // int el ; 
+    // cout << "Enter the value to be inserted : " ;
+    // cin >> el ;
+    // int k ;
+    // cout << "Enter the index at which the value should be inserted : " ;
+    // cin >> k ;
+    // Node* head = convertArr2LL(nums) ;
+    // head = insertPosition(head , el , k) ;
+    // print(head) ;
+
 
     return 0 ;
 
