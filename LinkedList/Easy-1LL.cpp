@@ -292,7 +292,7 @@ int main(){
     // head = insertBeforeValue(head , el , value) ;
     // print(head) ;
     
-    // Inxerting value at the given position in LL ->
+    // Inserting value at the given position in LL ->
     // int el ; 
     // cout << "Enter the value to be inserted : " ;
     // cin >> el ;
