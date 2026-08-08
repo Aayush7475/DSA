@@ -43,3 +43,41 @@ Node* convertArr2DLL(vector<int> &nums){
     return head ;
 }
 
+// deleting head in DLL ->
+Node* HeadDeletion(Node* head){
+    if(head == NULL || head -> next == NULL){
+        return NULL ;
+    }
+    Node* prev = head ;
+    head = head -> next ;
+    head -> back = nullptr ;
+    prev -> next = nullptr ;
+
+    delete prev ;
+    return head ;
+}
+
+
+
+
+int main(){
+    int n ; 
+    cout << "Enter the number of elements in the array : ";
+    cin >> n ;
+
+    vector<int> nums(n) ;
+
+    cout << "Enter the elements in the array :" << endl;
+    for(int i = 0 ; i < n ; i++){
+        cin >> nums[i];
+    }
+
+    // Converting array into DLL ->
+    Node* head = convertArr2DLL(nums);
+
+    // deleting head in DLL ->
+    // head = HeadDeletion(head) ;
+    // print(head) ;
+
+    return 0 ;
+}
