@@ -21,6 +21,16 @@ class Node{
     }
 };
 
+void print(Node* head){
+    Node* temp = head ;
+
+    while(temp != NULL){
+        cout << temp->data << " " ;
+        temp = temp->next ;
+    }
+    cout << endl ;
+}
+
 // Converting array into Doubley LL ->
 Node* convertArr2DLL(vector<int> &nums){
     Node* head = new Node(nums[0]) ;
@@ -32,8 +42,4 @@ Node* convertArr2DLL(vector<int> &nums){
     } 
     return head ;
 }
-void print(Node* head){
-    while(head != NULL){
-        cout 
-    }
-}
+
