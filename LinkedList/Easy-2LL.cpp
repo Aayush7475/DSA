@@ -20,3 +20,20 @@ class Node{
         back = nullptr ;
     }
 };
+
+// Converting array into Doubley LL ->
+Node* convertArr2DLL(vector<int> &nums){
+    Node* head = new Node(nums[0]) ;
+    Node* prev = head ;
+    for(int i = 1 ; i < nums.size() ; i++){
+        Node* temp = new Node(nums[i] , nullptr , prev) ;
+        prev -> next = temp ;
+        prev = temp ;
+    } 
+    return head ;
+}
+void print(Node* head){
+    while(head != NULL){
+        cout 
+    }
+}

@@ -19,6 +19,16 @@ class Node {
     }
 };
 
+void print(Node* head) {
+    Node* temp = head;
+
+    while (temp != NULL) {
+        cout << temp->data << " ";   // Space after each element
+        temp = temp->next;
+    }
+    cout << endl;
+}
+
 // Converting Array into LinkedList ->
 Node* convertArr2LL(vector<int> &nums){
     Node* head = new Node(nums[0]) ;
@@ -51,16 +61,6 @@ int Search(Node* head , int value){
         temp = temp -> next ;
     }
     return 0 ;
-}
-
-void print(Node* head) {
-    Node* temp = head;
-
-    while (temp != NULL) {
-        cout << temp->data << " ";   // Space after each element
-        temp = temp->next;
-    }
-    cout << endl;
 }
 
 // Head deletion in LL ->
