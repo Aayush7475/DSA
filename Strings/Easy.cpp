@@ -293,7 +293,6 @@ int BeautySum(string s){
 }
 
 // Return the index of the first occurrence 
-
 int Occurence(string haystack, string needle){
     int n = haystack.size();
     int m = needle.size();
@@ -315,9 +314,9 @@ int Occurence(string haystack, string needle){
 }
 
 int main(){
-    // string s ;
-    // cout << "Enter the string  : " ;
-    // getline(cin , s) ;
+    string s ;
+    cout << "Enter the string  : " ;
+    getline(cin , s) ;
 
     // int n;               // Taking number of strings and strings also
     // cout << "Enter number of strings: ";
@@ -382,15 +381,15 @@ int main(){
 
     // cout << "Beauty sum is : " << BeautySum(s) ;
 
-    string haystack ;
-    cout << "Enter the string haystack : " ;
-    getline(cin , haystack );
-    string needle ;
-    cout << "Enter the string needle : " ;
-    getline(cin , needle) ;
-    cout << "Haystack length: " << haystack.size() << endl;
-    cout << "Needle length: " << needle.size() << endl;
-    cout << "Needle in haystack : " << Occurence(haystack , needle);
+    // string haystack ;
+    // cout << "Enter the string haystack : " ;
+    // getline(cin , haystack );
+    // string needle ;
+    // cout << "Enter the string needle : " ;
+    // getline(cin , needle) ;
+    // cout << "Haystack length: " << haystack.size() << endl;
+    // cout << "Needle length: " << needle.size() << endl;
+    // cout << "Needle in haystack : " << Occurence(haystack , needle);
 
     return 0 ;
 }
