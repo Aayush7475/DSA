@@ -292,7 +292,25 @@ int BeautySum(string s){
     return ans ;
 }
 
+// Return the index of the first occurrence 
+int Occurence(string haystack , string needle){
+    int n = haystack.size() ;
+    int m = needle.size() ;
 
+    for(int i = 0 ; i < n-m ; i++){
+        bool match = true ;
+        for(int j = 0 ; j < m ; j++){
+            if(haystack[i+j] != needle[j]){
+                match = false ;
+                break ;
+            }
+        }
+        if(match){
+            return i ;
+        }
+        return -1 ;
+    }
+}
 
 int main(){
     string s ;
@@ -362,5 +380,6 @@ int main(){
 
     // cout << "Beauty sum is : " << BeautySum(s) ;
 
+    
     return 0 ;
 }

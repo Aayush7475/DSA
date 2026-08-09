@@ -43,7 +43,7 @@ Node* convertArr2DLL(vector<int> &nums){
     return head ;
 }
 
-// deleting head in DLL ->
+// Deleting head in DLL ->
 Node* HeadDeletion(Node* head){
     if(head == NULL || head -> next == NULL){
         return NULL ;
@@ -57,7 +57,10 @@ Node* HeadDeletion(Node* head){
     return head ;
 }
 
-
+// Deleting tail in DLL ->
+Node* TailDeletion(Node* head){
+    
+}
 
 
 int main(){
