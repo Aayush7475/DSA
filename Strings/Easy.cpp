@@ -313,6 +313,23 @@ int Occurence(string haystack, string needle){
     return -1;
 }
 
+// Return the length of the last word of the string 
+int LengthOfLastWord(string s){
+    int i = s.size() - 1 ;
+
+    while(i >= 0 && s[i] == ' '){
+        i-- ;
+    }
+
+    int count = 0 ;
+    while(i >= 0 && s[i] != ' '){
+        count ++ ;
+        i-- ;
+    }
+    return count ;
+}
+
+
 int main(){
     string s ;
     cout << "Enter the string  : " ;
@@ -390,6 +407,8 @@ int main(){
     // cout << "Haystack length: " << haystack.size() << endl;
     // cout << "Needle length: " << needle.size() << endl;
     // cout << "Needle in haystack : " << Occurence(haystack , needle);
+
+    // cout << "Length of the Last Word is : " << LengthOfLastWord(s) ;
 
     return 0 ;
 }
