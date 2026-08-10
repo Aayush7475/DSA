@@ -59,7 +59,19 @@ Node* HeadDeletion(Node* head){
 
 // Deleting tail in DLL ->
 Node* TailDeletion(Node* head){
-    
+    if(head == NULL || head -> next == NULL){
+        return head ;
+    }
+    Node* tail = head ;
+    while(tail -> next != NULL){
+        tail = tail -> next ;
+    }
+    Node* newTail = tail -> back ;
+    newTail -> next = nullptr ;
+    tail -> back = nullptr ;
+    delete tail ;
+
+    return head ;
 }
 
 
@@ -78,8 +90,12 @@ int main(){
     // Converting array into DLL ->
     Node* head = convertArr2DLL(nums);
 
-    // deleting head in DLL ->
+    // Deleting head in DLL ->
     // head = HeadDeletion(head) ;
+    // print(head) ;
+
+    // Deleting tail in DLL ->
+    // head = TailDeletion(head) ;
     // print(head) ;
 
     return 0 ;
