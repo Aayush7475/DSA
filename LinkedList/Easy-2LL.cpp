@@ -114,6 +114,30 @@ Node* KthDeletion(Node* head , int k){
 
 }
 
+// Deleting given Node in DLL ->
+void NodeDeletion(Node* temp){
+    if (temp->back == NULL) {
+        cout << "Cannot delete head using this function.\n";
+        return;
+    }
+
+    Node* prev = temp -> back ;
+    Node* front = temp -> next ;
+
+    if(front == NULL){
+        prev -> next = nullptr ;
+        temp -> back = nullptr ;
+        free(temp) ;
+        return ;
+    }
+    prev -> next = front ;
+    front -> back = prev ;
+
+    temp -> next = nullptr ;
+    temp -> back = nullptr ;
+    delete temp ;
+
+}
 
 int main(){
     int n ; 
@@ -143,6 +167,11 @@ int main(){
     // cout << "Enter the index to be deleted : ";
     // cin >> k ;
     // head = KthDeletion(head , k) ;
+    // print(head) ;
+
+    // Deleting given Node in DLL ->
+    // Node* temp = head->next->next->next ; // next is used to reach to the index of the node which we want to delete 
+    // NodeDeletion(temp);
     // print(head) ;
 
     return 0 ;
