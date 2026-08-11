@@ -74,6 +74,46 @@ Node* TailDeletion(Node* head){
     return head ;
 }
 
+// Deleting given Kth element in DLL ->
+Node* KthDeletion(Node* head , int k){
+      if(head == NULL){
+        return NULL ;
+      }
+      int cnt = 0 ;
+      Node* KNode = head ;
+      while(KNode != NULL){
+        cnt ++ ;
+        if(cnt == k){
+           break ; 
+        }
+        KNode = KNode -> next ;
+      }
+      Node* prev = KNode -> back ;
+      Node* front = KNode -> next ;
+
+      if(prev == NULL && front == NULL){
+        return NULL ;
+      }
+
+      else if(prev == NULL){
+        return HeadDeletion(head);
+      }
+
+      else if(front == NULL){
+        return TailDeletion(NULL);
+      }
+      
+      prev -> next = front ;
+      front -> back = prev ;
+
+      KNode -> next = nullptr ;
+      KNode -> back = nullptr ;
+
+      delete KNode ;
+      return head ;
+
+}
+
 
 int main(){
     int n ; 
@@ -96,6 +136,13 @@ int main(){
 
     // Deleting tail in DLL ->
     // head = TailDeletion(head) ;
+    // print(head) ;
+
+    // Deleting Kth element in DLL ->
+    // int k ;
+    // cout << "Enter the index to be deleted : ";
+    // cin >> k ;
+    // head = KthDeletion(head , k) ;
     // print(head) ;
 
     return 0 ;
