@@ -139,6 +139,13 @@ void NodeDeletion(Node* temp){
 
 }
 
+// Inserting before Head in DLL ->
+Node* insertBeforeHead(Node* head , int val){
+    Node* newHead = new Node(val , head , nullptr);
+    head -> back = newHead ;
+    return newHead ;
+}
+
 int main(){
     int n ; 
     cout << "Enter the number of elements in the array : ";
@@ -173,6 +180,14 @@ int main(){
     // Node* temp = head->next->next->next ; // next is used to reach to the index of the node which we want to delete 
     // NodeDeletion(temp);
     // print(head) ;
+
+    // Inserting Before Head in DLL ->
+    // int val ;
+    // cout << "Enter the value to be inserted : ";
+    // cin >> val ;
+    // head = insertBeforeHead(head , val);
+    // print(head);
+
 
     return 0 ;
 }
