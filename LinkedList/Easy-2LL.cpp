@@ -146,6 +146,28 @@ Node* insertBeforeHead(Node* head , int val){
     return newHead ;
 }
 
+// Inserting before Tail in DLL ->
+Node* insertBeforeTail(Node* head , int val){
+    if(head == NULL){
+        return new Node(val , NULL ,NULL) ;
+    }
+    if(head -> next == NULL){
+        return insertBeforeTail(head , val) ;
+    }
+    Node* tail = head ;
+    while(tail-> next != NULL){
+        tail = tail -> next ;
+    }
+    Node* prev = tail -> back ;
+    Node* newNode = new Node(val , tail , prev);
+    prev -> next = newNode ;
+    tail -> back = newNode ; 
+
+    return head ;
+}
+
+
+
 int main(){
     int n ; 
     cout << "Enter the number of elements in the array : ";
@@ -188,6 +210,12 @@ int main(){
     // head = insertBeforeHead(head , val);
     // print(head);
 
+    // Inserting Before Tail in DLL ->
+    // int val ;
+    // cout <<"Enter the value to be inserted :  " ;
+    // cin >> val ;
+    // head = insertBeforeTail(head , val);
+    // print(head) ;
 
     return 0 ;
 }
