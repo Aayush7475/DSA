@@ -166,7 +166,25 @@ Node* insertBeforeTail(Node* head , int val){
     return head ;
 }
 
+// Inserting before Kth element in DLL ->
+Node* insertBeforeKthElement(Node* head , int k , int val){
+    if(k == 1){
+        return insertBeforeHead(head , val) ;
+    }
+    Node* temp = head ;
+    int cnt = 0 ;
+    while(temp != NULL){
+        cnt ++ ;
+        if(cnt == k) break ;
+        temp = temp -> next ;
+    }
+    Node* prev = temp -> back ;
+    Node* newNode = new Node(val , temp , prev) ;
+    prev -> next = newNode ;
+    temp -> back = newNode ;
 
+    return head ;
+}
 
 int main(){
     int n ; 
@@ -215,6 +233,16 @@ int main(){
     // cout <<"Enter the value to be inserted :  " ;
     // cin >> val ;
     // head = insertBeforeTail(head , val);
+    // print(head) ;
+
+    // Inserting Before Kth element in DLL ->
+    // int k ; 
+    // cout << "Enter the index before which the element to be inserted : ";
+    // cin >> k ;
+    // int val ;
+    // cout << "Enter the value to be inserted : " ;
+    // cin >> val ;
+    // head = insertBeforeKthElement(head , k , val) ;
     // print(head) ;
 
     return 0 ;
