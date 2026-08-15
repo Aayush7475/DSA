@@ -32,34 +32,19 @@ void print(Node* head){
     cout << endl  ;
 }
 
-Node* convertArr2DLL(vector<int> &nums){
+Node* convertArr2LL(vector<int> &nums){
     Node* head = new Node(nums[0]) ;
-    Node* prev = head ;
+    Node* mover = head ;
+
     for(int i = 1 ; i < nums.size() ; i++){
-        Node* temp = new Node(nums[i] , nullptr , prev) ;
-        prev -> next = temp ;
-        prev = temp ;
-    } 
+        Node* temp = new Node(nums[i]) ;
+        mover -> next = temp ;
+        mover = temp ;
+    }
     return head ;
 }
 
-// Reversing a DLL method 1->
-Node* reverseMethod1(Node* head){
-   stack<int> st ;
 
-   Node* temp = head ;
-   while(temp != NULL){
-    st.push(temp -> data);
-    temp = temp -> next ;
-   } 
-   temp = head ;
-   while(temp != NULL){
-    temp -> data = st.top() ;
-    st.pop() ;
-    temp = temp -> next ;
-   }
-   return head ;
-}
 
 int main(){
     int n ; 
@@ -74,7 +59,7 @@ int main(){
     }
 
     // Converting array into DLL ->
-    Node* head = convertArr2DLL(nums);
+    Node* head = convertArr2LL(nums);
 
     // Reversing the DLL ->
     head = reverseMethod1(head) ;
