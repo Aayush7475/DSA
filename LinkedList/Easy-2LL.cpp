@@ -194,6 +194,7 @@ void insertBeforeNode(Node* node , int val){
     prev -> next = newNode ;
     node -> back = newNode ;
 }
+
 int main(){
     int n ; 
     cout << "Enter the number of elements in the array : ";
@@ -254,11 +255,11 @@ int main(){
     // print(head) ;
 
     // Inserting Before given Node in DLL ->
-    int val ;
-    cout << "Enter the value to be inserted : " ;
-    cin >> val ;
-    insertBeforeNode(head->next , val) ;     // next is used to reach to the index of the node where we want to insert 
-    print(head) ;
+    // int val ;
+    // cout << "Enter the value to be inserted : " ;
+    // cin >> val ;
+    // insertBeforeNode(head->next , val) ;     // next is used to reach to the index of the node where we want to insert 
+    // print(head) ;
 
 
     return 0 ;
