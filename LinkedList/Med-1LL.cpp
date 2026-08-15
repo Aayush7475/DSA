@@ -44,6 +44,7 @@ Node* convertArr2LL(vector<int> &nums){
     return head ;
 }
 
+// Reversing the LL ->
 
 
 int main(){
@@ -58,12 +59,10 @@ int main(){
         cin >> nums[i];
     }
 
-    // Converting array into DLL ->
+    // Converting array into LL ->
     Node* head = convertArr2LL(nums);
 
-    // Reversing the DLL ->
-    head = reverseMethod1(head) ;
-    print(head);
+  
 
 
     return 0 ;

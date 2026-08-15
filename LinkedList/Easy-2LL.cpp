@@ -213,6 +213,25 @@ Node* reverseMethod1(Node* head){
    return head ;
 }
 
+// Reversing a DLL method 2 ->
+Node* reverseMethod2(Node* head){
+    if(head == NULL ||  head -> next == NULL){
+        return NULL ;
+    }
+    Node* prev = NULL ;
+    Node* current = head ;
+
+    while(current != NULL){
+        prev = current -> back ;
+
+        current -> back = current -> next ;
+        current -> next = prev ;
+
+        current = current -> back ;
+    }    
+    return prev -> back ;
+}
+
 int main(){
     int n ; 
     cout << "Enter the number of elements in the array : ";
@@ -279,10 +298,15 @@ int main(){
     // insertBeforeNode(head->next , val) ;     // next is used to reach to the index of the node where we want to insert 
     // print(head) ;
 
-    // reversing DLL Method 1 ->
-    cout << "Reversed DLL is : " ;
-    head = reverseMethod1(head) ;
-    print(head) ;
+    // Reversing DLL Method 1 ->
+    // cout << "Reversed DLL is : " ;
+    // head = reverseMethod1(head) ;
+    // print(head) ;
+
+    // reversing DLL Method 2 ->
+    // cout << "Reversed DLL is : " ;
+    // head = reverseMethod2(head) ;
+    // print(head) ;
 
     return 0 ;
 }
