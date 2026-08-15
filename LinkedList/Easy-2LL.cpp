@@ -186,6 +186,14 @@ Node* insertBeforeKthElement(Node* head , int k , int val){
     return head ;
 }
 
+// Inserting before given Node in DLL ->
+void insertBeforeNode(Node* node , int val){
+    Node* prev = node -> back ;
+    Node* newNode = new Node (val , node , prev) ;
+
+    prev -> next = newNode ;
+    node -> back = newNode ;
+}
 int main(){
     int n ; 
     cout << "Enter the number of elements in the array : ";
@@ -244,6 +252,14 @@ int main(){
     // cin >> val ;
     // head = insertBeforeKthElement(head , k , val) ;
     // print(head) ;
+
+    // Inserting Before given Node in DLL ->
+    int val ;
+    cout << "Enter the value to be inserted : " ;
+    cin >> val ;
+    insertBeforeNode(head->next , val) ;     // next is used to reach to the index of the node where we want to insert 
+    print(head) ;
+
 
     return 0 ;
 }
