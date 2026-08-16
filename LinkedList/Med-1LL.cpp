@@ -70,6 +70,18 @@ Node* reverse2(Node* head){
     return newHead ;
 }
 
+// Checking whether LL is a loop (Tortoise and Hare Algo) ->
+bool Loop(Node* head){
+    Node* slow = head ;
+    Node* fast = head ;
+    while(fast != NULL && fast -> next != NULL){
+        slow = slow -> next ;
+        fast = fast -> next -> next ;
+        
+        if(slow == fast) return true ;
+    }
+    return false ;
+}
 
 int main(){
     int n ; 
@@ -91,11 +103,18 @@ int main(){
     // head = reverse(head) ;
     // print(head) ;
 
-    // reversing a LL (Method 2) ->
+    // Reversing a LL (Method 2) ->
     // cout << "Reversed LL is : " ;
     // head = reverse2(head)  ;
     // print(head) ;
 
-
+    // Checking The LL is Loop or not ->
+    if(Loop(head) == true){
+        cout << "Entered LL is Loop " ;
+    }
+    else{
+        cout << "Entered LL is not a Loop " ;
+    }
+    
     return 0 ;
 }
