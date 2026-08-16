@@ -44,7 +44,7 @@ Node* convertArr2LL(vector<int> &nums){
     return head ;
 }
 
-// Reversing the LL ->
+// Reversing a LL (Iterative Method)->
 Node* reverse(Node* head){
     Node* temp = head ;
     Node* prev = NULL ;
@@ -56,6 +56,20 @@ Node* reverse(Node* head){
     }
     return prev ;
 }
+
+// Reversing a LL (Recursive Method) ->
+Node* reverse2(Node* head){
+    if(head == NULL || head -> next == NULL){
+        return head ;
+    }
+    Node* newHead = reverse2(head -> next) ;
+    Node* front = head -> next ; 
+    front -> next = head ;
+    head -> next = NULL ;
+
+    return newHead ;
+}
+
 
 int main(){
     int n ; 
@@ -72,12 +86,15 @@ int main(){
     // Converting array into LL ->
     Node* head = convertArr2LL(nums);
 
-    // Reversing a LL ->
+    // Reversing a LL (Method 1) ->
     // cout << "Reversed LL is : " ;
     // head = reverse(head) ;
     // print(head) ;
 
-  
+    // reversing a LL (Method 2) ->
+    // cout << "Reversed LL is : " ;
+    // head = reverse2(head)  ;
+    // print(head) ;
 
 
     return 0 ;
