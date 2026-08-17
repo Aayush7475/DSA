@@ -83,6 +83,21 @@ bool Loop(Node* head){
     return false ;
 }
 
+// Find the starting point of the Loop (Method 1)->
+Node* cycle(Node* head){
+    map< Node* , int > mpp ;
+    Node* temp = head ;
+    while(temp != NULL){
+        if(mpp.find(temp) != mpp.end()){
+            return temp ;
+        }
+        mpp[temp] = 1 ;
+        temp = temp -> next ;
+    }
+    return NULL ;
+}
+
+
 int main(){
     int n ; 
     cout << "Enter the number of elements in the array : ";
@@ -108,13 +123,28 @@ int main(){
     // head = reverse2(head)  ;
     // print(head) ;
 
-    // Checking The LL is Loop or not ->
-    if(Loop(head) == true){
-        cout << "Entered LL is Loop " ;
-    }
-    else{
-        cout << "Entered LL is not a Loop " ;
-    }
+    // Checking the LL is Loop or not (Always give not a loop) ->
+    // if(Loop(head)) {
+    //     cout << "Entered LL is a Loop";
+    // }
+    // else {
+    //     cout << "Entered LL is not a Loop";
+    // }
+
+    // Checking the LL is Loop or not (Creating a loop) ->
+    // Node* temp = head;
+    // Node* second = head->next;
+    // while(temp->next != NULL) {
+    //     temp = temp->next;
+    // }
+    // temp->next = second ;
+    // if(Loop(head)) {
+    //     cout << "Entered LL is a Loop";
+    // }
+    // else {
+    //     cout << "Entered LL is not a Loop";
+    // }
+    
     
     return 0 ;
 }
