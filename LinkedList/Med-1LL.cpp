@@ -172,6 +172,33 @@ bool palindrome(Node* head){
         return true ;
 }
 
+// Check whether the LL is Palindrome (Method 2) ->
+bool isPalindrome(Node* head){
+    if(head == NULL || head -> next == NULL) return true ;
+
+    Node* slow = head ;
+    Node* fast = head ;
+    while(fast != NULL && fast -> next != NULL){
+        slow = slow -> next ; 
+        fast = fast -> next -> next ;
+    }
+
+    Node* newHead = reverse(slow -> next) ;
+
+    Node* first = head ;
+    Node* second = newHead ;
+    
+    while(second != NULL){
+        if(first -> data != second -> data){
+            reverse(newHead) ;
+            return false ;
+        }
+        first = first -> next ;
+        second = second -> next ;
+    }
+    reverse(newHead) ;
+    return true ;
+}
 
 
 int main(){
@@ -230,12 +257,12 @@ int main(){
     // cout << LengthLoop(head) ;
 
     // Checking if the LL is palindrome ->
-    if(palindrome(head) == true){
-        cout << "Entered LL is palindrome " ;
-    }
-    else{
-        cout << "Entered LL is not a palindrome " ;
-    }
+    // if(palindrome(head) == true){
+    //     cout << "Entered LL is palindrome " ;
+    // }
+    // else{
+    //     cout << "Entered LL is not a palindrome " ;
+    // }
 
     return 0 ;
 }
