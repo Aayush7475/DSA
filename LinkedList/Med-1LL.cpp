@@ -155,6 +155,23 @@ int LengthLoop(Node* head){
     return false ;
 }
 
+// Check whether the LL is Palindrome (Method 1) ->
+bool palindrome(Node* head){
+    stack<int> st ;
+    Node* temp = head ;
+    while(temp != NULL){
+        st.push(temp -> data) ;
+        temp = temp -> next ;
+    }
+    temp = head ;
+    while(temp != NULL){
+        if(temp -> data != st.top()) return false ;
+        temp = temp -> next ;
+        st.pop() ;
+    }
+        return true ;
+}
+
 
 
 int main(){
@@ -211,6 +228,14 @@ int main(){
     // Length of the Loop (Tortoise And Hare Algo) ->
     // cout << "The length of the Loop is : " << endl ;
     // cout << LengthLoop(head) ;
+
+    // Checking if the LL is palindrome ->
+    if(palindrome(head) == true){
+        cout << "Entered LL is palindrome " ;
+    }
+    else{
+        cout << "Entered LL is not a palindrome " ;
+    }
 
     return 0 ;
 }
