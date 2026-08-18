@@ -135,6 +135,27 @@ int lenLoop(Node* head){
 }
 
 // Find the length of the Loop (Tortoise and Hare Algo) ->
+int findLength(Node* slow , Node* fast){
+    int count = 1 ;
+    fast = fast -> next ;
+    while(fast != slow){
+        count ++ ;
+        fast = fast -> next ;
+    }
+    return count ;
+}
+int LengthLoop(Node* head){
+    Node* slow = head ;
+    Node* fast = head ;
+    while(fast != NULL && fast -> next != NULL){
+        slow = slow -> next ;
+        fast = fast -> next -> next ;
+        if(fast == slow) return findLength(slow , fast);
+    }
+    return false ;
+}
+
+
 
 int main(){
     int n ; 
@@ -186,6 +207,10 @@ int main(){
     // Length of the Loop ->
     // cout << "The length of the Loop is : " << endl ;
     // cout << lenLoop(head) ;
+
+    // Length of the Loop (Tortoise And Hare Algo) ->
+    // cout << "The length of the Loop is : " << endl ;
+    // cout << LengthLoop(head) ;
 
     return 0 ;
 }
