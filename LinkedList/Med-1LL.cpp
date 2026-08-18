@@ -117,6 +117,25 @@ Node* detectCycle(Node* head){
     return NULL ;
 }
 
+// Find the length of the Loop (Method 1)->
+int lenLoop(Node* head){
+    map<Node* , int> mpp ;
+    Node* temp = head ;
+    int timer = 1 ;
+    while(temp != NULL){
+        if(mpp.find(temp) != mpp.end()){
+            int value = mpp[temp] ;
+            return timer-value ;
+        }
+        mpp[temp] = timer ;
+        timer++ ;
+        temp = temp -> next ;
+    }
+    return 0 ;
+}
+
+// Find the length of the Loop (Tortoise and Hare Algo) ->
+
 int main(){
     int n ; 
     cout << "Enter the number of elements in the array : ";
@@ -164,6 +183,9 @@ int main(){
     //     cout << "Entered LL is not a Loop";
     // }
     
+    // Length of the Loop ->
+    // cout << "The length of the Loop is : " << endl ;
+    // cout << lenLoop(head) ;
 
     return 0 ;
 }
