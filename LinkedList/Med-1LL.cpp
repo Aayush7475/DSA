@@ -231,7 +231,24 @@ Node* Odd_Even(Node* head){
     return head ;
 }
 
+// Placing Odd & Even Nodes in order (Method 2)->
+Node* OddEven(Node* head){
+    if(head == NULL || head -> next == NULL) return head ;
 
+    Node* odd = head ; 
+    Node* even = head -> next ;
+    Node* evenHead = head -> next ;
+
+    while(even != NULL && even->next != NULL){
+        odd -> next = odd -> next -> next ;
+        even -> next = even -> next -> next ;
+
+        odd = odd -> next ;
+        even = even -> next ;
+    }
+    odd -> next = evenHead ;
+    return head ;
+}
 int main(){
     int n ; 
     cout << "Enter the number of elements in the array : ";
@@ -299,6 +316,11 @@ int main(){
     // cout << "Ararnged Linkedlist is : " ;
     // head = Odd_Even(head) ;
     // print(head) ;
+
+    // Putting the Odd and Even Nodes in consecutive order (Method 2)->
+    cout << "Ararnged Linkedlist is : " ;
+    head = OddEven(head) ;
+    print(head) ;
 
     return 0 ;
 }
