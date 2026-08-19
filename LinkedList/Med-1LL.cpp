@@ -200,6 +200,37 @@ bool isPalindrome(Node* head){
     return true ;
 }
 
+// Placing Odd & Even Nodes in order (Method 1)->
+Node* Odd_Even(Node* head){
+    if(head == NULL || head -> next == NULL) return head ;
+
+    Node* temp = head ;
+    int nums[100] ;
+    int i = 0 ;
+   
+    while(temp != NULL && temp -> next != NULL){
+     nums[i++] = (temp->data) ;
+     temp = temp -> next -> next ;
+    }
+    if(temp != NULL) nums[i++] = (temp->data) ;
+
+    temp = head -> next ;
+
+    while(temp != NULL && temp -> next != NULL){
+     nums[i++] = (temp->data) ;
+     temp = temp -> next -> next ;
+    }
+    if(temp != NULL) nums[i++] = (temp->data) ;
+
+    i = 0 ;
+    temp = head ;
+    while(temp != NULL){
+        temp -> data = nums[i++] ;
+        temp = temp -> next ;
+    }
+    return head ;
+}
+
 
 int main(){
     int n ; 
@@ -263,6 +294,11 @@ int main(){
     // else{
     //     cout << "Entered LL is not a palindrome " ;
     // }
+
+    // Putting the Odd and Even Nodes in consecutive order (Method 1)->
+    // cout << "Ararnged Linkedlist is : " ;
+    // head = Odd_Even(head) ;
+    // print(head) ;
 
     return 0 ;
 }
