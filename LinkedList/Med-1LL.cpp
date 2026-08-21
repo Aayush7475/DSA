@@ -279,6 +279,23 @@ Node*  removeNthFromEnd(Node* head , int N){
     return head ;
 }
 
+// Removing the Nth node from the end of LL (Method 2)->
+Node* removeNthNodeFromEnd(Node* head , int N){
+    Node* slow = head ;
+    Node* fast = head ;
+    for(int i = 0 ; i < N ; i++){
+        fast = fast -> next ;
+    }
+    while(fast -> next != NULL){
+        slow = slow -> next ;
+        fast = fast -> next ;
+    }
+    Node* delNode = slow -> next ;
+    slow -> next = slow -> next -> next ;
+    free(delNode) ;
+
+    return head ;
+}
 
 int main(){
     int n ; 
@@ -358,6 +375,13 @@ int main(){
     // cout << "Enter the number of the node to be deleted : " ;
     // cin >> N ;
     // head = removeNthFromEnd(head , N) ;
+    // print(head) ;
+
+    // Removing the Nth node from the end of LL (Method 2)->
+    // int N ;
+    // cout << "Enter the number of the node to be deleted : " ;
+    // cin >> N ;
+    // head = removeNthNodeFromEnd(head , N) ;
     // print(head) ;
 
     return 0 ;
