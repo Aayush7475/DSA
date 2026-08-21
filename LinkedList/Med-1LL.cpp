@@ -249,6 +249,37 @@ Node* OddEven(Node* head){
     odd -> next = evenHead ;
     return head ;
 }
+
+// Removing the Nth node from the end of LL (Method 1)->
+Node*  removeNthFromEnd(Node* head , int N){
+    int count = 0 ;
+    Node* temp = head ;
+    while(temp != NULL){
+        count ++ ;
+        temp = temp -> next ;
+    }
+    if(count == N){
+        Node* newHead = head -> next ;
+        free(head) ;
+        return newHead ;
+    }
+    int result = count - N ; 
+    temp = head ;
+    while(temp != NULL){
+        result -- ;
+        if(result == 0){
+            break ;
+        }
+        temp = temp -> next ;
+    }
+    Node* delNode = temp -> next ;
+    temp -> next = temp -> next -> next ;
+    free(delNode) ;
+
+    return head ;
+}
+
+
 int main(){
     int n ; 
     cout << "Enter the number of elements in the array : ";
@@ -318,9 +349,16 @@ int main(){
     // print(head) ;
 
     // Putting the Odd and Even Nodes in consecutive order (Method 2)->
-    cout << "Ararnged Linkedlist is : " ;
-    head = OddEven(head) ;
-    print(head) ;
+    // cout << "Ararnged Linkedlist is : " ;
+    // head = OddEven(head) ;
+    // print(head) ;
+
+    // Removing the Nth node from the end of LL (Method 1)->
+    // int N ;
+    // cout << "Enter the number of the node to be deleted : " ;
+    // cin >> N ;
+    // head = removeNthFromEnd(head , N) ;
+    // print(head) ;
 
     return 0 ;
 }
