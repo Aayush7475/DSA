@@ -297,7 +297,7 @@ Node* removeNthNodeFromEnd(Node* head , int N){
     return head ;
 }
 
-// Removing the Middle node of the LL ->
+// Removing the Middle node of the LL (Method 1) ->
 Node* removeMiddleNode(Node* head){
     if(head == NULL || head -> next == NULL) return NULL ;
 
@@ -319,6 +319,21 @@ Node* removeMiddleNode(Node* head){
         }
         temp = temp -> next ;
     }
+    return head ;
+}
+
+// Removing the Middle node of the LL (Method 2) ->
+Node* RemoveMiddleNode(Node* head){
+    Node* slow = head ;
+    Node* fast = head ;
+    fast = fast -> next -> next ; 
+    while(fast != NULL && fast -> next != NULL){
+       slow = slow -> next ; 
+       fast = fast -> next -> next ;
+    }
+    Node* middle = slow -> next ;
+    slow -> next = slow -> next -> next ;
+    free(middle) ;
     return head ;
 }
 
@@ -410,8 +425,12 @@ int main(){
     // print(head) ;
 
     // Removing the middle node of the LL (Method 1) -> 
-    head = removeMiddleNode(head) ;
-    print(head) ;
-    
+    // head = removeMiddleNode(head) ;
+    // print(head) ;
+
+    // Removing the middle node of the LL (Method 1) -> 
+    // head = RemoveMiddleNode(head) ;
+    // print(head) ;
+
     return 0 ;
 }
