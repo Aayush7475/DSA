@@ -297,6 +297,31 @@ Node* removeNthNodeFromEnd(Node* head , int N){
     return head ;
 }
 
+// Removing the Middle node of the LL ->
+Node* removeMiddleNode(Node* head){
+    if(head == NULL || head -> next == NULL) return NULL ;
+
+    Node* temp = head ;
+    int n = 0 ;
+    while(temp != NULL){
+        n++ ;
+        temp = temp -> next ;
+    }
+    int res = n/2 ;
+    temp = head ;
+    while(temp != NULL){
+        res -- ;
+        if(res == 0){
+            Node* middle = temp->next ;
+            temp -> next = temp -> next -> next ;
+            free(middle) ;
+            break ;
+        }
+        temp = temp -> next ;
+    }
+    return head ;
+}
+
 int main(){
     int n ; 
     cout << "Enter the number of elements in the array : ";
@@ -384,5 +409,9 @@ int main(){
     // head = removeNthNodeFromEnd(head , N) ;
     // print(head) ;
 
+    // Removing the middle node of the LL (Method 1) -> 
+    head = removeMiddleNode(head) ;
+    print(head) ;
+    
     return 0 ;
 }
