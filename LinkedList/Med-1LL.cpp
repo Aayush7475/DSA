@@ -337,6 +337,25 @@ Node* RemoveMiddleNode(Node* head){
     return head ;
 }
 
+// Sorting the LL (Method 1) ->
+Node* Sort(Node* head){
+    vector<int> arr ;
+    Node* temp = head ;
+    while(temp != NULL){
+        arr.push_back(temp -> data) ;
+        temp = temp -> next ;
+    }
+    sort(arr.begin() , arr.end()) ;
+    int i = 0 ;
+    temp = head ;
+    while(temp != NULL){
+        temp->data = arr[i] ;
+        i++ ;
+        temp = temp -> next ;
+    }
+    return head ;
+}
+
 int main(){
     int n ; 
     cout << "Enter the number of elements in the array : ";
@@ -430,6 +449,10 @@ int main(){
 
     // Removing the middle node of the LL (Method 1) -> 
     // head = RemoveMiddleNode(head) ;
+    // print(head) ;
+
+    // Sorting the LL -> 
+    // head = Sort(head) ;
     // print(head) ;
 
     return 0 ;
