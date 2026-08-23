@@ -356,6 +356,50 @@ Node* Sort(Node* head){
     return head ;
 }
 
+// Sorting the LL (Method 2) ->
+Node* mergeTwoLL(Node* list1 , Node* list2){
+    Node* dummyNode = new Node(-1) ;
+    Node* temp = dummyNode ;
+    while(list1 != NULL && list2 != NULL){
+        if(list1 -> data < list2 -> data){
+            temp -> next = list1 ;
+            temp = list1 ;
+            list1 = list1 -> next ;
+        }
+        else{
+            temp -> next = list2 ;
+            temp = list2 ;
+            list2 = list2 -> next ;
+        }
+    }
+    if(list1) temp -> next = list1 ;
+    else temp -> next = list2 ;
+
+    return dummyNode -> next ;
+}
+Node* middleNode(Node* head) {
+    Node* slow = head ;
+    Node* fast = head -> next ;
+    while(fast != NULL && fast-> next != NULL){
+        slow = slow -> next ;
+        fast = fast -> next -> next ;
+    }
+    return slow ;
+}
+Node* Sorting(Node* head){
+    if(head == NULL || head->next == NULL) return head ;
+
+    Node* middle = middleNode(head) ;
+    Node* leftHead = head ;
+    Node* rightHead = middle->next ;
+    middle -> next = NULL ;
+
+    leftHead = Sorting(leftHead) ;
+    rightHead = Sorting(rightHead) ;
+
+    return mergeTwoLL(leftHead , rightHead) ;
+}
+
 int main(){
     int n ; 
     cout << "Enter the number of elements in the array : ";
@@ -451,9 +495,13 @@ int main(){
     // head = RemoveMiddleNode(head) ;
     // print(head) ;
 
-    // Sorting the LL -> 
+    // Sorting the LL (Method 1) ->
     // head = Sort(head) ;
     // print(head) ;
+
+    // Sorting the LL (Method 2) ->
+    head = Sorting(head) ;
+    print(head) ;
 
     return 0 ;
 }
