@@ -500,8 +500,9 @@ int main(){
     // print(head) ;
 
     // Sorting the LL (Method 2) ->
-    head = Sorting(head) ;
-    print(head) ;
+    // head = Sorting(head) ;
+    // print(head) ;
 
+    
     return 0 ;
 }
