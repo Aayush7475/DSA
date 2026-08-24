@@ -380,6 +380,20 @@ vector<int> S_2(int n , int target , vector<int> arr){
     return {-1 , 1};
 }
 
+// Adding 1 to the largest number formed by the array ->
+vector<int> plusOne(vector<int>& arr){
+    for(int i = arr.size() - 1 ; i >= 0 ; i--){
+        if(arr[i] < 9){
+            arr[i]++ ;
+            return arr ;
+        }
+        arr[i] = 0 ;
+    }
+    arr.insert(arr.begin() , 1) ;
+    return arr ;
+}
+
+
 // NORMAL :-
 
 int main(){
@@ -450,9 +464,16 @@ int main(){
     // S_1(n , target , arr);
     // S_2(n , target , arr);
 
+    //  Adding 1 to the largest number formed by the array 
+    // vector<int> ans = plusOne(arr);
+    // cout << "After adding 1: ";
+    // for(int i = 0; i < ans.size(); i++) {
+    //     cout << ans[i] << " ";
+    // }
+
     // return 0 ;
         
-    //  }
+    }
 
     // UNION & INTERSECTION :-
     // int main(){
