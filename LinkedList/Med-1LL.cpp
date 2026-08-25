@@ -400,6 +400,38 @@ Node* Sorting(Node* head){
     return mergeTwoLL(leftHead , rightHead) ;
 }
 
+// Sorting a LL containing 0 , 1 , 2 (Method 1) ->
+Node* Sort_1(Node* head){
+    Node* temp = head ; 
+    int cnt0 = 0 ;
+    int cnt1 = 0 ;
+    int cnt2 = 0 ;
+    while(temp != NULL){
+        if(temp -> data == 0) cnt0 ++ ;
+        else if(temp -> data == 1) cnt1 ++ ;
+        else cnt2 ++ ;
+
+        temp = temp -> next ;
+    }
+    temp = head ;
+    while(temp != NULL){
+        if(cnt0){
+            temp -> data = 0 ;
+            cnt0 -- ;
+        }
+        else if(cnt1){
+            temp -> data = 1 ;
+            cnt1 -- ;
+        }
+        else if(cnt2){
+            temp -> data = 2 ;
+            cnt2 -- ;
+        }
+        temp = temp -> next ;
+    }
+    return head ;
+}
+
 int main(){
     int n ; 
     cout << "Enter the number of elements in the array : ";
@@ -503,6 +535,10 @@ int main(){
     // head = Sorting(head) ;
     // print(head) ;
 
-    
+    // Sorting the LL containing 0 , 1 , 2 ->
+    // head = Sort_1(head) ;
+    // print(head) ;
+
+
     return 0 ;
 }
