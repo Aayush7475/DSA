@@ -492,6 +492,44 @@ Node* getIntersectionNode(Node* headA , Node* headB){
     return NULL ;
 }
 
+// Finding the Intersection point of Y LL (Method 2) ->
+Node* collisionPoint(Node* t1 , Node* t2 , int d){
+    while(d){
+        d-- ;
+        t2 = t2 -> next ;
+    }
+    while(t1 != t2){
+        t1 = t1 -> next ;
+        t2 = t2 -> next ;
+    }
+    return t1 ;
+}
+Node* getIntersectionNodes(Node* headA , Node* headB){
+    Node* t1 = headA ;
+    int n1 = 0 ;
+
+    while(t1 != NULL){
+        n1 ++ ;
+        t1 = t1 -> next ;
+    }
+
+    Node* t2 = headB ;
+    int n2 = 0 ;
+
+    while(t2 != NULL){
+        n2 ++ ;
+        t2 = t2 -> next ;
+    }
+
+    if(n1 < n2){
+        return collisionPoint(headA , headB , n2-n1) ;
+    }
+    else{
+        return collisionPoint(headB , headA , n1-n2) ;
+    }
+}
+
+
 int main(){
     int n ; 
     cout << "Enter the number of elements in the array : ";
