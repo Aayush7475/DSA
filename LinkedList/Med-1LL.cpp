@@ -474,6 +474,24 @@ Node* Sort_2(Node* head){
     return newHead ;
 }
 
+// Finding the Intersection point of Y LL (Method 1) ->
+Node* getIntersectionNode(Node* headA , Node* headB){
+    map<Node* , int> mpp ;
+    Node* temp = headA ;
+    while(temp != NULL){
+        mpp[temp] = 1 ;
+        temp = temp -> next ;
+    }
+    temp = headB ;
+    while(temp != NULL){
+        if(mpp.find(temp) != mpp.end()){
+            return temp ;
+        }
+        temp  = temp -> next ;
+    }
+    return NULL ;
+}
+
 int main(){
     int n ; 
     cout << "Enter the number of elements in the array : ";
@@ -585,6 +603,8 @@ int main(){
     // head = Sort_2(head) ;
     // print(head) ;
 
-    
+  
+
+
     return 0 ;
 }
