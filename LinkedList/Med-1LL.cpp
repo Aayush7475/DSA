@@ -475,7 +475,7 @@ Node* Sort_2(Node* head){
 }
 
 // Finding the Intersection point of Y LL (Method 1) ->
-Node* getIntersectionNode(Node* headA , Node* headB){
+Node* getIntersectionNode_1(Node* headA , Node* headB){
     map<Node* , int> mpp ;
     Node* temp = headA ;
     while(temp != NULL){
@@ -504,7 +504,7 @@ Node* collisionPoint(Node* t1 , Node* t2 , int d){
     }
     return t1 ;
 }
-Node* getIntersectionNodes(Node* headA , Node* headB){
+Node* getIntersectionNode_2(Node* headA , Node* headB){
     Node* t1 = headA ;
     int n1 = 0 ;
 
@@ -529,6 +529,22 @@ Node* getIntersectionNodes(Node* headA , Node* headB){
     }
 }
 
+// Finding the Intersection point of Y LL (Method 3) ->
+Node* getIntersectionNode_3(Node* headA , Node* headB){
+    if(headA == NULL || headB == NULL) return NULL ;
+    Node* t1 = headA ;
+    Node* t2 = headB ;
+
+    while(t1 != t2){
+        t1 = t1 -> next ;
+        t2 = t2 -> next ;
+
+        if(t1 == t2) return t1 ;
+        if(t1 == NULL) t1 = headB ;
+        if(t2 == NULL) t2 = headA ;
+    }
+    return t1 ;
+}
 
 int main(){
     int n ; 
