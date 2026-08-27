@@ -546,6 +546,34 @@ Node* getIntersectionNode_3(Node* headA , Node* headB){
     return t1 ;
 }
 
+// Add 1 to a number represented by LL ->
+Node*  Add_1(Node* head){
+    head = reverse(head) ;
+    Node* temp = head ;
+    int carry = 1 ;
+
+    while(temp != NULL){
+        temp->data = temp->data + carry ;
+        if(temp -> data < 10){
+            carry = 0 ;
+            break ;
+        }
+        else{
+            temp -> data = 0 ;
+            carry = 1 ;
+        }
+        temp = temp -> next ;
+    }
+    if(carry == 1){
+        Node* newNode = new Node(1) ;
+        head = reverse(head) ;
+        newNode -> next = head ;
+        return newNode ;
+    }
+    head = reverse(head) ;
+    return head ;
+}
+
 int main(){
     int n ; 
     cout << "Enter the number of elements in the array : ";
@@ -657,7 +685,9 @@ int main(){
     // head = Sort_2(head) ;
     // print(head) ;
 
-  
+    // Adding 1 to the numerical value of LL ->
+    // head = Add_1(head) ;
+    // print(head) ;
 
 
     return 0 ;
