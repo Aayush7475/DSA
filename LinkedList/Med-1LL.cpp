@@ -547,7 +547,7 @@ Node* getIntersectionNode_3(Node* headA , Node* headB){
 }
 
 // Add 1 to a number represented by LL ->
-Node*  Add_1(Node* head){
+Node*  Adding_1(Node* head){
     head = reverse(head) ;
     Node* temp = head ;
     int carry = 1 ;
@@ -686,7 +686,7 @@ int main(){
     // print(head) ;
 
     // Adding 1 to the numerical value of LL ->
-    // head = Add_1(head) ;
+    // head = Adding_1(head) ;
     // print(head) ;
 
 
