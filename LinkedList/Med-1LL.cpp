@@ -595,6 +595,31 @@ Node* Adding_2(Node* head){
     return head ;
 }
 
+// Adding the nodes of the LL L ->
+Node* Adding(Node* headA , Node* headB){
+    Node* dummy = new Node(-1) ;
+    Node* temp = dummy ;
+    int carry = 0 ;
+
+    while(headA != NULL || headB == NULL || carry){
+        int sum = 0 ;
+        if(headA != NULL){
+            sum = sum + headA -> data ;
+            headA = headA -> next ;
+        }
+        if(headB != NULL){
+            sum = sum + headB -> data ;
+            headB = headB -> next ;
+        }
+
+        sum = sum + carry ;
+        carry = sum / 10 ;
+        Node* node = new Node(sum % 10);
+        temp -> next = node ;
+        temp = temp -> next ;
+    }
+    return dummy -> next ;
+}
 
 int main(){
     int n ; 
@@ -714,6 +739,7 @@ int main(){
     // Adding 1 to the numerical value of LL (Method 2) ->
     // head = Adding_2(head) ;
     // print(head) ;
+
 
     return 0 ;
 }
