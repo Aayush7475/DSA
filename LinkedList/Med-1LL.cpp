@@ -546,7 +546,7 @@ Node* getIntersectionNode_3(Node* headA , Node* headB){
     return t1 ;
 }
 
-// Add 1 to a number represented by LL ->
+// Add 1 to a number represented by LL (Method 1) ->
 Node*  Adding_1(Node* head){
     head = reverse(head) ;
     Node* temp = head ;
@@ -573,6 +573,28 @@ Node*  Adding_1(Node* head){
     head = reverse(head) ;
     return head ;
 }
+
+// Add 1 to a number represented by LL (Method 2)->
+int helper(Node* temp){
+    if(temp == NULL) return 1 ;
+
+    int carry = helper(temp -> next) ;
+    temp -> data += carry ;
+    
+    if(temp -> data < 10) return 0 ;
+    temp -> data = 0 ;
+    return 1 ;
+}
+Node* Adding_2(Node* head){
+    int carry = helper(head) ;
+    if(carry == 1){
+        Node* newNode = new Node(1) ;
+        newNode -> next = head ;
+        head = newNode ;
+    }
+    return head ;
+}
+
 
 int main(){
     int n ; 
@@ -685,10 +707,13 @@ int main(){
     // head = Sort_2(head) ;
     // print(head) ;
 
-    // Adding 1 to the numerical value of LL ->
+    // Adding 1 to the numerical value of LL (Method 1) ->
     // head = Adding_1(head) ;
     // print(head) ;
 
+    // Adding 1 to the numerical value of LL (Method 2) ->
+    // head = Adding_2(head) ;
+    // print(head) ;
 
     return 0 ;
 }
