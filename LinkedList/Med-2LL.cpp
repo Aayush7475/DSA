@@ -86,7 +86,20 @@ vector<pair<int,int>> sumPairs(Node* head , int sum){
     return ds ;
 }
 
-// 
+// Removing duplicates from the sorted DLL ->
+Node* duplicates(Node* head){
+    Node* temp = head ;
+    while(temp != NULL && temp -> next != NULL){
+        Node* nextNode = temp -> next ;
+        while(nextNode != NULL && nextNode -> data == temp -> data){
+            nextNode = nextNode -> next ;
+        }
+        temp -> next = nextNode ;
+        if(nextNode != NULL) nextNode -> prev = temp ;
+        temp = temp -> next ; 
+    }
+    return head ;
+}
 int main(){
      int n ; 
     cout << "Enter the number of elements in the array : ";
@@ -117,6 +130,11 @@ int main(){
     // for(auto it : ans){
     //     cout << "(" << it.first << " , " <<  it.second << ")" << endl ;
     // }
+
+    // Removing duplicates from the sorted DLL ->
+    // head = duplicates(head) ;
+    // print(head) ;
+
 
     return 0 ;
 }
