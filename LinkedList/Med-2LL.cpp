@@ -67,7 +67,26 @@ Node* deleteOccurences(Node* head , int key){
     return head ;
 }
 
+// Returning all Pairs with given sum in DLL ->
+vector<pair<int,int>> sumPairs(Node* head , int sum){
+    Node* t1 = head ;
+    Node* t2 ;
+    vector<pair<int,int>> ds ;
 
+    while(t1 != NULL){
+        t2 = t1 -> next ;
+        while(t2 != NULL && t1->data + t2->data <= sum){
+            if(t1->data + t2->data == sum){
+                ds.push_back({t1->data , t2->data}) ;
+            }
+            t2 = t2 -> next ;
+        }
+        t1 = t1 -> next ;
+    }
+    return ds ;
+}
+
+// 
 int main(){
      int n ; 
     cout << "Enter the number of elements in the array : ";
@@ -89,6 +108,15 @@ int main(){
     // cin >> key ;
     // head = deleteOccurences(head , key) ;
     // print(head) ;
+
+    // Returning all Pairs with given sum in DLL ->
+    // int sum ;
+    // cout << "Enter the sum of the pairs : ";
+    // cin >> sum ;
+    // vector<pair<int,int>> ans = sumPairs(head, sum);
+    // for(auto it : ans){
+    //     cout << "(" << it.first << " , " <<  it.second << ")" << endl ;
+    // }
 
     return 0 ;
 }
