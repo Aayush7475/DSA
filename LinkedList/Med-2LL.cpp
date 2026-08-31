@@ -100,6 +100,7 @@ Node* duplicates(Node* head){
     }
     return head ;
 }
+
 int main(){
      int n ; 
     cout << "Enter the number of elements in the array : ";
