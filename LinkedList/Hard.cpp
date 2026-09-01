@@ -92,6 +92,40 @@ Node* reverseKGroup(Node* head, int k){
     return head ;
 }
 
+// Rotating a LL ->
+Node* findNthNode(Node* temp , int k){
+    int cnt = 1 ;
+    while(temp != NULL){
+        if(cnt == k) return temp ;
+        cnt ++ ;
+        temp = temp -> next ;
+    }
+    return temp ;
+}
+Node* Rotating(Node* head , int k){
+    if(head == NULL || k == 0) return head ;
+
+    Node* tail = head ;
+    int len = 1 ;
+
+    while(tail -> next != NULL){
+        len ++ ;
+        tail = tail -> next ;
+    }
+
+    if(k % len == 0 ) return head ;
+    k = k  % len ;
+
+    tail -> next = head ;
+
+    Node* newLastNode = findNthNode(head , len - k) ;
+    head = newLastNode -> next ;
+    newLastNode -> next = NULL ;
+
+    return head ;
+}
+
+
 int main(){
      int n ; 
     cout << "Enter the number of elements in the array : ";
@@ -114,6 +148,13 @@ int main(){
     // head = reverseKGroup(head , k) ;
     // cout << "After reversing in K groups: ";
     // print(head);
+
+    // Rotating a LL ->
+    // int k ;
+    // cout << "Enter the number to which the LL will be rotated : " ;
+    // cin >> k ;
+    // head = Rotating(head , k) ;
+    // print(head) ;
 
     return 0 ;
 }
