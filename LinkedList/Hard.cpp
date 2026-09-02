@@ -92,7 +92,7 @@ Node* reverseKGroup(Node* head, int k){
     return head ;
 }
 
-// Rotating a LL ->
+// Rotating a LL by k steps ->
 Node* findNthNode(Node* temp , int k){
     int cnt = 1 ;
     while(temp != NULL){
