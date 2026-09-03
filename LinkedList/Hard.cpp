@@ -6,7 +6,6 @@ class Node{
     int data ; 
     Node* next ; 
     Node* prev ;
-
     public : 
     Node(int data1 , Node* next1 , Node* prev1){
         data = data1 ;
@@ -20,6 +19,25 @@ class Node{
         prev = nullptr ;
     }
 };
+class Node{     // For Flattening of LL 
+    public : 
+    int data ; 
+    Node* next ; 
+    Node* child ;
+
+    public : 
+    Node(int data1 , Node* next1 , Node* prev1){
+        data = data1 ;
+        next = next1 ;
+        child = next1 ;
+    }
+    public :
+    Node(int data1){
+        this->data = data1 ;
+        next = nullptr ;
+        child = nullptr ;
+    }
+};
 
 void print(Node* head){
     Node* temp = head ;
@@ -27,6 +45,14 @@ void print(Node* head){
     while(temp != NULL){
         cout << temp->data << " " ;
         temp = temp->next ;
+    }
+    cout << endl ;
+}
+
+void printChild(Node* head){
+    while(head != NULL){
+        cout << head -> data << " " ;
+        head = head -> child ;
     }
     cout << endl ;
 }
@@ -125,12 +151,12 @@ Node* Rotating(Node* head , int k){
     return head ;
 }
 
-// Flattening a LL ->
+// Flattening a LL (Method 1) ->
 Node* convert(vector<int> &nums){
     if(nums.size() == 0) return NULL ;
     Node* head = new Node(nums[0]) ;
     Node* temp = head ;
-    for(int i = 1 ; i <nums.size() ; i++){
+    for(int i = 1 ; i < nums.size() ; i++){
         Node* newNode = new Node(nums[i]) ;
         temp -> child = newNode ;
         temp = temp -> child ;
@@ -150,9 +176,11 @@ Node* Flattening(Node* head ){
     }
     sort(nums.begin() , nums.end()) ;
     head = convert(nums) ;
+    return head ;
 }
 
-// 
+
+
 int main(){
     int n ; 
     cout << "Enter the number of elements in the array : ";
@@ -185,3 +213,59 @@ int main(){
 
     return 0 ;
 }
+
+// int main(){     // For Flattening of LL 
+//     int n;
+//     cout << "Enter number of nodes in main level: ";
+//     cin >> n;
+//     if(n == 0) return NULL;
+//     Node* head = NULL;
+//     Node* temp = NULL;
+//     for(int i = 0; i < n; i++) {
+//         int x;
+//         cout << "Enter value: ";
+//         cin >> x;
+//         Node* newNode = new Node(x);
+//         if(head == NULL) {
+//             head = newNode;
+//             temp = head;
+//         }
+//         else {
+//             temp->next = newNode;
+//             temp = newNode;
+//         }
+//     }
+//     // Add child lists
+//     temp = head;
+//     while(temp != NULL) {
+//         char choice;
+//         cout << "Do you want to add child to " << temp->data << "? (y/n): ";
+//         cin >> choice;
+//         if(choice == 'y') {
+//             int m;
+//             cout << "Enter number of child nodes: ";
+//             cin >> m;
+//             Node* childHead = NULL;
+//             Node* childTemp = NULL;
+//             for(int i = 0; i < m; i++) {
+//                 int x;
+//                 cout << "Enter child value: ";
+//                 cin >> x;
+//                 Node* newNode = new Node(x);
+//                 if(childHead == NULL) {
+//                     childHead = newNode;
+//                     childTemp = newNode;
+//                 }
+//                 else {
+//                     childTemp->next = newNode;
+//                     childTemp = newNode;
+//                 }
+//             }
+//             temp->child = childHead;
+//         }
+//         temp = temp->next;
+//     }
+//     head = Flattening(head) ;
+//     printChild(head) ;
+//     return 0 ;
+// }
