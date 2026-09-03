@@ -125,9 +125,36 @@ Node* Rotating(Node* head , int k){
     return head ;
 }
 
+// Flattening a LL ->
+Node* convert(vector<int> &nums){
+    if(nums.size() == 0) return NULL ;
+    Node* head = new Node(nums[0]) ;
+    Node* temp = head ;
+    for(int i = 1 ; i <nums.size() ; i++){
+        Node* newNode = new Node(nums[i]) ;
+        temp -> child = newNode ;
+        temp = temp -> child ;
+    }
+    return head ;
+}
+Node* Flattening(Node* head ){
+    vector<int> nums ;
+    Node* temp = head ;
+    while(temp != NULL){
+        Node* t2 = temp ;
+        while(t2 != NULL){
+            nums.push_back(t2 -> data) ;
+            t2 = t2 -> child ;
+        }
+        temp = temp -> next ;
+    }
+    sort(nums.begin() , nums.end()) ;
+    head = convert(nums) ;
+}
 
+// 
 int main(){
-     int n ; 
+    int n ; 
     cout << "Enter the number of elements in the array : ";
     cin >> n ;
 
