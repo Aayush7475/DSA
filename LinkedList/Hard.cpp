@@ -19,25 +19,42 @@ class Node{
         prev = nullptr ;
     }
 };
-class Node{     // For Flattening of LL 
-    public : 
-    int data ; 
-    Node* next ; 
-    Node* child ;
 
-    public : 
-    Node(int data1 , Node* next1 , Node* prev1){
-        data = data1 ;
-        next = next1 ;
-        child = next1 ;
-    }
-    public :
-    Node(int data1){
-        this->data = data1 ;
-        next = nullptr ;
-        child = nullptr ;
-    }
-};
+// class Node{     // For Flattening of LL 
+//     public : 
+//     int data ; 
+//     Node* next ; 
+//     Node* child ;
+//     public : 
+//     Node(int data1 , Node* next1 , Node* prev1){
+//         data = data1 ;
+//         next = next1 ;
+//         child = next1 ;
+//     }
+//     public :
+//     Node(int data1){
+//         this->data = data1 ;
+//         next = nullptr ;
+//         child = nullptr ;
+//     }
+// };
+
+// class Node{       // For Cloning LL with Random & next Pointer 
+// public:
+//     // Data stored in the node
+//     int data;           
+//      // Pointer to the next node
+//     Node *next;        
+//     // Pointer to a random node in the list
+//     Node *random;       
+//     // Constructors for Node class
+//     Node() : data(0), next(nullptr), random(nullptr){}; 
+//     Node(int x) : data(x), next(nullptr), random(nullptr) {} 
+//     // Constructor with data, next, and random pointers
+//     Node(int x, Node *nextNode, Node *randomNode) :
+//             data(x), next(nextNode), random(randomNode) {}  
+// };
+
 
 void print(Node* head){
     Node* temp = head ;
@@ -179,6 +196,58 @@ Node* Flattening(Node* head ){
     return head ;
 }
 
+// Flattening a LL (Method 2) ->
+Node* Merge2LL(Node* list1 , Node* list2){
+    Node* dummyNode = new Node(-1) ;
+    Node* res = dummyNode ;
+
+    while(list1 != NULL && list2 != NULL){
+        if(list1 -> data < list2 -> data){
+            res -> child = list1 ;
+            res = list1 ;
+            list1 = list1 -> next ;
+        }
+        else{
+            res -> child = list2 ;
+            res = list2 ;
+            list2 = list2 -> child ;
+        }
+        res -> next = NULL ;
+    }
+
+    if(list1) res -> child = list1 ;
+    else res -> child = list2 ;
+
+    return dummyNode -> child ;
+}
+Node* Merge(Node* head){
+    if(head == NULL || head -> next == NULL) return head ;
+
+    Node* mergedHead = Merge(head -> next) ;
+    return Merge2LL(head , mergedHead) ;
+}
+Node* Flattening_2(Node* head){
+
+}
+
+// Cloning List with Random pointer ->
+Node* copyrandomList(Node* head){
+    Node* temp = head ;
+    map<Node* , Node*> mpp ;
+    while(temp != NULL){
+        Node* newNode = new Node(temp -> data) ;
+        mpp[temp] = newNode ;
+        temp = temp -> next ;
+    }
+    temp = head ;
+    while(temp != NULL){
+        Node* copyNode = mpp[temp] ;
+        copyNode -> next = mpp[temp -> next] ;
+        copyNode -> random = mpp[temp -> random] ;
+        temp = temp -> next ;
+    }
+    return mpp[head] ;
+}
 
 
 int main(){
@@ -266,6 +335,8 @@ int main(){
 //         temp = temp->next;
 //     }
 //     head = Flattening(head) ;
+//     printChild(head) ;
+//     head = Flattening_2(head) ;
 //     printChild(head) ;
 //     return 0 ;
 // }
