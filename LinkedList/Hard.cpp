@@ -250,7 +250,7 @@ Node* copyrandomList(Node* head){
 }
 
 // Cloning List with Random pointer (Method 2) ->
-Node* insertCopyNodes(Node* head){
+void insertCopyNodes(Node* head){
     Node* temp = head ;
     while(temp != NULL){
         Node* copyNode = new Node(temp -> data) ;
@@ -259,11 +259,11 @@ Node* insertCopyNodes(Node* head){
         temp = temp -> next -> next ;
     }
 }
-Node* connectingRandoms(Node* head){
+void connectingRandoms(Node* head){
     Node* temp = head ;
     while(temp != NULL){
         Node* copyNode = temp -> next ;
-        copyNode -> random = temp -> random -> next ;
+        if(temp -> random != NULL) copyNode -> random = temp -> random -> next ;
         temp = temp -> next -> next ;
     }
 }
