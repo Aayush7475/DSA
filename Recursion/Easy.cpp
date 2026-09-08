@@ -27,15 +27,15 @@ double myPow(double x, int n) {
 int main(){
 
     // Power of a number ->
-    double x ;
-    cout << "Enter the base : " ;
-    cin >> x ;
-
-    int n ;
-    cout << "Enter the power : " ;
-    cin >> n ;
-
-    int ans = myPow(x ,n) ;
-    cout << x << " raised to power " << n << " is " << ans ;
+    // double x ;
+    // cout << "Enter the base : " ;
+    // cin >> x ;
+    // int n ;
+    // cout << "Enter the power : " ;
+    // cin >> n ;
+    // int ans = myPow(x ,n) ;
+    // cout << x << " raised to power " << n << " is " << ans ;
+    
+    return 0 ;
     
 }
