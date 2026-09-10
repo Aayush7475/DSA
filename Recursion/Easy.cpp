@@ -49,6 +49,16 @@ int myAtoi(string s){
     return sign * nums ;
 }
 
+// Contains Duplicate (Return true if any value appears atleast twice)->
+bool containsDuplicate(vector<int> &nums){
+    unordered_set<int> s ;
+    for(int x : nums){
+        if(s.find(x) != s.end()) return true ;
+        s.insert(x) ;
+    }
+    return false ;
+}
+
 int main(){
 
     // Power of a number ->
@@ -67,6 +77,24 @@ int main(){
     // getline(cin , s) ;
     // int ans = myAtoi(s) ;
     // cout << ans ;
+
+    // Contains Duplicate ->
+    // int n ;
+    // cout << "Enter the number of elements in the array : " ;
+    // cin >> n ;
+    // vector<int> nums(n) ;
+    // cout << "Enter the elements in the array : " << endl ;
+    // for(int i = 0 ; i< n ; i++){
+    //     cin >> nums[i] ;
+    // }
+    // if(containsDuplicate(nums) == true){
+    //     cout << "Contains duplicate element" ;
+    // }
+    // else{
+    //     cout << "Doesn't contains duplicate element " ;
+    // }
+
+     
 
     return 0 ;
     
