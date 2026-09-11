@@ -49,7 +49,7 @@ int myAtoi(string s){
     return sign * nums ;
 }
 
-// Contains Duplicate (Return true if any value appears atleast twice)->
+// Contains Duplicate (Return true if any value appears atleast twice) ->
 bool containsDuplicate(vector<int> &nums){
     unordered_set<int> s ;
     for(int x : nums){
@@ -57,6 +57,25 @@ bool containsDuplicate(vector<int> &nums){
         s.insert(x) ;
     }
     return false ;
+}
+
+// Generate all combinations of parenthesis ->
+void generate(string s , int open , int close , int n , vector<string> &ans){
+    if(open == n && close == n){
+        ans.push_back(s) ;
+        return ;
+    }
+    if(open < n){
+        generate(s + "(" , open + 1 , close , n , ans) ;
+    }
+    if(close < open){
+        generate(s + ")" , open , close + 1 , n , ans) ;
+    }
+}
+vector<string> generateParenthesis(int n){
+    vector<string> ans ;
+    generate("" , 0 , 0 , n , ans);
+    return ans ;
 }
 
 int main(){
@@ -94,7 +113,16 @@ int main(){
     //     cout << "Doesn't contains duplicate element " ;
     // }
 
-     
+    //  Generate all combinations of parenthesis ->
+    // int n ;
+    // cout << "Enter the number of parenthesis : " ;
+    // cin >> n ;
+    // vector<string> ans = generateParenthesis(n);
+    // cout << "All valid combinations are:" << endl;
+    // for (string s : ans) {
+    //     cout << s << endl;
+    // }
+
 
     return 0 ;
     
