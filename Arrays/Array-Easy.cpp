@@ -399,7 +399,7 @@ vector<string> summaryRanges(vector<int>& nums){
     if(nums.empty()) return ans ;
 
     int start = nums[0] ;
-    for(int i = 1 ;l i < nums.size() ; i++){
+    for(int i = 1 ; i < nums.size() ; i++){
         if(nums[i] != nums[i-1] + 1){
             if(start == nums[i-1]){
                 ans.push_back(to_string(start)) ;
