@@ -421,6 +421,20 @@ vector<string> summaryRanges(vector<int>& nums){
     return ans ;
 }
 
+// Intersection of 2 Arrays ->
+vector<int> intersection(vector<int>& nums1, vector<int>& nums2) {
+        unordered_set<int> s ;
+        unordered_set<int> result ;
+        for(int x : nums1){
+            s.insert(x) ;
+        }
+        for(int x : nums2){
+            if(s.count(x)) result.insert(x) ;
+
+        }
+        return vector<int>(result.begin() , result.end()) ;
+    }
+    
 // NORMAL :-
 
 int main(){
