@@ -394,47 +394,64 @@ vector<int> plusOne(vector<int>& arr){
 }
 
 // Summary ranges ->
-vector<string> summaryRanges(vector<int>& nums){
+vector<string> summaryRanges(vector<int>& arr){
     vector<string> ans ;
-    if(nums.empty()) return ans ;
+    if(arr.empty()) return ans ;
 
-    int start = nums[0] ;
-    for(int i = 1 ; i < nums.size() ; i++){
-        if(nums[i] != nums[i-1] + 1){
-            if(start == nums[i-1]){
+    int start = arr[0] ;
+    for(int i = 1 ; i < arr.size() ; i++){
+        if(arr[i] != arr[i-1] + 1){
+            if(start == arr[i-1]){
                 ans.push_back(to_string(start)) ;
             }
             else{
-                ans.push_back(to_string(start) + "->" + to_string(nums[i-1])) ;
+                ans.push_back(to_string(start) + "->" + to_string(arr[i-1])) ;
             }
 
-            start = nums[i] ;
+            start = arr[i] ;
         }
     }
 
-    if(start == nums.back()){
+    if(start == arr.back()){
         ans.push_back(to_string(start)) ;
     }
     else{
-        ans.push_back(to_string(start) + "->" + to_string(nums.back())) ;
+        ans.push_back(to_string(start) + "->" + to_string(arr.back())) ;
     }
     return ans ;
 }
 
 // Intersection of 2 Arrays ->
-vector<int> intersection(vector<int>& nums1, vector<int>& nums2) {
+vector<int> intersection(vector<int>& arr1, vector<int>& arr2) {
         unordered_set<int> s ;
         unordered_set<int> result ;
-        for(int x : nums1){
+        for(int x : arr1){
             s.insert(x) ;
         }
-        for(int x : nums2){
+        for(int x : arr2){
             if(s.count(x)) result.insert(x) ;
 
         }
         return vector<int>(result.begin() , result.end()) ;
     }
     
+// Finding the missing number in the array in the given range (Method 1) ->
+int missingNumber(vector<int>& arr){
+    int n = arr.size() ;
+    unordered_map<int,bool> mp ;
+
+    for(int x : arr){
+        mp[x] = true ;
+    }
+
+    for(int i = 0 ; i <= n ; i++){
+        if(mp.find(i) == mp.end()){
+            return i ;
+        }
+    }
+    return -1 ;
+}
+
 // NORMAL :-
 
 int main(){
@@ -511,6 +528,10 @@ int main(){
     // for(int i = 0; i < ans.size(); i++) {
     //     cout << ans[i] << " ";
     // }
+
+    // Finding the missing number in the array in the given range (Method 1) ->
+    int ans = missingNumber(arr) ;
+    cout << "Missing Number is " << ans ; 
 
     // return 0 ;
         
