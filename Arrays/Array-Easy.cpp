@@ -452,6 +452,17 @@ int missingNumber(vector<int>& arr){
     return -1 ;
 }
 
+// Finding the missing number in the array in the given range (Method 2) ->
+int missingNumber2(vector<int>& arr){
+    int n = arr.size() ;
+    int expexted = n * (n+1) / 2 ;
+    int actual = 0 ;
+    for(int x : arr){
+        actual += x ;
+    }
+    return expexted - actual ;
+
+}
 // NORMAL :-
 
 int main(){
@@ -530,8 +541,12 @@ int main(){
     // }
 
     // Finding the missing number in the array in the given range (Method 1) ->
-    int ans = missingNumber(arr) ;
-    cout << "Missing Number is " << ans ; 
+    // int ans = missingNumber(arr) ;
+    // cout << "Missing Number is " << ans ; 
+
+    // Finding the missing number in the array in the given range (Method 2) ->
+    // int ans = missingNumber2(arr) ;
+    // cout << "Missing number is " << ans ;
 
     // return 0 ;
         
