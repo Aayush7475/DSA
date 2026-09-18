@@ -329,6 +329,54 @@ int LengthOfLastWord(string s){
     return count ;
 }
 
+// Maximum Number of Non-OverLapping SubString ->
+int getEnd(string s, map<char, array<int, 2>>& mp, int start) {
+        int end = mp[s[start]][1];
+
+        for (int i = start; i <= end; i++) {
+            if (mp[s[i]][0] < start)
+                return -1;
+
+            end = max(end, mp[s[i]][1]);
+        }
+        return end;
+    }
+vector<string> maxNumOfSubstrings(string s) {
+    vector<string> result;
+    map<char, array<int, 2>> mp;
+
+    for (int i = 0; i < s.length(); i++) {
+        if (mp.find(s[i]) != mp.end()) {
+            mp[s[i]][1] = i;
+        }
+        else {
+            mp[s[i]] = {i, i};
+        }
+    }
+
+    int substringStart = -1;
+
+    for (int i = 0; i < s.length(); i++) {
+        int start = mp[s[i]][0];
+        if (start == i) {
+            int substringEnd = getEnd(s, mp, i);
+            if (substringEnd != -1) {
+                if (result.empty() || i > substringStart) {
+                    result.push_back(
+                        s.substr(i, substringEnd - i + 1)
+                    );
+                }
+                else {
+                    result.back() =
+                        s.substr(i, substringEnd - i + 1);
+                }
+                substringStart = substringEnd;
+            }
+        }
+    }
+    return result;
+}
+
 
 int main(){
     string s ;
@@ -409,6 +457,12 @@ int main(){
     // cout << "Needle in haystack : " << Occurence(haystack , needle);
 
     // cout << "Length of the Last Word is : " << LengthOfLastWord(s) ;
+
+    // vector<string> result = maxNumOfSubstrings(s) ;
+    // cout << "Substrings are : "  ;
+    //  for (string str : result) {
+    //     cout << str << " ";
+    // }
 
     return 0 ;
 }
