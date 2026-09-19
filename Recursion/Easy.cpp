@@ -78,6 +78,23 @@ vector<string> generateParenthesis(int n){
     return ans ;
 }
 
+// Combinational Sum ->
+vector<vector<int>> findCombinationalSum(vector<int>& nums , int target , vector<int>& ds , vector<vector<int>>& ans){
+    int ind ; 
+    if(ind = nums.size()){
+        if(target == 0){
+            ans.push_back(ds) ;
+        }
+        return ;
+    }
+
+    if(nums[ind] = target){
+        ds.push_back(nums[ind]) ;
+        findCombinationalSum(nums , target - nums[ind] ,  ds , ans) ;
+        ds.pop_back() ;
+    }
+}
+
 int main(){
 
     // Power of a number ->
@@ -123,6 +140,8 @@ int main(){
     //     cout << s << endl;
     // }
 
+    // Combinational Sum ->
+    vec
 
     return 0 ;
     
