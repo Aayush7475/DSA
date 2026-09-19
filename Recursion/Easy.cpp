@@ -148,25 +148,25 @@ int main(){
     // }
 
     // Combinational Sum ->
-    int n ; 
-    cout << "Enter the number of elements in the array : "  ;
-    cin >> n ;
-    vector<int> nums(n) ;
-    cout << "Enter the elements in the array : " << endl ;
-    for(int i = 0 ; i < n ; i++){
-        cin >> nums[i] ;
-    }
-    int target ; 
-    cout << "Enter the target value : " ;
-    cin >> target ;
-    vector<vector<int>> ans = combinationalSum(nums , target) ;
-    cout << "Combinations are : " << endl ;
-    for(int i = 0 ; i < ans.size() ; i++){
-        for(int j = 0 ; j < ans[i].size() ; j++){
-            cout << ans[i][j] << " " ;
-        }
-        cout << endl ;
-    }
+    // int n ; 
+    // cout << "Enter the number of elements in the array : "  ;
+    // cin >> n ;
+    // vector<int> nums(n) ;
+    // cout << "Enter the elements in the array : " << endl ;
+    // for(int i = 0 ; i < n ; i++){
+    //     cin >> nums[i] ;
+    // }
+    // int target ; 
+    // cout << "Enter the target value : " ;
+    // cin >> target ;
+    // vector<vector<int>> ans = combinationalSum(nums , target) ;
+    // cout << "Combinations are : " << endl ;
+    // for(int i = 0 ; i < ans.size() ; i++){
+    //     for(int j = 0 ; j < ans[i].size() ; j++){
+    //         cout << ans[i][j] << " " ;
+    //     }
+    //     cout << endl ;
+    // }
 
     return 0 ;
     
