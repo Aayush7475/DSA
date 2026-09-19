@@ -79,21 +79,28 @@ vector<string> generateParenthesis(int n){
 }
 
 // Combinational Sum ->
-vector<vector<int>> findCombinationalSum(vector<int>& nums , int target , vector<int>& ds , vector<vector<int>>& ans){
-    int ind ; 
-    if(ind = nums.size()){
+void findCombinationalSum(vector<int>& nums , int target , int ind , vector<int>& ds , vector<vector<int>>& ans){
+    if(ind == nums.size()){
         if(target == 0){
             ans.push_back(ds) ;
         }
         return ;
     }
 
-    if(nums[ind] = target){
+    if(nums[ind] <= target){
         ds.push_back(nums[ind]) ;
-        findCombinationalSum(nums , target - nums[ind] ,  ds , ans) ;
+        findCombinationalSum(nums , target - nums[ind] , ind , ds , ans) ;
         ds.pop_back() ;
     }
+    findCombinationalSum(nums , target, ind + 1 , ds , ans) ;
 }
+vector<vector<int>> combinationalSum(vector<int>& candidate , int target){
+    vector<vector<int>> ans ;
+    vector<int> ds ;
+    findCombinationalSum(candidate , target , 0 , ds , ans) ;
+    return ans ;
+}
+
 
 int main(){
 
@@ -141,7 +148,25 @@ int main(){
     // }
 
     // Combinational Sum ->
-    vec
+    int n ; 
+    cout << "Enter the number of elements in the array : "  ;
+    cin >> n ;
+    vector<int> nums(n) ;
+    cout << "Enter the elements in the array : " << endl ;
+    for(int i = 0 ; i < n ; i++){
+        cin >> nums[i] ;
+    }
+    int target ; 
+    cout << "Enter the target value : " ;
+    cin >> target ;
+    vector<vector<int>> ans = combinationalSum(nums , target) ;
+    cout << "Combinations are : " << endl ;
+    for(int i = 0 ; i < ans.size() ; i++){
+        for(int j = 0 ; j < ans[i].size() ; j++){
+            cout << ans[i][j] << " " ;
+        }
+        cout << endl ;
+    }
 
     return 0 ;
     
