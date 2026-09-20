@@ -78,6 +78,23 @@ vector<string> generateParenthesis(int n){
     return ans ;
 }
 
+// Power Set ->
+vector<string> getSubSequences(string s){
+    int n = s.size() ;
+    int total = 1 << n ;
+    vector<string> SubSequences ; 
+    for(int temp = 0 ; temp < total ; temp ++){
+        string subseq = "" ;
+        for(int i = 0 ; i < n ; i++){
+            if(temp & (1 << i)){
+                subseq += s[i] ;
+            }
+        }
+        SubSequences.push_back(subseq) ;
+    }
+    return SubSequences ;
+}
+
 // Combinational Sum ->
 void findCombinationalSum(vector<int>& nums , int target , int ind , vector<int>& ds , vector<vector<int>>& ans){
     if(ind == nums.size()){
@@ -146,6 +163,16 @@ int main(){
     // for (string s : ans) {
     //     cout << s << endl;
     // }
+
+    // Power Set ->
+    // string s ;
+    // cout << "Enter the string : " ;
+    // getline(cin , s) ;
+    // vector<string> SubSequence = getSubSequences(s) ;
+    // for(auto &subseq : SubSequence){
+    //     cout << subseq << endl ;
+    // }
+    // return 0 ;
 
     // Combinational Sum ->
     // int n ; 
