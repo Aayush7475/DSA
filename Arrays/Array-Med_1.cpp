@@ -294,7 +294,30 @@ int minSumOfLengths(vector<int>& arr , int target){
     return ans ;
 }
 
+// Find X value of the Array I ->
+vector<long long> resultArray(vector<int>& nums , int k){
+    vector<long long> result(k , 0) ;
+    vector<long long> dp(k , 0) ;
 
+    for(int num : nums){
+        vector<long long> next(k , 0) ;
+        int val = num % k ;
+        next[val] ++ ;
+
+        for(int r = 0 ; r < k ; r++){
+            if(dp[r] == 0) continue ;
+
+            int newRemainder = (1LL * r * val) % k ;
+            next[newRemainder] += dp[r] ;
+        }
+        
+        for(int r = 0 ; r < k ; r++){
+            result[r] += next[r] ;
+        }
+        dp = next ;
+    }
+    return result ;
+}
 
 int main(){
     int n ;
@@ -380,6 +403,14 @@ int main(){
     // cout << "Enter the target element : " ;
     // cin >> target ;
     // cout << "Minimum sum of lengths of SubArrays is " << minSumOfLengths(arr , target);
+
+    // int k ;
+    // cout << "Enter the value of K : " ;
+    // cin >> k ;
+    // vector<long long> solution = resultArray(arr , k) ;
+    // for(int i = 0 ; i < solution.size() ; i++){
+    //     cout << solution[i] << " " ;
+    // }
 
     return 0 ;
 }
