@@ -449,7 +449,7 @@ int main(){
     // int x ;
     // cout << "Enter the target element : " ;
     // cin >> x ;
-    // cout << "Minimum Number of operations are : " ;
+    // cout << " Minimum Number of operations to reduce to zero are : " ;
     // cout << minOperations(arr , x) ;
     
 
