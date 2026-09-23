@@ -295,11 +295,11 @@ int minSumOfLengths(vector<int>& arr , int target){
 }
 
 // Find X value of the Array I ->
-vector<long long> resultArray(vector<int>& nums , int k){
+vector<long long> resultArray(vector<int>& arr , int k){
     vector<long long> result(k , 0) ;
     vector<long long> dp(k , 0) ;
 
-    for(int num : nums){
+    for(int num : arr){
         vector<long long> next(k , 0) ;
         int val = num % k ;
         next[val] ++ ;
@@ -318,6 +318,40 @@ vector<long long> resultArray(vector<int>& nums , int k){
     }
     return result ;
 }
+
+// Minimum Operations Reduced to Zero ->
+int minOperations(vector<int>& arr, int x) {
+        int n = arr.size() ;
+        int total = 0 ;
+        for(int x : arr){
+            total += x ;
+        }
+
+        int target = total - x ;
+        if(target < 0) return -1 ;
+        if(target == 0) return n ;
+
+        int left = 0 ;
+        int sum = 0 ;
+        int maxLen = -1 ;
+        for(int right = 0 ; right < n ; right ++){
+            sum += arr[right] ;
+
+            while(sum > target){
+                sum -= arr[left] ;
+                left ++ ;
+            }
+
+            if(sum == target){
+                maxLen = max(maxLen , right-left+1) ;
+            }
+        }
+        if(maxLen == -1){
+            return -1 ;
+        }
+        return n-maxLen ;
+}
+
 
 int main(){
     int n ;
@@ -411,6 +445,13 @@ int main(){
     // for(int i = 0 ; i < solution.size() ; i++){
     //     cout << solution[i] << " " ;
     // }
+
+    // int x ;
+    // cout << "Enter the target element : " ;
+    // cin >> x ;
+    // cout << "Minimum Number of operations are : " ;
+    // cout << minOperations(arr , x) ;
+    
 
     return 0 ;
 }
