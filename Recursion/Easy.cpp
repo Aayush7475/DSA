@@ -242,7 +242,7 @@ int main(){
     //     cout << endl ;
     // }
 
-    // All combinations of Subsets ->
+    // All combinations of Subsets OR Power Set ->
     // int n ;
     // cout << "Enter the number of elements : " ;
     // cin >> n ;
