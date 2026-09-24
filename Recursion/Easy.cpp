@@ -140,6 +140,30 @@ vector<vector<int>> combinationalSum2(vector<int>& candidates , int target){
     return ans ;
 }
 
+// Return All SubSets / Power Set ->
+void func(int ind , vector<int>& nums , vector<int>& current , vector<vector<int>>& subSets){
+    int n = nums.size() ;
+
+    if(ind == n){
+        subSets.push_back(current) ;
+        return ;
+    }
+
+    current.push_back(nums[ind]);                   // taking the nxt element in the recursion call
+    func(ind+1 , nums , current , subSets) ;
+
+    current.pop_back() ;                            // Back tracking
+
+    func(ind+1 , nums , current , subSets) ;        // Not taking the nxt element in the recursion call 
+}
+vector<vector<int>> subsets(vector<int>& nums){
+    vector<vector<int>> subSets ;
+    vector<int> current ;
+
+    func(0 , nums , current , subSets) ;
+
+    return subSets ;
+}
 
 int main(){
 
@@ -217,6 +241,26 @@ int main(){
     //     }
     //     cout << endl ;
     // }
+
+    // All combinations of Subsets ->
+    // int n ;
+    // cout << "Enter the number of elements : " ;
+    // cin >> n ;
+    // vector<int> nums(n) ;
+    // cout << "Enter the elements in the array : " << endl ;
+    // for(int i = 0 ; i < n ; i++){
+    //     cin >> nums[i] ;
+    // }
+    // vector<vector<int>> ans = subsets(nums) ;
+    // cout << "All subsets are:" << endl;
+    // for (auto &subset : ans) {
+    //     cout << "[ ";
+    //     for (auto &element : subset) {
+    //         cout << element << " ";
+    //     }
+    //     cout << "]" << endl;
+    // }
+
 
     return 0 ;
     
