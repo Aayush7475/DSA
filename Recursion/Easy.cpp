@@ -140,7 +140,7 @@ vector<vector<int>> combinationalSum2(vector<int>& candidates , int target){
     return ans ;
 }
 
-// Return All SubSets / Power Set ->
+// Return All SubSets / Power Set (Containg unique Elements) ->
 void func(int ind , vector<int>& nums , vector<int>& current , vector<vector<int>>& subSets){
     int n = nums.size() ;
 
@@ -164,6 +164,25 @@ vector<vector<int>> subsets(vector<int>& nums){
 
     return subSets ;
 }
+
+// Return All SubSets / Power Set (Containg duplicate Elements) ->
+void fun(int ind , vector<int>& nums , vector<int>& ds , vector<vector<int>>& ans){
+    ans.push_back(ds) ;
+    for(int i = ind ; i < nums.size() ; i++){
+        if(i != ind && nums[i] == nums[i-1]) continue ; 
+            ds.push_back(nums[i]) ;
+            fun(i+1 , nums , ds , ans) ;
+            ds.pop_back() ;
+    }
+}
+vector<vector<int>> subsets2(vector<int>& nums){
+    vector<vector<int>> ans ;
+    vector<int> ds ;
+    sort(nums.begin() , nums.end()) ;
+    fun(0 , nums , ds , ans) ;
+    return ans ;
+}
+
 
 int main(){
 
@@ -242,24 +261,24 @@ int main(){
     //     cout << endl ;
     // }
 
-    // All combinations of Subsets OR Power Set ->
-    // int n ;
-    // cout << "Enter the number of elements : " ;
-    // cin >> n ;
-    // vector<int> nums(n) ;
-    // cout << "Enter the elements in the array : " << endl ;
-    // for(int i = 0 ; i < n ; i++){
-    //     cin >> nums[i] ;
-    // }
-    // vector<vector<int>> ans = subsets(nums) ;
-    // cout << "All subsets are:" << endl;
-    // for (auto &subset : ans) {
-    //     cout << "[ ";
-    //     for (auto &element : subset) {
-    //         cout << element << " ";
-    //     }
-    //     cout << "]" << endl;
-    // }
+    // All combinations of Subsets OR Power Set (I and II) ->
+    int n ;
+    cout << "Enter the number of elements : " ;
+    cin >> n ;
+    vector<int> nums(n) ;
+    cout << "Enter the elements in the array : " << endl ;
+    for(int i = 0 ; i < n ; i++){
+        cin >> nums[i] ;
+    }
+    vector<vector<int>> ans = subsets(nums) ;
+    cout << "All subsets are:" << endl;
+    for (auto &subset : ans) {
+        cout << "[ ";
+        for (auto &element : subset) {
+            cout << element << " ";
+        }
+        cout << "]" << endl;
+    }
 
 
     return 0 ;
