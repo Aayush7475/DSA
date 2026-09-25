@@ -262,23 +262,23 @@ int main(){
     // }
 
     // All combinations of Subsets OR Power Set (I and II) ->
-    int n ;
-    cout << "Enter the number of elements : " ;
-    cin >> n ;
-    vector<int> nums(n) ;
-    cout << "Enter the elements in the array : " << endl ;
-    for(int i = 0 ; i < n ; i++){
-        cin >> nums[i] ;
-    }
-    vector<vector<int>> ans = subsets(nums) ;
-    cout << "All subsets are:" << endl;
-    for (auto &subset : ans) {
-        cout << "[ ";
-        for (auto &element : subset) {
-            cout << element << " ";
-        }
-        cout << "]" << endl;
-    }
+    // int n ;
+    // cout << "Enter the number of elements : " ;
+    // cin >> n ;
+    // vector<int> nums(n) ;
+    // cout << "Enter the elements in the array : " << endl ;
+    // for(int i = 0 ; i < n ; i++){
+    //     cin >> nums[i] ;
+    // }
+    // vector<vector<int>> ans = subsets(nums) ;
+    // cout << "All subsets are:" << endl;
+    // for (auto &subset : ans) {
+    //     cout << "[ ";
+    //     for (auto &element : subset) {
+    //         cout << element << " ";
+    //     }
+    //     cout << "]" << endl;
+    // }
 
 
     return 0 ;
