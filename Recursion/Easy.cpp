@@ -140,6 +140,30 @@ vector<vector<int>> combinationalSum2(vector<int>& candidates , int target){
     return ans ;
 }
 
+// Combinational Sum 3 ->
+void solve(int start , int k , int n , vector<int>& current , vector<vector<int>>& ans ){
+    if(current.size() == k){
+        if(n == 0){
+            ans.push_back(current) ;
+        }
+        return ;
+    }
+    for(int i = start ; i <= 9 ; i++){
+        if(i > n) break ;
+
+        current.push_back(i) ;
+        solve(i+1 , k , n-i , current , ans) ;
+        current.pop_back() ;
+    }
+}
+vector<vector<int>> combinationalSum3(int k , int n){
+    vector<vector<int>> ans ;
+    vector<int> current ;
+
+    solve(1 , k , n , current , ans) ;
+    return ans ;
+}
+
 // Return All SubSets / Power Set (Containg unique Elements) ->
 void func(int ind , vector<int>& nums , vector<int>& current , vector<vector<int>>& subSets){
     int n = nums.size() ;
@@ -257,6 +281,21 @@ int main(){
     // for(int i = 0 ; i < ans.size() ; i++){
     //     for(int j = 0 ; j < ans[i].size() ; j++){
     //         cout << ans[i][j] << " " ;
+    //     }
+    //     cout << endl ;
+    // }
+
+    // Combinational Sum 3 ->
+    // int k , n ;
+    // cout << "Enter the number of elements to be used : " ;
+    // cin >> k ;
+    // cout << "Enter the sum of elements : " ;
+    // cin >> n ;
+    // vector<vector<int>> result = combinationalSum3(k ,n) ;
+    // cout << "Combinations are : " << endl ;
+    // for(int i = 0 ; i < result.size() ; i++){
+    //     for(int j = 0 ; j < result[i].size() ; j++){
+    //         cout << result[i][j] << " " ;
     //     }
     //     cout << endl ;
     // }
