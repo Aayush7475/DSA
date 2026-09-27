@@ -207,6 +207,42 @@ vector<vector<int>> subsets2(vector<int>& nums){
     return ans ;
 }
 
+// Letter Combination of a phone ->
+void combo(int index , string& digits , string current , vector<string>& ans , vector<string>& mapping){
+    if(index == digits.length()){
+        ans.push_back(current) ;
+        return ;
+    }
+    string letters = mapping[digits[index] - '0'] ;
+
+    for(char ch : letters){
+        current.push_back(ch) ;
+        combo(index + 1 , digits , current , ans , mapping) ;
+        current.pop_back() ;
+    }
+}
+vector<string> lettercombination(string digits){
+    vector<string> mapping{
+        "" ,        // 0
+        "" ,        // 1
+        "abc" ,     // 2
+        "def" ,     // 3
+        "ghi" ,     // 4
+        "jkl" ,     // 5
+        "mno" ,     // 6
+        "pqrs" ,    // 7
+        "tuv" ,     // 8
+        "wxyz"      // 9
+        
+    };
+
+    vector<string> ans ;
+    string current ;
+
+    combo(0 , digits , current , ans , mapping) ;
+
+    return ans ;
+}
 
 int main(){
 
@@ -319,7 +355,16 @@ int main(){
     //     cout << "]" << endl;
     // }
 
-
+    // Letter Combination of a phone ->
+    // string digits ;
+    // cout << "Enter the number : " ;
+    // getline(cin , digits) ;
+    // cout << "All possible combinations are : " << endl ;
+    // vector<string> result = lettercombination(digits) ;
+    // for(string digits : result){
+    //     cout <<  digits << endl ;
+    // }
+    
     return 0 ;
     
 }
