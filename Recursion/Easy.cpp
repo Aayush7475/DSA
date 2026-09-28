@@ -244,6 +244,40 @@ vector<string> lettercombination(string digits){
     return ans ;
 }
 
+// Word Search ->
+bool dfs(vector<vector<char>> board , string& word , int row , int column , int index){
+    if(index == word.length()) return true ;
+
+    if(row < 0 || row >= board.size() || column < 0 || column >= board[0].size()) return false ;
+
+    if(board[row][column] != word[index]) return false ;
+
+    char temp = board[row][column] ;
+    board[row][column] = '#' ;
+
+    bool found = dfs(board , word , row-1 , column , index + 1) ||
+                 dfs(board , word , row+1 , column , index + 1) ||
+                 dfs(board , word , row , column-1 , index + 1) ||
+                 dfs(board , word , row , column+1 , index + 1) ;
+
+                 board[row][column] = temp ;
+                 return found ;
+}
+bool exist(vector<vector<char>>& board , string word){
+    int m = board.size() ;
+    int n = board[0].size() ;
+
+    for(int i = 0 ; i < m ; i++){
+        for(int j = 0 ; j < n ; j++){
+            if(dfs(board , word , i , j , 0)){
+                return true ;
+            }
+        }
+    }
+    return false ;
+}
+
+
 int main(){
 
     // Power of a number ->
@@ -365,6 +399,20 @@ int main(){
     //     cout <<  digits << endl ;
     // }
     
-    return 0 ;
+    // Word Search ->
+    // vector<vector<char>> board = {
+    //     {'A', 'B', 'C', 'E'},
+    //     {'S', 'F', 'C', 'S'},
+    //     {'A', 'D', 'E', 'E'}
+    // };
+    // string word = "ABCCED";
+    // if(exist(board, word)) {
+    //     cout << "Word exists in the board." << endl;
+    // }
+    // else {
+    //     cout << "Word does not exist in the board." << endl;
+    // }
+
+    // return 0 ;
     
 }
