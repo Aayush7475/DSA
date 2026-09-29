@@ -277,6 +277,35 @@ bool exist(vector<vector<char>>& board , string word){
     return false ;
 }
 
+// Palindrome Partioning ->
+bool isPalindrome(int i , int j , string& s){
+    while(i < j){
+        if(s[i] != s[j]) return false ;
+        i++ ;
+        j-- ;
+    }
+    return true ;
+}
+void f(int i , string& s , vector<string>& path , vector<vector<string>>& ans){
+    if(i == s.size()){
+        ans.push_back(path) ;
+        return ;
+    }
+
+    for(int j = i ; j < s.size() ; j++){
+        if(isPalindrome(i , j , s)){
+            path.push_back(s.substr(i ,  j-i+1)) ;
+            f(j+1 , s , path , ans) ;
+            path.pop_back() ;
+        }
+    }
+}
+vector<vector<string>> partition(string s){
+    vector<vector<string>> ans ;
+    vector<string> path ;
+    f(0 , s , path , ans) ;
+    return ans ;
+}
 
 int main(){
 
@@ -413,6 +442,19 @@ int main(){
     //     cout << "Word does not exist in the board." << endl;
     // }
 
+    // Palindrome Partioning ->
+    string s ;
+    cout << "Enter the string : " ;
+    getline(cin , s) ;
+    vector<vector<string>> result = partition(s) ;
+    cout << "All Partition Palindromes are:" << endl;
+    for (auto &partition : result) {
+        cout << "[ ";
+        for (auto &element : partition) {
+            cout << element << " ";
+        }
+        cout << "]" << endl;
+    }
     return 0 ;
     
 }
