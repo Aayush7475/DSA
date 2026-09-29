@@ -413,6 +413,6 @@ int main(){
     //     cout << "Word does not exist in the board." << endl;
     // }
 
-    // return 0 ;
+    return 0 ;
     
 }
