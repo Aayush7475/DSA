@@ -443,18 +443,18 @@ int main(){
     // }
 
     // Palindrome Partioning ->
-    string s ;
-    cout << "Enter the string : " ;
-    getline(cin , s) ;
-    vector<vector<string>> result = partition(s) ;
-    cout << "All Partition Palindromes are:" << endl;
-    for (auto &partition : result) {
-        cout << "[ ";
-        for (auto &element : partition) {
-            cout << element << " ";
-        }
-        cout << "]" << endl;
-    }
+    // string s ;
+    // cout << "Enter the string : " ;
+    // getline(cin , s) ;
+    // vector<vector<string>> result = partition(s) ;
+    // cout << "All Partition Palindromes are:" << endl;
+    // for (auto &partition : result) {
+    //     cout << "[ ";
+    //     for (auto &element : partition) {
+    //         cout << element << " ";
+    //     }
+    //     cout << "]" << endl;
+    // }
 
     return 0 ;
     
