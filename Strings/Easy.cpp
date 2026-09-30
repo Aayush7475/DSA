@@ -377,6 +377,34 @@ vector<string> maxNumOfSubstrings(string s) {
     return result;
 }
 
+// Maximum nesting depth of two valid parenthesis substrings ->
+vector<int> depth(string s){
+    int n = s.size() ;
+    int depth = 0 ;
+    vector<int> ans ;
+    for(char ch : s){
+        if(ch == '('){
+            depth ++ ;
+            if(depth % 2 == 1){
+                ans.push_back(0) ;
+            }
+            else{
+                ans.push_back(1) ;
+            }
+        }
+        else{
+            if(depth % 2 == 1){
+                ans.push_back(0) ;
+            }
+            else{
+                ans.push_back(1) ;
+            }
+            depth -- ;
+        }
+    }
+    return ans ;
+}
+
 
 int main(){
     string s ;
@@ -463,6 +491,12 @@ int main(){
     //  for (string str : result) {
     //     cout << str << " ";
     // }
+
+    vector<int> result = depth(s) ;
+    cout << "Maximum depth that can be minimized is : " ;
+    for(int i = 0 ; i < s.size() ; i++){
+        cout << result[i];
+    }
 
     return 0 ;
 }
