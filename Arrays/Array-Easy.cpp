@@ -421,7 +421,7 @@ vector<string> summaryRanges(vector<int>& arr){
     return ans ;
 }
 
-// Intersection of 2 Arrays ->
+// Intersection of 2 Arrays I (Return only unique elements)->
 vector<int> intersection(vector<int>& arr1, vector<int>& arr2) {
         unordered_set<int> s ;
         unordered_set<int> result ;
