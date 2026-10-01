@@ -434,7 +434,26 @@ vector<int> intersection(vector<int>& arr1, vector<int>& arr2) {
         }
         return vector<int>(result.begin() , result.end()) ;
     }
-    
+   
+// Intersection of 2 Arrays II (Return all intersection elements)->
+vector<int> intersect(vector<int>& arr1 , vector<int>& arr2){
+    unordered_multiset<int> s ;
+    vector<int> result ;
+    for(int x : arr1){
+        s.insert(x) ;
+    }
+    for(int x : arr2){
+        auto it = s.find(x) ;
+        if(it != s.end()){
+            result.push_back(x) ;
+            s.erase(it) ;
+        }
+    }
+    return result ;
+}
+
+
+
 // Finding the missing number in the array in the given range (Method 1) ->
 int missingNumber(vector<int>& arr){
     int n = arr.size() ;
@@ -533,7 +552,7 @@ int main(){
     // S_1(n , target , arr);
     // S_2(n , target , arr);
 
-    //  Adding 1 to the largest number formed by the array 
+    // Adding 1 to the largest number formed by the array 
     // vector<int> ans = plusOne(arr);
     // cout << "After adding 1: ";
     // for(int i = 0; i < ans.size(); i++) {
