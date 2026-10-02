@@ -452,8 +452,6 @@ vector<int> intersect(vector<int>& arr1 , vector<int>& arr2){
     return result ;
 }
 
-
-
 // Finding the missing number in the array in the given range (Method 1) ->
 int missingNumber(vector<int>& arr){
     int n = arr.size() ;
@@ -482,6 +480,9 @@ int missingNumber2(vector<int>& arr){
     return expexted - actual ;
 
 }
+
+// 
+
 // NORMAL :-
 
 int main(){
