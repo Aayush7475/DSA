@@ -344,6 +344,7 @@ void sudoku(vector<vector<char>>& board){
 }
 
 
+
 int main(){
 
     // Power of a number ->
@@ -494,24 +495,24 @@ int main(){
     // }
 
     // Sudoku Solving ->
-    vector<vector<char>> board(9, vector<char>(9));
-    cout << "Enter Sudoku (use . for empty cells) : \n";
-    // Taking input
-    for (int i = 0 ; i < 9 ; i++) {
-        for (int j = 0 ; j < 9 ; j++) {
-            cin >> board[i][j] ;
-        }
-    }
-    // Solve Sudoku
-    sudoku(board) ;
-    // Print solved Sudoku
-    cout << "\nSolved Sudoku :\n" ;
-    for (int i = 0 ; i < 9 ; i++) {
-        for (int j = 0 ; j < 9 ; j++) {
-            cout << board[i][j] << " ";
-        }
-        cout << endl;
-    }
+    // vector<vector<char>> board(9, vector<char>(9));
+    // cout << "Enter Sudoku (use . for empty cells) : \n";
+    // // Taking input
+    // for (int i = 0 ; i < 9 ; i++) {
+    //     for (int j = 0 ; j < 9 ; j++) {
+    //         cin >> board[i][j] ;
+    //     }
+    // }
+    // // Solve Sudoku
+    // sudoku(board) ;
+    // // Print solved Sudoku
+    // cout << "\nSolved Sudoku :\n" ;
+    // for (int i = 0 ; i < 9 ; i++) {
+    //     for (int j = 0 ; j < 9 ; j++) {
+    //         cout << board[i][j] << " ";
+    //     }
+    //     cout << endl;
+    // }
 
     
 
