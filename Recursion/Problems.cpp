@@ -395,6 +395,45 @@ vector<vector<string>> solveQueens(int n){
 
 }
 
+// N Queens placing in ChessBoard(Method 2) ->
+void solving(int col , vector<string>& board , vector<vector<string>>& ans , vector<bool>& row , vector<bool>& upperDiagonal , vector<bool>& lowerDiagonal , int n){
+    if(col == n){
+        ans.push_back(board) ;
+        return ;
+    }
+    for(int r = 0 ; r < n ; r++){
+        if(row[r] || lowerDiagonal[r+col] || upperDiagonal[n-1+col-r]) continue ;
+        board[r][col] = 'Q' ;
+
+        row[r] = true ;
+        lowerDiagonal[r+col] = true ;
+        upperDiagonal[n-1+col-r] = true ;
+
+        solving(col+1 , board , ans , row , upperDiagonal , lowerDiagonal , n) ;
+        board[r][col] = '.' ;
+
+        row[r] = false ;
+        lowerDiagonal[r+col] = false ;
+        upperDiagonal[n-1+col-r] = false ;
+    }
+}
+vector<vector<string>> solvingQueens(int n){
+    vector<vector<string>> ans ;
+    vector<string> board(n) ;
+    string s(n , '.') ;
+
+    vector<bool> row(n , false) ;
+    vector<bool> lowerDiagonal(2*n-1 , false) ;
+    vector<bool> upperDiagonal(2*n-1 , false) ;
+
+    for(int i = 0 ; i < n ; i++){
+        board[i] = s ;
+    }
+
+    solving(0 , board , ans , row , upperDiagonal , lowerDiagonal , n) ;
+    return ans ;
+
+}
 
 
 int main(){
@@ -567,17 +606,18 @@ int main(){
     // }
 
     // N Queens placing in ChessBoard (M1 and M2) ->
-    int n ;
-    cout << "Enter the number of queens in the N x N ChessBoard : " ;
-    cin >> n ;
-    vector<vector<string>> result = solveQueens(n) ;
-    cout << "All possible Sl+olutions are : \n " ;
-    for(auto &board : result){
-        for(auto &row : board){
-            cout << row << endl ;
-        }
-        cout << endl ;
-    }
+    // int n ;
+    // cout << "Enter the number of queens in the N x N ChessBoard : " ;
+    // cin >> n ;
+    // vector<vector<string>> result = solveQueens(n) ;
+    // vector<vector<string>> result = solvingQueens(n) ;
+    // cout << "All possible Sl+olutions are : \n " ;
+    // for(auto &board : result){
+    //     for(auto &row : board){
+    //         cout << row << endl ;
+    //     }
+    //     cout << endl ;
+    // }
 
     return 0 ;
     
