@@ -343,7 +343,7 @@ void sudoku(vector<vector<char>>& board){
     solve(board) ;
 }
 
-// N Queens placing in ChessBoard(Method 1) ->
+// N Queens placing in ChessBoard (Method 1) ->
 bool isSafe(int row , int col , vector<string> board , int n){
     int duprow = row ;
     int dupcol = col ;
@@ -395,7 +395,7 @@ vector<vector<string>> solveQueens(int n){
 
 }
 
-// N Queens placing in ChessBoard(Method 2) ->
+// N Queens placing in ChessBoard (Method 2) ->
 void solving(int col , vector<string>& board , vector<vector<string>>& ans , vector<bool>& row , vector<bool>& upperDiagonal , vector<bool>& lowerDiagonal , int n){
     if(col == n){
         ans.push_back(board) ;
@@ -435,7 +435,7 @@ vector<vector<string>> solvingQueens(int n){
 
 }
 
-// Rat in Maze ->
+// Rat in Maze (Method 1) ->
 void solved(int i , int j , vector<vector<int>> &a , int n , vector<string>& ans , string move , vector<vector<int>> &vis){
     if(i == n-1 && j == n-1){
         ans.push_back(move) ;
@@ -472,6 +472,34 @@ vector<string> pathSearch(vector<vector<int>> &m , int n){
         vector<vector<int>> vis(n , vector<int>(n,0)) ;
         vector<string> ans ;
         if(m[0][0] == 1) solved(0 , 0 , m , n , ans , "" ,  vis) ;
+        return ans ;
+}
+
+// Rat in Maze (Method 2) ->
+void solved2(int i , int j , vector<vector<int>> &a , int n , vector<string>& ans , string move , vector<vector<int>> &vis , int di[] , int dj[]){
+    if(i == n-1 && j == n-1){
+        ans.push_back(move) ;
+        return ;
+    }
+
+    string dir = "DLRU" ;
+    for(int ind = 0 ; ind < 4 ; ind++){
+        int nexti = i + di[ind] ;
+        int nextj = j + dj[ind] ;
+        if(nexti >= 0 && nextj >= 0 && nexti < n && nextj < n && !vis[nexti][nextj] && a[nexti][nextj] == 1){
+            vis[i][j] = 1 ;
+            solved2(nexti , nextj , a , n , ans , move+dir[ind] , vis , di ,dj) ;
+            vis[i][j] = 0 ;
+        }
+
+    }
+}
+vector<string> pathSearch2(vector<vector<int>> &m , int n){
+        vector<vector<int>> vis(n , vector<int>(n,0)) ;
+        vector<string> ans ;
+        int di[] = {1 , 0 , 0 , -1} ;
+        int dj[] = {0 , -1 , 1 , 0} ;
+        if(m[0][0] == 1) solved2(0 , 0 , m , n , ans , "" ,  vis , di , dj) ;
         return ans ;
 }
 
@@ -659,7 +687,7 @@ int main(){
     //     cout << endl ;
     // }
 
-    // Rat in Maze ->
+    // Rat in Maze (M1 and M2) ->
     // int n ; 
     // cout << "Enter the no. of rowws / columns in the Maze : " ;
     // cin >> n ;
