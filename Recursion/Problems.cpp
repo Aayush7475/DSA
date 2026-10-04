@@ -435,6 +435,46 @@ vector<vector<string>> solvingQueens(int n){
 
 }
 
+// Rat in Maze ->
+void solved(int i , int j , vector<vector<int>> &a , int n , vector<string>& ans , string move , vector<vector<int>> &vis){
+    if(i == n-1 && j == n-1){
+        ans.push_back(move) ;
+        return ;
+    }
+    // downwards 
+    if(i+1 < n &&  !vis[i+1][j] && a[i+1][j] == 1){
+        vis[i][j] = 1 ;
+        solved(i+1 , j , a , n , ans , move + 'D' , vis) ;
+        vis[i][j] = 0 ;
+    }
+
+    // left
+    if(j-1  >= 0 &&  !vis[i][j-1] && a[i][j-1] == 1){
+        vis[i][j] = 1 ;
+        solved(i , j-1 , a , n , ans , move + 'L' , vis) ;
+        vis[i][j] = 0 ;
+    }
+
+    // right  
+    if(j+1 < n &&  !vis[i][j+1] && a[i][j+1] == 1){
+        vis[i][j] = 1 ;
+        solved(i , j+1 , a , n , ans , move + 'R' , vis) ;
+        vis[i][j] = 0 ;
+    }
+    // upwards 
+    if(i-1 >= 0 &&  !vis[i-1][j] && a[i-1][j] == 1){
+        vis[i][j] = 1 ;
+        solved(i-1 , j , a , n , ans , move + 'U' , vis) ;
+        vis[i][j] = 0 ;
+    }
+}
+vector<string> pathSearch(vector<vector<int>> &m , int n){
+        vector<vector<int>> vis(n , vector<int>(n,0)) ;
+        vector<string> ans ;
+        if(m[0][0] == 1) solved(0 , 0 , m , n , ans , "" ,  vis) ;
+        return ans ;
+}
+
 
 int main(){
 
@@ -471,7 +511,7 @@ int main(){
     //     cout << "Doesn't contains duplicate element " ;
     // }
 
-    //  Generate all combinations of parenthesis ->
+    // Generate all combinations of parenthesis ->
     // int n ;
     // cout << "Enter the number of parenthesis : " ;
     // cin >> n ;
@@ -618,6 +658,29 @@ int main(){
     //     }
     //     cout << endl ;
     // }
+
+    // Rat in Maze ->
+    // int n ; 
+    // cout << "Enter the no. of rowws / columns in the Maze : " ;
+    // cin >> n ;
+    // vector<vector<int>> maze(n , vector<int>(n)) ;
+    // cout << "Enter the maze (0 = blocked &  1 = open) \n "; 
+    // for(int i = 0 ; i < n ; i++){
+    //     for(int j = 0 ; j < n ; j++){
+    //         cin >> maze[i][j] ;
+    //     }
+    // } 
+    // vector<string> ans = pathSearch(maze , n) ;
+    // if(ans.empty()){
+    //     cout << "No path exists" << endl ;
+    // }
+    // else{
+    //     cout << "All possible paths are " << endl  ;
+    // }
+    // for(string path : ans){
+    //     cout << path << endl ;
+    // }
+    
 
     return 0 ;
     
