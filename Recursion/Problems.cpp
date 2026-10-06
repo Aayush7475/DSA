@@ -505,6 +505,41 @@ vector<string> pathSearch2(vector<vector<int>> &m , int n){
 
 // M Color Problem ->
 
+// Expression Add Operator ->
+void reduce(int index , long long value , long long last , string path , string& nums , long long target , vector<string>& ans){
+    if(index == nums.size()){
+        if(value == target){
+            ans.push_back(path) ;
+            return ;
+        }
+    }
+
+    long long current = 0 ;
+
+    for(int i = index ; i < nums.size() ; i++){
+        if(i > index && nums[index] == '0'){
+            break ;
+        }
+
+        current = current * 10 + (nums[i] - '0') ;
+
+        string currentStr = nums.substr(index , i-index+1) ;
+
+        if(index == 0){
+            reduce(i+1 , current , current , currentStr , nums , target , ans) ;
+        }
+        else{
+            reduce(i+1 , value + current , current , path + "+" + currentStr , nums , target , ans) ;
+            reduce(i+1 , value - current , -current , path + "-" + currentStr , nums , target , ans ) ;
+            reduce(i+1 , value - last + (last * current) , current , path + "*" + currentStr , nums , target , ans) ;
+        }
+   }
+}
+vector<string> addOperators(string nums , long long target){
+    vector<string> ans ;
+    reduce(0 , 0 , 0 , "" , nums , target , ans) ;
+    return ans ;
+}
 
 int main(){
 
@@ -709,6 +744,18 @@ int main(){
     // }
     // for(string path : ans){
     //     cout << path << endl ;
+    // }
+    
+    // Expression Add Operator ->
+    // string nums ;
+    // cout << "Enter the expression to be evaluated : " ;
+    // getline(cin , nums) ;
+    // long long target ;
+    // cout << "Enter the target u Waana achieve : " ;
+    // cin >> target ;
+    // vector<string> result = addOperators(nums , target) ;
+    // for(int i  = 0 ; i < result.size() ; i++){
+    //     cout << result[i] << endl ;
     // }
     
 
