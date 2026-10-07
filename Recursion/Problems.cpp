@@ -783,7 +783,7 @@ int main(){
     bool graph[101][101] ;
     cout << "Enter adjacency matrix : \n" ;
     for(int i = 0 ; i < N ; i++){
-        for(int j = 0 ; i < N ; j++){
+        for(int j = 0 ; j < N ; j++){
             cin >> graph[i][j] ;
         }
     }
