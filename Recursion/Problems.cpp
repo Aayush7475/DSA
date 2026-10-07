@@ -504,6 +504,33 @@ vector<string> pathSearch2(vector<vector<int>> &m , int n){
 }
 
 // M Color Problem ->
+bool isSafe(int node , int color[] , bool graph[101][101] , int n , int col){
+    for(int k = 0 ; k < n ; k++){
+        if(k != node && graph[k][node] == 1 && color[k] == col){
+            return false ;
+        }
+    }
+    return true ;
+}
+bool solve(int node , int color[] , bool graph[101][101] , int m , int N){
+    if(node == N){
+        return true ;
+    }
+
+    for(int i = 1 ; i <= m ; i++){
+        if(isSafe(node , color , graph , N , i)){
+            color[node] = i ;
+            if(solve(node + 1 , color , graph , m , N)) return true ;
+            color[node] = 0 ;
+        }
+    }
+    return false ;
+}
+bool graphColoring(bool graph[101][101] , int m , int N){
+    int color[N] = {0} ;
+    if(solve(0 , color , graph , m , N)) return true ;
+    return false ;
+}
 
 // Expression Add Operator ->
 void reduce(int index , long long value , long long last , string path , string& nums , long long target , vector<string>& ans){
@@ -746,6 +773,27 @@ int main(){
     //     cout << path << endl ;
     // }
     
+    // M Color Problem ->
+    int N ; 
+    cout << "Enter the number of vertices : " ;
+    cin >> N ;
+    int m ;
+    cout << "Enter the number of colors : " ;
+    cin >> m ;
+    bool graph[101][101] ;
+    cout << "Enter adjacency matrix : \n" ;
+    for(int i = 0 ; i < N ; i++){
+        for(int j = 0 ; i < N ; j++){
+            cin >> graph[i][j] ;
+        }
+    }
+    if (graphColoring(graph, m, N)) {
+        cout << "Graph can be colored using " << m << " colors \n";
+    }
+    else {
+        cout << "Graph cannot be colored using " << m << " colors \n";
+    }
+
     // Expression Add Operator ->
     // string nums ;
     // cout << "Enter the expression to be evaluated : " ;
