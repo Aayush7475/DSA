@@ -774,25 +774,25 @@ int main(){
     // }
     
     // M Color Problem ->
-    int N ; 
-    cout << "Enter the number of vertices : " ;
-    cin >> N ;
-    int m ;
-    cout << "Enter the number of colors : " ;
-    cin >> m ;
-    bool graph[101][101] ;
-    cout << "Enter adjacency matrix : \n" ;
-    for(int i = 0 ; i < N ; i++){
-        for(int j = 0 ; j < N ; j++){
-            cin >> graph[i][j] ;
-        }
-    }
-    if (graphColoring(graph, m, N)) {
-        cout << "Graph can be colored using " << m << " colors \n";
-    }
-    else {
-        cout << "Graph cannot be colored using " << m << " colors \n";
-    }
+    // int N ; 
+    // cout << "Enter the number of vertices : " ;
+    // cin >> N ;
+    // int m ;
+    // cout << "Enter the number of colors : " ;
+    // cin >> m ;
+    // bool graph[101][101] ;
+    // cout << "Enter adjacency matrix : \n" ;
+    // for(int i = 0 ; i < N ; i++){
+    //     for(int j = 0 ; j < N ; j++){
+    //         cin >> graph[i][j] ;
+    //     }
+    // }
+    // if (graphColoring(graph, m, N)) {
+    //     cout << "Graph can be colored using " << m << " colors \n";
+    // }
+    // else {
+    //     cout << "Graph cannot be colored using " << m << " colors \n";
+    // }
 
     // Expression Add Operator ->
     // string nums ;
