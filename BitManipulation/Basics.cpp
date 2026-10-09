@@ -1,6 +1,7 @@
 #include<bits/stdc++.h>
 using namespace std ;
 
+// Addition of two binary numbers ->
 string addBinary(string a , string b){
     int i = a.size() - 1 ;
     int j = b.size() - 1 ;
@@ -26,6 +27,9 @@ string addBinary(string a , string b){
     return ans ;
 }
 
+
+
+
 int main(){
     
     // Binary Addition ->
@@ -37,5 +41,6 @@ int main(){
     // getline(cin , b) ;
     // cout << addBinary(a , b) ;
 
+    
     return 0 ;
 }
