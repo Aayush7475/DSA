@@ -48,6 +48,17 @@ int main(){
     // getline(cin , b) ;
     // cout << addBinary(a , b) ;
 
-    
+    // Single Element ->
+    // int n ; 
+    // cout << "Enter the number of elements in the array : " ;
+    // cin >> n ;
+    // vector<int> nums(n) ;
+    // cout << "Enter the elements in the array : " << endl ;
+    // for(int i = 0 ; i < n ; i++){
+    //     cin >> nums[i] ;
+    // }
+    // cout << "Non Duplicate element in the given array is : " ;
+    // cout << nonDuplicate(nums) ;
+
     return 0 ;
 }
