@@ -43,6 +43,19 @@ bool isPowerOfTwo(int n){
     return false ;
 }
 
+// Number of set bits (Mehtod 1) ->
+int setBits(int n){
+    int cnt = 0 ;
+    while(n > 0){
+        if(n % 2 == 1) cnt++ ;
+        n = n / 2 ;
+    }
+    return cnt ; 
+}
+
+
+
+
 int main(){
     
     // Binary Addition ->
@@ -77,6 +90,13 @@ int main(){
     // else{
     //     cout << "Number is not a power of 2 " ;
     // }
+
+    // Number of set bits (M1 and M2) ->
+    // int n ;
+    // cout << "Enter the number : " ;
+    // cin >> n ;
+    // cout << "Number of set bits in the number is : " << setBits(n) ;
+    // cout << "Number is set bits in the number is : " << hammingWeight(n) ;
 
     return 0 ;
 }
