@@ -53,7 +53,15 @@ int setBits(int n){
     return cnt ; 
 }
 
-
+// Number of set bits (Brian Kernighan's algorithm) - (Method 2) ->
+int hammingWeight(int n){
+    int cnt = 0 ;
+    while(n > 0){
+        n = n & (n-1) ;
+        cnt ++ ;
+    }
+    return cnt ;
+}
 
 
 int main(){
