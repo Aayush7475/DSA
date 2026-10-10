@@ -36,6 +36,12 @@ int nonDuplicate(vector<int>& nums){
     return ans ;
 }
 
+// Number is power of two ->
+bool isPowerOfTwo(int n){
+    if(n <= 0) return false ;
+    if((n & (n-1)) == 0) return true ;
+    return false ;
+}
 
 int main(){
     
@@ -59,6 +65,18 @@ int main(){
     // }
     // cout << "Non Duplicate element in the given array is : " ;
     // cout << nonDuplicate(nums) ;
+
+    // Power of two ->
+    // int n ;
+    // cout << "Enter the number to be checked : " ;
+    // cin >> n ;
+    // int result = isPowerOfTwo(n) ;
+    // if(result){
+    //     cout << "Number is power of 2 " ;
+    // }
+    // else{
+    //     cout << "Number is not a power of 2 " ;
+    // }
 
     return 0 ;
 }
