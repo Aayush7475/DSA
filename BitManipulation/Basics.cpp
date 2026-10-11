@@ -63,6 +63,10 @@ int hammingWeight(int n){
     return cnt ;
 }
 
+// Minimum bit flip to convert a number ->
+int minBitFlips(int start, int goal){
+    
+}
 
 int main(){
     
