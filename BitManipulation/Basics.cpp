@@ -27,7 +27,7 @@ string addBinary(string a , string b){
     return ans ;
 }
 
-// Finding non duplicate element ->
+// Finding non duplicate element / Single Number I ->
 int nonDuplicate(vector<int>& nums){
     int ans = 0 ;
     for(auto x : nums){
@@ -76,6 +76,24 @@ int minBitFlips(int start, int goal){
     return cnt ;
 }
 
+// Single Number II ->
+int singleNumber(vector<int>& nums){
+    int ans = 0 ;
+    for(int i = 0 ; i < 32 ; i++){
+        int cnt = 0 ;
+
+        for(auto num : nums){
+            if((static_cast<unsigned int>(num) >> i) & 1U){
+                cnt ++ ;
+            }
+        }
+        if(cnt % 3 != 0){
+            ans |= (1U << i) ;
+        }
+    }
+    return ans ;
+}
+
 int main(){
     
     // Binary Addition ->
@@ -87,7 +105,7 @@ int main(){
     // getline(cin , b) ;
     // cout << addBinary(a , b) ;
 
-    // Single Element ->
+    // Single Number ->
     // int n ; 
     // cout << "Enter the number of elements in the array : " ;
     // cin >> n ;
@@ -125,6 +143,16 @@ int main(){
     // cout << "Enter the target in which the number wiil be converted : " ;
     // cin >> goal ;
     // cout << "Minimum bits required to be converted to change the number is : " << minBitFlips(start , goal) ;
+
+    // Single Number II ->
+    // int n ;
+    // cout << "Enter the number of elements in the array : " ;
+    // cin >> n ; 
+    // vector<int> nums(n) ;
+    // for(int i = 0 ; i < n ; i++){
+    //     cin >> nums[i] ;
+    // } 
+    // cout << "Number which is appearing only once is : " << singleNumber(nums) ;
 
     return 0 ;
 }
