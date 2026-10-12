@@ -65,7 +65,15 @@ int hammingWeight(int n){
 
 // Minimum bit flip to convert a number ->
 int minBitFlips(int start, int goal){
-    
+    int ans = start ^ goal ;
+    int cnt = 0 ;
+    while(ans > 0){
+        if(ans % 2 == 1){
+            cnt = cnt + 1 ;
+        }
+        ans = ans / 2 ;
+    }
+    return cnt ;
 }
 
 int main(){
@@ -109,6 +117,14 @@ int main(){
     // cin >> n ;
     // cout << "Number of set bits in the number is : " << setBits(n) ;
     // cout << "Number is set bits in the number is : " << hammingWeight(n) ;
+
+    // Minimum bit flip to convert a number ->
+    // int start , goal ;
+    // cout << "Enter the number to be converted : " ;
+    // cin >> start ;
+    // cout << "Enter the target in which the number wiil be converted : " ;
+    // cin >> goal ;
+    // cout << "Minimum bits required to be converted to change the number is : " << minBitFlips(start , goal) ;
 
     return 0 ;
 }
