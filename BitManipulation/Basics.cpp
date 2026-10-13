@@ -94,6 +94,25 @@ int singleNumber(vector<int>& nums){
     return ans ;
 }
 
+// Single Number III (Method 1) ->
+vector<int> singleNumber3(vector<int>& nums){
+    int n = nums.size() ;
+    map<int , int> mpp ;
+    
+    for(int i = 0 ; i < n ; i++){
+        mpp[nums[i]] ++ ;
+    }
+    vector<int> ans ;
+
+    for(auto it : mpp){
+        if(it.second == 1){
+            ans.push_back(it.first) ;
+        }
+    }
+    return ans ;
+}
+
+
 int main(){
     
     // Binary Addition ->
@@ -153,6 +172,23 @@ int main(){
     //     cin >> nums[i] ;
     // } 
     // cout << "Number which is appearing only once is : " << singleNumber(nums) ;
+
+    // Single Number III (M1 and M2) ->
+    // int n ;
+    // cout << "Enter the number of elementrs in the array : " ;
+    // cin >> n ;
+    // vector<int> nums(n) ;
+    // cout << "Enter the elements in the array : " << endl ;
+    // for(int i = 0 ; i < n ; i++){
+    //     cin >> nums[i] ;
+    // }
+    // cout << "Required numbers are : " ;
+    // vector<int> result = singleNumber3(nums) ;
+    // for(int i = 0 ; i < result.size() ; i++){
+    //     cout << result[i] << " & " ;
+    // }
+    
+
 
     return 0 ;
 }
