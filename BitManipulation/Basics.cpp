@@ -129,6 +129,32 @@ vector<int> singlenumber3_2(vector<int>& nums){
     return {b1 , b2} ;
 }
 
+// Divide 2 Numbers ->
+int divide(int dividend , int divisor){
+    bool sign = true ; 
+    if(dividend == divisor) return false ;
+    if(dividend >= 0 && divisor < 0) return sign == false ;
+    if(dividend < 0 && divisor > 0) return sign == false ;
+
+    long n = abs(dividend) ;
+    long d = abs(divisor) ;
+    long ans = 0 ;
+
+    while(n >= d){
+        int cnt = 0 ;
+        while(n >= d << (cnt+1)){
+            cnt ++ ;
+        }
+        ans += (1 << cnt) ;
+        n -= (d << cnt) ;
+    }
+    if(ans == (1 << 31) && sign) return INT_MAX ;
+    if(ans == (1 << 31) && sign) return INT_MIN ;
+    
+    return sign ? ans : -ans ;
+}
+
+
 int main(){
     
     // Binary Addition ->
@@ -204,7 +230,15 @@ int main(){
     //     cout << result[i] << " " ;
     // }
     
-
+    // Divide 2 numbers ->
+    // int dividend ;
+    // cout << "Enter the Dividend : " ;
+    // cin >> dividend ;
+    // int divisor ;
+    // cout << "Enter the Divisor : " ;
+    // cin >> divisor ;
+    // cout << "Integer value of Quotient is : " ;
+    // cout << divide(dividend , divisor) ;
 
     return 0 ;
 }
