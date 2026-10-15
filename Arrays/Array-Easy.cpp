@@ -481,7 +481,23 @@ int missingNumber2(vector<int>& arr){
 
 }
 
-// 
+// SubArrays Distinct Element Sum of Squares I ->
+long long sumCounts(vector<int>& arr) {
+    int n = arr.size();
+    long long ans = 0;
+
+    for (int i = 0; i < n; i++) {
+        unordered_set<int> st;
+
+        for (int j = i; j < n; j++) {
+            st.insert(arr[j]);
+            long long distinct = st.size();
+            ans += distinct * distinct;
+        }
+    }
+return ans;
+}
+
 
 // NORMAL :-
 
@@ -568,6 +584,10 @@ int main(){
     // int ans = missingNumber2(arr) ;
     // cout << "Missing number is " << ans ;
 
+    // SubArrays Distinct Element Sum of Squares I ->
+    // cout << "All possible SubArrays are : " << sumCounts(arr) ;
+
+    
     // return 0 ;
         
     }
