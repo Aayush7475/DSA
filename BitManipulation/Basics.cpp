@@ -154,6 +154,15 @@ int divide(int dividend , int divisor){
     return sign ? ans : -ans ;
 }
 
+// Reverse 32 Bits ->
+int reverseBits(int n){
+    int ans = 0 ;
+    for(int i = 0 ; i < 32 ; i++){
+        ans = (ans << 1) | (n & 1) ;
+        n >>= 1 ;
+    }
+    return ans ;
+}
 
 int main(){
     
@@ -239,6 +248,12 @@ int main(){
     // cin >> divisor ;
     // cout << "Integer value of Quotient is : " ;
     // cout << divide(dividend , divisor) ;
+
+    // Reverse 32 Bits number ->
+    // int n ;
+    // cout << "Enter a 32 bit number to be reversed : " ;
+    // cin >> n ;
+    // cout << "Reversed Number is : " << reverseBits(n) ;
 
     return 0 ;
 }
