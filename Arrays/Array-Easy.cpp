@@ -498,7 +498,51 @@ long long sumCounts(vector<int>& arr) {
 return ans;
 }
 
+// Minimum Swaps to Sort by Digit Sum ->
+int digitSum(int n){
+    int sum = 0 ;
+    while(n > 0){
+        sum += n % 10 ;
+        n = n / 10 ;
+    }
+    return sum ;
+}
+int minSwaps(vector<int>& arr){
+    int n = arr.size() ;
+    vector<int> sorted = arr ;
 
+    sort(sorted.begin() , sorted.end() , [&](int a , int b){
+        int sumA = digitSum(a) ;
+        int sumB = digitSum(b) ;
+        if(sumA == sumB) return a < b ;
+        return sumA < sumB ;
+    }) ;
+
+    unordered_map<int , int> targetIndex ;
+    for(int i = 0 ; i < n ; i++){
+            targetIndex[sorted[i]] = i ;
+        }
+
+        vector<bool> visited(n , false) ;
+        int swaps = 0 ;
+
+        for(int i = 0 ; i < n ; i++){
+            if(visited[i] || targetIndex[arr[i]] == i) continue ;
+
+            int j = i ;
+            int cycleSize = 0 ;
+
+            while(! visited[j]){
+                visited[j] = true ;
+                j = targetIndex[arr[j]] ;
+                cycleSize ++ ;
+            }
+            swaps += cycleSize - 1 ;
+        }
+        return swaps ;
+    }
+
+  
 // NORMAL :-
 
 int main(){
@@ -587,8 +631,12 @@ int main(){
     // SubArrays Distinct Element Sum of Squares I ->
     // cout << "All possible SubArrays are : " << sumCounts(arr) ;
 
+    // Minimum Swaps to Sort by Digit Sum ->
+    cout << "Minimum number of swaps required : " << minSwaps(arr) ;
+
+
     
-    // return 0 ;
+    return 0 ;
         
     }
 
