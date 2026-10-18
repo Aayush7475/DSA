@@ -164,6 +164,15 @@ int reverseBits(int n){
     return ans ;
 }
 
+// Counting Bits ->
+vector<int> countBits(int n){
+    vector<int> ans(n+1 , 0) ;
+    for(int i = 0 ; i <= n ; i++){
+        ans[i] = ans[i >> 1] + (i & 1) ;
+    }
+    return ans ;
+}
+
 int main(){
     
     // Binary Addition ->
@@ -254,6 +263,16 @@ int main(){
     // cout << "Enter a 32 bit number to be reversed : " ;
     // cin >> n ;
     // cout << "Reversed Number is : " << reverseBits(n) ;
+
+    // Counting Bits ->
+    // int n ;
+    // cout << "Enter the number : " ;
+    // cin >> n ;
+    // cout << "Number of One's in all the preceding numbers before " << n << " are : " << endl  ;
+    // vector<int> result = countBits(n) ;
+    // for(int i = 0 ; i < result.size() ; i++){
+    //     cout << result[i] << " " ;
+    // }
 
     return 0 ;
 }
