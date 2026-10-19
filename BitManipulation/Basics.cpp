@@ -185,7 +185,6 @@ vector<int> targetIndices(vector<int>& nums, int target) {
         return ans;
     }
 
-
 int main(){
     
     // Binary Addition ->
@@ -289,17 +288,21 @@ int main(){
 
     // Find Target Index After Sorting ->
     // int n, target;
-    // cin >> n;
-    // vector<int> nums(n);
+    // cout << "Enter the number of elements in the array : ";
+    // cin >> n ;
+    // vector<int> nums(n) ;
+    // cout << "Enter the elements in the array : " << endl ;
     // for (int i = 0; i < n; i++) {
-    //     cin >> nums[i];
+    //     cin >> nums[i] ;
     // }
-    // cin >> target;
-    // vector<int> ans = targetIndices(nums, target);
+    // cout << "Enter the target element : " ;
+    // cin >> target ;
+    // vector<int> ans = targetIndices(nums, target) ;
+    // cout << "Target indices after sorting are : " ;
     // for (int i = 0; i < ans.size(); i++) {
-    //     cout << ans[i] << " ";
+    //     cout << ans[i] << " " ;
     // }
-    // cout << endl;
+    // cout << endl ;
 
     return 0 ;
 }
