@@ -173,6 +173,19 @@ vector<int> countBits(int n){
     return ans ;
 }
 
+// Find Target Index After Sorting ->
+vector<int> targetIndices(vector<int>& nums, int target) {
+        sort(nums.begin(), nums.end());
+        vector<int> ans;
+        for (int i = 0; i < nums.size(); i++) {
+            if (nums[i] == target) {
+                ans.push_back(i);
+            }
+        }
+        return ans;
+    }
+
+
 int main(){
     
     // Binary Addition ->
@@ -273,6 +286,20 @@ int main(){
     // for(int i = 0 ; i < result.size() ; i++){
     //     cout << result[i] << " " ;
     // }
+
+    // Find Target Index After Sorting ->
+    // int n, target;
+    // cin >> n;
+    // vector<int> nums(n);
+    // for (int i = 0; i < n; i++) {
+    //     cin >> nums[i];
+    // }
+    // cin >> target;
+    // vector<int> ans = targetIndices(nums, target);
+    // for (int i = 0; i < ans.size(); i++) {
+    //     cout << ans[i] << " ";
+    // }
+    // cout << endl;
 
     return 0 ;
 }
