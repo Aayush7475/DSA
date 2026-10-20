@@ -185,6 +185,15 @@ vector<int> targetIndices(vector<int>& nums, int target) {
         return ans;
     }
 
+// Power of 4 ->
+bool isPowerOfFour(int n){
+    if(n > 0 && (n & (n-1)) == 0 && (n & 0x55555555)){
+        return true ;
+    }
+    return false ;
+    
+}
+
 int main(){
     
     // Binary Addition ->
@@ -303,6 +312,18 @@ int main(){
     //     cout << ans[i] << " " ;
     // }
     // cout << endl ;
+
+    // Power of Four ->
+    // int n ; 
+    // cout << "Enter the number of be checked : " ;
+    // cin >> n ;
+    // bool answer = isPowerOfFour(n) ;
+    // if(answer == true ){
+    //     cout << n << " is power of 4 " ;
+    // }
+    // else{
+    //     cout << n << " is not a power of 4 " ;
+    // }
 
     return 0 ;
 }
