@@ -406,6 +406,20 @@ vector<int> depth(string s){
 }
 
 
+// Finding the Difference ->
+// char findThedifference(string s , string t){
+//     int actualSum = 0 ;
+//     int originalSum = 0 ;
+//     for(char ch : s){
+//         originalSum += int(ch) ;
+//     }
+//     for(char ch : t){
+//         actualSum += int(ch) ;
+//     }
+//     int ans = originalSum - actualSum ;
+//     return char(ans) ;
+// }
+
 int main(){
     string s ;
     cout << "Enter the string  : " ;
@@ -497,6 +511,11 @@ int main(){
     // for(int i = 0 ; i < s.size() ; i++){
     //     cout << result[i];
     // }
+
+    string t ;
+    cout << "Enter the string  : " ;
+    getline(cin , t) ;
+    cout << findThedifference(s , t) ;
 
     return 0 ;
 }
