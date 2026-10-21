@@ -492,11 +492,11 @@ int main(){
     //     cout << str << " ";
     // }
 
-    vector<int> result = depth(s) ;
-    cout << "Maximum depth that can be minimized is : " ;
-    for(int i = 0 ; i < s.size() ; i++){
-        cout << result[i];
-    }
+    // vector<int> result = depth(s) ;
+    // cout << "Maximum depth that can be minimized is : " ;
+    // for(int i = 0 ; i < s.size() ; i++){
+    //     cout << result[i];
+    // }
 
     return 0 ;
 }
