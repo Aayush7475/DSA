@@ -194,6 +194,35 @@ bool isPowerOfFour(int n){
     
 }
 
+// Binary Watch ->
+int countSetBits(int n) {
+    int cnt = 0;
+    while (n > 0) {
+        cnt += (n & 1);
+        n >>= 1;
+    }
+
+    return cnt;
+}
+vector<string> watch(int turnedOn){
+    vector<string> ans ;
+    for(int hour = 0 ; hour < 12 ; hour ++){
+        for(int min = 0 ; min < 60 ; min ++){
+            int cnt = countSetBits(hour) + countSetBits(min) ;
+            if(cnt == turnedOn){
+                string formattedtime = to_string(hour) + ":" ;
+                if(min < 10){
+                    formattedtime += "0" ;
+                }
+                formattedtime += to_string(min) ;
+                ans.push_back(formattedtime) ;
+            }
+        }
+    }
+    return ans ;
+}
+
+
 int main(){
     
     // Binary Addition ->
@@ -324,6 +353,16 @@ int main(){
     // else{
     //     cout << n << " is not a power of 4 " ;
     // }
+
+    // Binary Watch ->
+    // int turnedOn ;
+    // cout << "Enter the number of set bits : " ;
+    // cin >> turnedOn ;
+    // cout << "All possible time that can be showed using " << turnedOn << "bits is : " ;
+    // vector<string> result = watch(turnedOn) ;
+    // for(int i = 0 ; i < result.size() ; i++){
+    //     cout << result[i] << "  " ;
+    // } 
 
     return 0 ;
 }
