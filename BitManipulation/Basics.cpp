@@ -222,6 +222,17 @@ vector<string> watch(int turnedOn){
     return ans ;
 }
 
+// Converting Binary to Gray Code(Method 1) ->
+vector<int> grayCode(int n){
+    vector<int> ans = {0} ;
+    for(int i = 1 ; i <= n ; i++){
+        int add = 1 << (i - 1) ;
+        for(int j = ans.size()-1 ; j >= 0 ; j--){
+            ans.push_back(ans[j] + add) ;
+        }
+    }
+    return ans ;
+}
 
 int main(){
     
@@ -363,6 +374,16 @@ int main(){
     // for(int i = 0 ; i < result.size() ; i++){
     //     cout << result[i] << "  " ;
     // } 
+
+    // Gray Code ->
+    int n ; 
+    cout << "Enter the Binary to be converted to Gray Code : " ;
+    cin >> n ;
+    cout << "Gray Code will be : " ;
+    vector<int> result = grayCode(n) ;
+    for(int i = 0 ; i < result.size() ; i++){
+        cout << result[i] << " "  ;
+    }
 
     return 0 ;
 }
