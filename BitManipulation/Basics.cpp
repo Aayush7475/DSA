@@ -222,7 +222,7 @@ vector<string> watch(int turnedOn){
     return ans ;
 }
 
-// Converting Binary to Gray Code(Method 1) ->
+// Converting Binary to Gray Code (Method 1) ->
 vector<int> grayCode(int n){
     vector<int> ans = {0} ;
     for(int i = 1 ; i <= n ; i++){
@@ -230,6 +230,15 @@ vector<int> grayCode(int n){
         for(int j = ans.size()-1 ; j >= 0 ; j--){
             ans.push_back(ans[j] + add) ;
         }
+    }
+    return ans ;
+}
+
+// Converting Binary to Gray Code (Method 2) ->
+vector<int> grayCode2(int n){
+    vector<int> ans ;
+    for(int i = 0 ; i < (1 << n) ; i++){
+        ans.push_back(i ^ (i >> 1)) ;
     }
     return ans ;
 }
@@ -375,15 +384,16 @@ int main(){
     //     cout << result[i] << "  " ;
     // } 
 
-    // Gray Code ->
-    int n ; 
-    cout << "Enter the Binary to be converted to Gray Code : " ;
-    cin >> n ;
-    cout << "Gray Code will be : " ;
-    vector<int> result = grayCode(n) ;
-    for(int i = 0 ; i < result.size() ; i++){
-        cout << result[i] << " "  ;
-    }
+    // Gray Code (M1 and M2)->
+    // int n ; 
+    // cout << "Enter the Binary to be converted to Gray Code : " ;
+    // cin >> n ;
+    // cout << "Gray Code will be : " ;
+    // // vector<int> result = grayCode(n) ;
+    // vector<int> result = grayCode2(n) ;
+    // for(int i = 0 ; i < result.size() ; i++){
+    //     cout << result[i] << " "  ;
+    // }
 
     return 0 ;
 }
