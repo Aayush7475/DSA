@@ -243,6 +243,21 @@ vector<int> grayCode2(int n){
     return ans ;
 }
 
+// Converting Number to Hexadecimal ->
+string toHex(int num){
+    string hex = "0123456789abcdef" ;
+    string ans = "" ;
+    unsigned int n = num ;
+    while(n != 0){
+        int digit = n & 15 ;
+        ans += hex[digit] ;
+        n >>= 4 ;
+    }
+    reverse(ans.begin() , ans.end()) ;
+    return ans ;
+}
+
+
 int main(){
     
     // Binary Addition ->
@@ -394,6 +409,13 @@ int main(){
     // for(int i = 0 ; i < result.size() ; i++){
     //     cout << result[i] << " "  ;
     // }
+
+    // Converting Number to HexaDecimal ->
+    // int num ;
+    // cout << "Enter the HexaDecimal Number : " ;
+    // cin >> num ;
+    // cout << "Required Hexadecimal Number is : " ;
+    // cout << toHex(num) ;
 
     return 0 ;
 }
