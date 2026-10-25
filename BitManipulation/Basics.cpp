@@ -257,6 +257,16 @@ string toHex(int num){
     return ans ;
 }
 
+// Hamming Distance ->
+int hammingDistance(int x , int y){
+    int n = x ^ y ;
+    int count = 0 ;
+    while(n > 0){
+        count += n & 1 ;
+        n >>= 1 ;
+    }
+    return count ;
+}
 
 int main(){
     
@@ -416,6 +426,15 @@ int main(){
     // cin >> num ;
     // cout << "Required Hexadecimal Number is : " ;
     // cout << toHex(num) ;
+
+    // Hamming Distance ->
+    int x , y ;
+    cout << "Enter the number of x : " ;
+    cin >> x ;
+    cout << "Enter the number of y : " ;
+    cin >> y ;
+    cout << "Hamming Distance is : " ;
+    cout << hammingDistance(x , y) ;
 
     return 0 ;
 }
