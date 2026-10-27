@@ -405,7 +405,6 @@ vector<int> depth(string s){
     return ans ;
 }
 
-
 // Finding the Difference (Method 1) ->
 char findThedifference(string s , string t){
     int actualSum = 0 ;
@@ -431,6 +430,18 @@ char FindDifference(string s , string t){
     }
     return ans ;
 }
+
+// Grid With only Path ->
+vector<string> createGrid(int m , int n){
+    vector<string> grid(m , string(n , '#')) ;
+    for(int i = 0 ; i < m ; i++){
+        grid[i][0] = '.' ;
+    }
+    for(int j = 0 ; j < n ; j++){
+        grid[m-1][j] = '.' ;
+    }
+    return grid ;
+} 
 
 int main(){
     string s ;
@@ -529,7 +540,19 @@ int main(){
     // getline(cin , t) ;
     // cout << findThedifference(s , t) ;
 
- 
+    // int m ;
+    // cout << "Enter the number of rows : " ;
+    // cin >> m ;
+    // int n ; 
+    // cout << "Enter the number of columns : " ;
+    // cin >> n ; 
+    // cout << "Only Valid Path is : " ;
+    // vector<string> result = createGrid(m , n) ;
+    // for(int i = 0 ; i < result.size() ; i++){
+    //     cout << result[i] << endl ;
+    // }
+
+
 
     return 0 ;
 }

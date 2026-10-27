@@ -428,13 +428,13 @@ int main(){
     // cout << toHex(num) ;
 
     // Hamming Distance ->
-    int x , y ;
-    cout << "Enter the number of x : " ;
-    cin >> x ;
-    cout << "Enter the number of y : " ;
-    cin >> y ;
-    cout << "Hamming Distance is : " ;
-    cout << hammingDistance(x , y) ;
+    // int x , y ;
+    // cout << "Enter the number of x : " ;
+    // cin >> x ;
+    // cout << "Enter the number of y : " ;
+    // cin >> y ;
+    // cout << "Hamming Distance is : " ;
+    // cout << hammingDistance(x , y) ;
 
     return 0 ;
 }
