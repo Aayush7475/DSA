@@ -268,6 +268,20 @@ int hammingDistance(int x , int y){
     return count ;
 }
 
+// Complement Of Number ->
+int findComplement(int num){
+    if(num == 0) return 1 ;
+
+    int mask = 0 ;
+    int temp = num ;
+
+    while(temp > 0){
+        mask = (mask << 1)| 1 ;
+        temp >>= 1 ;
+    }
+    return num ^ mask ;
+}
+
 int main(){
     
     // Binary Addition ->
@@ -436,5 +450,12 @@ int main(){
     // cout << "Hamming Distance is : " ;
     // cout << hammingDistance(x , y) ;
 
+    // Complement of Number ->
+    // int num ;
+    // cout << "Enter the number : " ;
+    // cin >> num ;
+    // cout << "Complement of the " << num << " is : " ;
+    // cout << findComplement(num) ;
+     
     return 0 ;
 }
