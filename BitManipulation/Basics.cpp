@@ -296,10 +296,10 @@ int totalHammingDistance(vector<int> nums){
 }
 
 // Total Hamming Distance (Method 2) ->
-int totalHammingDistance(vector<int> nums){
+int totalHammingDistance2(vector<int> nums){
     int n = nums.size() ;
     int sum = 0 ;
-    for(int i = 0 ; i < n ; i++){
+    for(int i = 0 ; i < 32 ; i++){
         int ones = 0 ;
         for(int num : nums){
             if((num >> i) & 1){
@@ -487,16 +487,17 @@ int main(){
     // cout << findComplement(num) ;
      
     // Total Hamming Distance ->
-    int n ;
-    cout << "Enter the number of elments in the array : " ;
-    cin >> n ;
-    vector<int> nums(n) ;
-    cout << "Enter the elements in the array : " << endl ;
-    for(int i = 0 ; i < n ; i++){
-        cin >> nums[i] ;
-    }
-    cout << "Total Hamming Distance is : " ;
-    cout << totalHammingDistance(nums) ;
+    // int n ;
+    // cout << "Enter the number of elments in the array : " ;
+    // cin >> n ;
+    // vector<int> nums(n) ;
+    // cout << "Enter the elements in the array : " << endl ;
+    // for(int i = 0 ; i < n ; i++){
+    //     cin >> nums[i] ;
+    // }
+    // cout << "Total Hamming Distance is : " ;
+    // // cout << totalHammingDistance(nums) ;
+    // cout << totalHammingDistance2(nums) ;
 
     return 0 ;
 }
