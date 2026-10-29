@@ -282,6 +282,21 @@ int findComplement(int num){
     return num ^ mask ;
 }
 
+// Total Hamming Distance (Method 1) ->
+int totalHammingDistance(vector<int> nums){
+    int n = nums.size() ;
+    int sum = 0 ;
+    for(int i = 0 ; i < n ; i++){
+        for(int j = i+1 ; j < n ; j++){
+            int x = nums[i] ^ nums[j] ;
+            sum += countSetBits(x) ;
+        }
+    }
+    return sum ;
+}
+
+
+ 
 int main(){
     
     // Binary Addition ->
@@ -457,5 +472,17 @@ int main(){
     // cout << "Complement of the " << num << " is : " ;
     // cout << findComplement(num) ;
      
+    // Total Hamming Distance ->
+    int n ;
+    cout << "Enter the number of elments in the array : " ;
+    cin >> n ;
+    vector<int> nums(n) ;
+    cout << "Enter the elements in the array : " << endl ;
+    for(int i = 0 ; i < n ; i++){
+        cin >> nums[i] ;
+    }
+    cout << "Total Hamming Distance is : " ;
+    cout << totalHammingDistance(nums) ;
+
     return 0 ;
 }
