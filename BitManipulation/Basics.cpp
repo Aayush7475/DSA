@@ -295,7 +295,21 @@ int totalHammingDistance(vector<int> nums){
     return sum ;
 }
 
-
+// Total Hamming Distance (Method 2) ->
+int totalHammingDistance(vector<int> nums){
+    int n = nums.size() ;
+    int sum = 0 ;
+    for(int i = 0 ; i < n ; i++){
+        int ones = 0 ;
+        for(int num : nums){
+            if((num >> i) & 1){
+                ones ++ ;
+            }
+        }
+        sum += ones * (n - ones) ;
+    }
+    return sum ;
+}
  
 int main(){
     
