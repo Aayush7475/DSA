@@ -311,6 +311,31 @@ int totalHammingDistance2(vector<int> nums){
     return sum ;
 }
  
+// Set Mismatch ->
+vector<int> findErrorNums(vector<int>& nums) {
+    int n = nums.size();
+
+    vector<int> freq(n + 1, 0);
+
+    for (int num : nums) {
+        freq[num]++;
+    }
+
+    int duplicate = -1;
+    int missing = -1;
+
+    for (int i = 1; i <= n; i++) {
+        if (freq[i] == 2) {
+            duplicate = i;
+        }
+        else if (freq[i] == 0) {
+            missing = i;
+        }
+    }
+
+    return {duplicate, missing};
+}
+
 int main(){
     
     // Binary Addition ->
@@ -498,6 +523,19 @@ int main(){
     // cout << "Total Hamming Distance is : " ;
     // // cout << totalHammingDistance(nums) ;
     // cout << totalHammingDistance2(nums) ;
+
+    // Set Mismatch ->
+    // int n ;
+    // cout << "Enter the number of elments in the array : " ;
+    // cin >> n ;
+    // vector<int> nums(n) ;
+    // cout << "Enter the elements in the array : " << endl ;
+    // for(int i = 0 ; i < n ; i++){
+    //     cin >> nums[i] ;
+    // }
+    // vector<int> ans = findErrorNums(nums);
+    // cout << "Duplicate: " << ans[0] << endl;
+    // cout << "Missing: " << ans[1] << endl;
 
     return 0 ;
 }
