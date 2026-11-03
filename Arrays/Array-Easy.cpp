@@ -566,6 +566,19 @@ int minimumMoves(vector<int> nums){
     return moves ;
 }
 
+// Minimum Moves required to make all elements of the Array Equal I ->
+int minMoves2(vector<int> nums){
+    int moves = 0 ;
+    int min = *min_element(nums.begin() , nums.end()) ;
+    for(int i = 0 ; i <  nums.size() ; i++){
+        if(nums[i] == min) continue ;
+        else{
+            moves += (nums[i] - min) ;
+        }
+    }
+    return moves ;
+}
+
 // NORMAL :-
 
 int main(){
@@ -661,6 +674,10 @@ int main(){
     // cout << "Minimum moves required Are : " ;
     // cout << minMoves(arr) ;
     // cout << minimumMoves(arr) ;
+
+    // Minimum Moves required to make all elements of the Array Equal I ->
+    // cout << "Minimum moves required is : " ;
+    // cout << minMoves2(arr) ;
 
     return 0 ;
         
