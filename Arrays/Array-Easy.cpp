@@ -542,7 +542,18 @@ int minSwaps(vector<int>& arr){
         return swaps ;
     }
 
-
+// Minimum Moves required to make all elements of the Array Equal III (Method 1) ->
+int minMoves(vector<int> nums){
+    int moves = 0 ;
+    int max = * max_element(nums.begin() , nums.end()) ;
+    for(int i = 0 ; i < nums.size() ; i++){
+        if(nums[i] == max) continue ;
+        else{
+            moves += ( max - nums[i] ) ;
+        }
+    }
+    return moves ;
+} 
 
 // NORMAL :-
 
@@ -635,8 +646,10 @@ int main(){
     // Minimum Swaps to Sort by Digit Sum ->
     // cout << "Minimum number of swaps required : " << minSwaps(arr) ;
 
+    // Minimum Moves required to make all elements of the Array Equal III (M1 and M2) ->
+    // cout << "Minimum moves required Are : " ;
+    // cout << minMoves(arr) ;
 
-    
     return 0 ;
         
     }
