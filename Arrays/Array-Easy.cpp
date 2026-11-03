@@ -555,6 +555,17 @@ int minMoves(vector<int> nums){
     return moves ;
 } 
 
+// Minimum Moves required to make all elements of the Array Equal III (Method 2) ->
+int minimumMoves(vector<int> nums){
+    int moves = 0 ;
+    int max = *max_element(nums.begin() , nums.end()) ;
+    sort(nums.begin(), nums.end());
+    for(int i = 0 ; i < nums.size() - 1 ; i++){
+        moves += (max - nums[i]) ;
+    }
+    return moves ;
+}
+
 // NORMAL :-
 
 int main(){
@@ -649,6 +660,7 @@ int main(){
     // Minimum Moves required to make all elements of the Array Equal III (M1 and M2) ->
     // cout << "Minimum moves required Are : " ;
     // cout << minMoves(arr) ;
+    // cout << minimumMoves(arr) ;
 
     return 0 ;
         
