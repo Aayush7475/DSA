@@ -443,6 +443,16 @@ vector<string> createGrid(int m , int n){
     return grid ;
 } 
 
+// Minimum Moves to convert string ->
+int MinimumMoves(string s){
+    int ans = 0 ;
+    for(int i = 0 ; i < s.size() ; i++){
+        ans += 1 ;
+        i += 2 ;
+    }
+    return ans ;
+}
+
 int main(){
     string s ;
     cout << "Enter the string  : " ;
@@ -552,6 +562,8 @@ int main(){
     //     cout << result[i] << endl ;
     // }
 
+    // cout << "Minimum Moves required to convert String into 000 is : " << endl ;
+    // cout << MinimumMoves(s) ;
 
 
     return 0 ;
