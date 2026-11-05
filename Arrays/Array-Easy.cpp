@@ -579,19 +579,36 @@ int minMoves2(vector<int> nums){
     return moves ;
 }
 
+// Distance value between two Array ->
+int findDistance(vector<int>& arr1 , vector<int>& arr2 , int d){
+    int ans = 0 ;
+    for(int i = 0 ; i < arr1.size() ; i++){
+        bool found= false ;
+        for(int j = 0 ; j < arr2.size() ; j++){
+            if(abs(arr1[i] - arr2[j]) <= d){
+                found = true  ;
+            }
+        }
+        if(!found){
+            ans ++ ;
+        }
+    }
+    return ans ;
+}
+
 // NORMAL :-
 
 int main(){
-    int n ; 
-    cout << "Enter the number of elements in the array : ";
-    cin >> n ;
-    vector<int> arr(n);
-    // int arr[n] ;
-    cout << "Enter the elements in the array : " << endl ;
-    for(int i = 0 ; i < n ; i++){
-        cin >> arr[i];
-    }
-    cout << endl ;
+    // int n ; 
+    // cout << "Enter the number of elements in the array : ";
+    // cin >> n ;
+    // vector<int> arr(n);
+    // // int arr[n] ;
+    // cout << "Enter the elements in the array : " << endl ;
+    // for(int i = 0 ; i < n ; i++){
+    //     cin >> arr[i];
+    // }
+    // cout << endl ;
     
     // LE(n , arr);
     
@@ -678,6 +695,29 @@ int main(){
     // Minimum Moves required to make all elements of the Array Equal I ->
     // cout << "Minimum moves required is : " ;
     // cout << minMoves2(arr) ;
+
+    // Distance value between two Array ->
+    // int n1 ; 
+    // cout << "Enter the number of elements in the first array : " ;
+    // cin >> n1 ;
+    // vector<int> arr1 (n1) ;
+    // cout << "Enter the elments in the array : " << endl ;
+    // for(int i = 0 ; i < n1 ; i++){
+    //     cin >> arr1[i] ;
+    // } 
+    // int n2 ; 
+    // cout << "Enter the number of elements in the second array : " ;
+    // cin >> n2 ;
+    // vector<int> arr2(n2) ;
+    // cout << "Enter the elments in the array : " << endl ;
+    // for(int i = 0 ; i < n2 ; i++){
+    //     cin >> arr2[i] ;
+    // } 
+    // int d ;
+    // cout << "Enter the value of d : " ;
+    // cin >> d ;
+    // cout << "Distance betwwen the array is : " ;
+    // cout << findDistance(arr1 , arr2 , d) ;
 
     return 0 ;
         
