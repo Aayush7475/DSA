@@ -17,16 +17,16 @@ int SJF(vector<int> nums){
 int main(){
 
     // SJF ->
-    int n ; 
-    cout << "Enter the number of Processes : " ;
-    cin >> n ;
-    vector<int> nums(n) ;
-    cout << "Enter the Scheduling Process Timings : " << endl ;
-    for(int i = 0 ; i < n ; i++){
-        cin >> nums[i] ;
-    }
-    cout << "Average Waiting Time : " ;
-    cout << SJF(nums) ;
+    // int n ; 
+    // cout << "Enter the number of Processes : " ;
+    // cin >> n ;
+    // vector<int> nums(n) ;
+    // cout << "Enter the Scheduling Process Timings : " << endl ;
+    // for(int i = 0 ; i < n ; i++){
+    //     cin >> nums[i] ;
+    // }
+    // cout << "Average Waiting Time : " ;
+    // cout << SJF(nums) ;
     
     return 0 ;
 }
