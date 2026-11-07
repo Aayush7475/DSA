@@ -18,6 +18,39 @@ int findContentChildren(vector<int>& g , vector<int>& s){
     return r ;
 }
 
+// Lemonade Change ->
+bool lemonade(vector<int>& bills){
+    int five = 0 ;
+    int ten = 0 ;
+    for(int i = 0 ; i < bills.size() ; i++){
+        if(bills[i] == 5){
+            five ++ ;
+        }
+        else if(bills[i] == 10){
+            if(five){
+                ten ++ ;
+                five -- ;
+            }
+            else{
+                return false ;
+            }
+        }
+        else{
+            if(ten > 0 && five > 0){
+                ten -- ;
+                five ++ ;
+            }
+            else if(five >= 3){
+                five -= 3 ;
+            }
+            else{
+                return false ;
+            }
+        }
+    }
+    return false ;
+}
+
 int main(){
 
     // Assigning Cookies ->
@@ -40,6 +73,23 @@ int main(){
     // }
     // cout << "Number of Childrens Satisfied : " ;
     // cout << findContentChildren(g , s) ;
+
+    // Lemonade Change ->
+    // int n ;
+    // cout << "Enter the number of persons buying lemon : " ;
+    // cin >> n ;
+    // vector<int> bills(n) ;
+    // cout << "Enter the Money given by the Buyers : " << endl ;
+    // for(int i = 0 ; i < bills.size() ; i++){
+    //     cin >> bills[i] ;
+    // }
+    // bool result = lemonade(bills) ;
+    // if(result == true){
+    //     cout << "Every Customer is provided with correct change " ;
+    // }
+    // else{
+    //     cout << "Every customer is not provided with corect chnage " ;
+    // }
 
     return 0 ;
 
