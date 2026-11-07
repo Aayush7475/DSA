@@ -51,6 +51,33 @@ bool lemonade(vector<int>& bills){
     return false ;
 }
 
+// Fractional knapSack->
+struct Item{
+    int value ;
+    int weight ;
+};
+bool comp(Item a , Item b){
+    double r1 = (double)a.value / a.weight ;
+    double r2 = (double)b.value / b.weight ;
+    return r1 > r2 ;
+}
+double fractionalKnapSack(int W , vector<Item>& arr){
+    sort(arr.begin() , arr.end() , comp) ;
+    double totalValue = 0.0 ;
+
+    for(int i = 0 ; i < arr.size() ; i++){
+        if(arr[i].weight <=  W){
+            totalValue += arr[i].value ;
+            W -= arr[i].weight ;
+        }
+        else{
+            totalValue += (double)arr[i].value * W / arr[i].weight ;
+            break ;
+        }
+    }
+    return totalValue ;
+}
+
 int main(){
 
     // Assigning Cookies ->
@@ -90,6 +117,22 @@ int main(){
     // else{
     //     cout << "Every customer is not provided with corect chnage " ;
     // }
+
+    // Fractional KnapSack ->
+    // int n ;
+    // cout << "Enter the number of items : " ;
+    // cin >> n ; 
+    // vector<Item> arr(n) ;
+    // cout << "Enter the value and weight of each item : " << endl ;
+    // for(int i = 0 ; i < n ; i++){
+    //     cin >> arr[i].value >> arr[i].weight ;
+    // }
+    // int W ;
+    // cout << "Enter the KnapSack Capacity :  " ;
+    // cin >> W ;
+    // double ans = fractionalKnapSack(W , arr) ;
+    // cout << "Maximum Profit : " << fixed << setprecision(2) << ans << endl ;
+
 
     return 0 ;
 
