@@ -78,6 +78,18 @@ double fractionalKnapSack(int W , vector<Item>& arr){
     return totalValue ;
 }
 
+// Jump game I ->
+bool canJump(vector<int>& nums){
+    int MaxJump = 0 ;
+    for(int i = 0 ; i < nums.size() ; i++){
+        if(i > MaxJump) return false ;
+        else{
+            MaxJump = max(MaxJump , i + nums[i]) ;
+        }
+    }
+    return true ;
+}
+
 int main(){
 
     // Assigning Cookies ->
@@ -133,6 +145,18 @@ int main(){
     // double ans = fractionalKnapSack(W , arr) ;
     // cout << "Maximum Profit : " << fixed << setprecision(2) << ans << endl ;
 
+    // Jump Game I->
+    // int n ;
+    // cout << "Enter the number of elements : " ;
+    // cin >> n ;
+    // vector<int> nums(n) ;
+    // cout << "Enter the number of maximum jumps that can be made : " << endl ;
+    // for(int i = 0 ; i < n ; i++){
+    //     cin >> nums[i] ;
+    // }
+    // bool result = canJump(nums) ;
+    // if(result) cout << "Can jump to the last index of the array " ;
+    // else cout << "Can't jump to the last index of the array " ;
 
     return 0 ;
 
