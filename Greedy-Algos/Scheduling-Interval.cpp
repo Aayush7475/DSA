@@ -182,23 +182,23 @@ int main(){
     // cout << "Minimum intervals to remove : " << eraseOverlappingIntervals(intervals) << endl ;
 
     // Insert Intervals ->
-    int n ;
-    cout << "Enter the number of intervals : " ;
-    cin >> n ;
-    vector<vector<int>> intervals(n , vector<int>(2)) ;
-    cout << "Enter the start and end points of the intervals : " << endl ;
-    for(int i = 0 ; i < n ; i++){
-        cin >> intervals[i][0] >> intervals[i][1] ;
-    }
-    vector<int> newIntervals(2) ;
-    cout << "Enter the new Interval to be inserted (start and end) : " << endl ;
-    cin >> newIntervals[0] >> newIntervals[1] ;
-    vector<vector<int>> ans = insert(intervals , newIntervals) ;
-    cout << "The overall intervals set is : " << endl ;
-    for(int i = 0 ; i < ans.size() ; i++){
-        cout << "[" << ans[i][0] << ", " << ans[i][1] << "] " ;
-    }
-    cout << endl ;
+    // int n ;
+    // cout << "Enter the number of intervals : " ;
+    // cin >> n ;
+    // vector<vector<int>> intervals(n , vector<int>(2)) ;
+    // cout << "Enter the start and end points of the intervals : " << endl ;
+    // for(int i = 0 ; i < n ; i++){
+    //     cin >> intervals[i][0] >> intervals[i][1] ;
+    // }
+    // vector<int> newIntervals(2) ;
+    // cout << "Enter the new Interval to be inserted (start and end) : " << endl ;
+    // cin >> newIntervals[0] >> newIntervals[1] ;
+    // vector<vector<int>> ans = insert(intervals , newIntervals) ;
+    // cout << "The overall intervals set is : " << endl ;
+    // for(int i = 0 ; i < ans.size() ; i++){
+    //     cout << "[" << ans[i][0] << ", " << ans[i][1] << "] " ;
+    // }
+    // cout << endl ;
 
     return 0 ;
 }
