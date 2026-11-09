@@ -101,6 +101,31 @@ int eraseOverlappingIntervals(vector<vector<int>>& intervals){
     return (n - cnt) ;
 }
 
+// Insert Intervals ->
+vector<vector<int>> insert(vector<vector<int>>& intervals , vector<int>& newIntervals){
+    vector<vector<int>> res ;
+    int n = intervals.size() ;
+    int i = 0 ;
+
+    while(i < n && intervals[i][1] < newIntervals[0]){
+        res.push_back(intervals[i]) ;
+        i ++ ;
+    }
+
+    while(i < n && intervals[i][0] <= newIntervals[1]){
+        newIntervals[0] = min(newIntervals[0] , intervals[i][0]) ;
+        newIntervals[1] = max(newIntervals[1] , intervals[i][1]) ;
+        i ++ ;
+    }
+    res.push_back(newIntervals) ;
+
+    while(i < n){
+        res.push_back(intervals[i]) ;
+        i ++ ;
+    }
+    return res  ;
+}
+
 int main(){
 
     // SJF ->
@@ -155,6 +180,25 @@ int main(){
     //     cin >> intervals[i][0] >> intervals[i][1] ;
     // }
     // cout << "Minimum intervals to remove : " << eraseOverlappingIntervals(intervals) << endl ;
+
+    // Insert Intervals ->
+    int n ;
+    cout << "Enter the number of intervals : " ;
+    cin >> n ;
+    vector<vector<int>> intervals(n , vector<int>(2)) ;
+    cout << "Enter the start and end points of the intervals : " << endl ;
+    for(int i = 0 ; i < n ; i++){
+        cin >> intervals[i][0] >> intervals[i][1] ;
+    }
+    vector<int> newIntervals(2) ;
+    cout << "Enter the new Interval to be inserted (start and end) : " << endl ;
+    cin >> newIntervals[0] >> newIntervals[1] ;
+    vector<vector<int>> ans = insert(intervals , newIntervals) ;
+    cout << "The overall intervals set is : " << endl ;
+    for(int i = 0 ; i < ans.size() ; i++){
+        cout << "[" << ans[i][0] << ", " << ans[i][1] << "] " ;
+    }
+    cout << endl ;
 
     return 0 ;
 }
