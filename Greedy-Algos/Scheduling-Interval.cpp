@@ -81,6 +81,26 @@ vector<int> Meet(vector<meetings>& nums){
     return ds ; 
 }
 
+// Erase OverLapping Intervals ->
+bool comp3(const vector<int>& a , const vector<int>& b){
+    return a[1] < b[1] ;
+}
+int eraseOverlappingIntervals(vector<vector<int>>& intervals){
+    int n = intervals.size() ;
+    if(n <= 1) return 0 ;
+    sort(intervals.begin() , intervals.end() , comp3) ;
+    int cnt = 1 ;
+    int LastEndTime = intervals[0][1] ;
+
+    for(int i = 1 ; i < n ; i++){
+        if(intervals[i][0] >= LastEndTime){
+            cnt ++ ;
+            LastEndTime = intervals[i][1] ;
+        }
+    }
+    return (n - cnt) ;
+}
+
 int main(){
 
     // SJF ->
@@ -124,6 +144,17 @@ int main(){
     // cout << "Meeting Order (1-based index): " ;
     // for(int x : ans) cout << x << " " ;
     // cout << endl ;
+
+    // Remove OverLapping intervals ->
+    // int n ;
+    // cout << "Enter the number of intervals : " ;
+    // cin >> n ;
+    // vector<vector<int>> intervals(n , vector<int>(2)) ;
+    // cout << "Enter the start and end points of the intervals : " << endl ;
+    // for(int i = 0 ; i < n ; i++){
+    //     cin >> intervals[i][0] >> intervals[i][1] ;
+    // }
+    // cout << "Minimum intervals to remove : " << eraseOverlappingIntervals(intervals) << endl ;
 
     return 0 ;
 }
