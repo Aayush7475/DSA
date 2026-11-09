@@ -111,19 +111,19 @@ int main(){
     // cout << "Profit Earned : " << ans[1] << endl ;
 
     // N Meetings in One Room ->
-    int n ;
-    cout << "Enter the number of Meetings : " ;
-    cin >> n ;
-    vector<meetings> nums(n) ;
-    cout << "Enter start and end times for each meeting : " << endl ;
-    for(int i = 0 ; i < n ; i++){
-        cin >> nums[i].start >> nums[i].end ;
-    }
-    vector<int> ans = Meet(nums) ;
-    cout << "Total Meetings: " << ans.size() << endl ;
-    cout << "Meeting Order (1-based index): " ;
-    for(int x : ans) cout << x << " " ;
-    cout << endl ;
+    // int n ;
+    // cout << "Enter the number of Meetings : " ;
+    // cin >> n ;
+    // vector<meetings> nums(n) ;
+    // cout << "Enter start and end times for each meeting : " << endl ;
+    // for(int i = 0 ; i < n ; i++){
+    //     cin >> nums[i].start >> nums[i].end ;
+    // }
+    // vector<int> ans = Meet(nums) ;
+    // cout << "Total Meetings: " << ans.size() << endl ;
+    // cout << "Meeting Order (1-based index): " ;
+    // for(int x : ans) cout << x << " " ;
+    // cout << endl ;
 
     return 0 ;
 }
