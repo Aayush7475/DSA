@@ -126,6 +126,27 @@ vector<vector<int>> insert(vector<vector<int>>& intervals , vector<int>& newInte
     return res  ;
 }
 
+// Merge Intervals ->
+vector<vector<int>> merge(vector<vector<int>>& intervals){
+    vector<vector<int>> mergedIntervals ;
+
+    if(intervals.size() == 0) return mergedIntervals ;
+    sort(intervals.begin() , intervals.end()) ;
+    vector<int> tempIntervals = intervals[0] ;
+
+    for(auto &it : intervals){
+        if(it[0] <= tempIntervals[1]){
+            tempIntervals[1] = max(it[1] , tempIntervals[1]) ;
+        }
+        else{
+            mergedIntervals.push_back(tempIntervals) ;
+            tempIntervals = it ;
+        }
+    }
+    mergedIntervals.push_back(tempIntervals) ;
+    return mergedIntervals ; 
+}
+
 int main(){
 
     // SJF ->
@@ -195,6 +216,22 @@ int main(){
     // cin >> newIntervals[0] >> newIntervals[1] ;
     // vector<vector<int>> ans = insert(intervals , newIntervals) ;
     // cout << "The overall intervals set is : " << endl ;
+    // for(int i = 0 ; i < ans.size() ; i++){
+    //     cout << "[" << ans[i][0] << ", " << ans[i][1] << "] " ;
+    // }
+    // cout << endl ;
+
+    // Merge Intervals ->
+    // int n ;
+    // cout << "Enter the number of Intervals : " ;
+    // cin >> n ;
+    // vector<vector<int>> intervals(n , vector<int>(2)) ;
+    // cout << "Enter the start and end points of the intervals : " << endl ;
+    // for(int i = 0 ; i < n ; i++){
+    //     cin >> intervals[i][0] >> intervals[i][1] ;
+    // }
+    // vector<vector<int>> ans = merge(intervals) ;
+    // cout << "The merged intervals are : " << endl ;
     // for(int i = 0 ; i < ans.size() ; i++){
     //     cout << "[" << ans[i][0] << ", " << ans[i][1] << "] " ;
     // }
