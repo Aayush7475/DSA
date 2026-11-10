@@ -147,6 +147,19 @@ vector<vector<int>> merge(vector<vector<int>>& intervals){
     return mergedIntervals ; 
 }
 
+// Divide Intervals into Minimum Number of grps ->
+int minGroups(vector<vector<int>>& intervals) {
+    int n = intervals.size() ;
+    sort(intervals.begin() , intervals.end()) ;
+    priority_queue<int , vector<int> , greater<int>> pq ;
+
+    for(int i = 0 ; i < n ; i++){
+        if(!pq.empty() && pq.top() < intervals[i][0]) pq.pop() ;
+        pq.push(intervals[i][1]) ;
+    }
+    return pq.size() ;
+}
+
 int main(){
 
     // SJF ->
@@ -236,6 +249,18 @@ int main(){
     //     cout << "[" << ans[i][0] << ", " << ans[i][1] << "] " ;
     // }
     // cout << endl ;
+
+    // Divide Intervals into Minimum Number of grps ->
+    // int n ;
+    // cout << "Enter the number of Intervals : " ;
+    // cin >> n ;
+    // vector<vector<int>> intervals(n , vector<int>(2)) ;
+    // cout << "Enter the start and end points of the intervals : " << endl ;
+    // for(int i = 0 ; i < n ; i++){
+    //     cin >> intervals[i][0] >> intervals[i][1] ;
+    // }
+    // cout << "The Minimum Groups of intervals are : " << endl ;
+    // cout << minGroups(intervals) ;
 
     return 0 ;
 }
