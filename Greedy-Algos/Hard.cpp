@@ -68,9 +68,43 @@ int candy2(vector<int>& nums){
     return sum ;
 }
 
+// candy distribution (Method 3) ->
+int candy3(vector<int>& nums){
+    int sum = 1 ;
+    int i = 1 ;
+    int n = nums.size() ;
+
+    while(i < n){
+        if(nums[i] == nums[i-1]){
+            sum = sum + 1 ;
+            i++ ;
+            continue ;
+        }
+        
+        int peak = 1 ;
+        while(i < n && nums[i] > nums[i-1]){
+            peak += 1 ;
+            sum += peak ;
+            i++ ;
+        }
+
+        int down = 1 ;
+        while(i < n && nums[i] < nums[i-1]){
+            sum += down ;
+            i++ ;
+            down += 1 ;
+        }
+
+        if(down > peak){
+            sum += down - peak ;
+        }
+    }
+    return sum ;
+}
+
 int main(){
 
-    // candy Distribution (M1 and M2) ->
+    // candy Distribution (M1 and M2 and M3) ->
     // int n ;
     // cout << "Enter the number of childrens : " ;
     // cin >> n ; 
@@ -81,6 +115,7 @@ int main(){
     // }
     // cout << "Total Sum of candies required is " << candy(nums) ;
     // cout << "Total Sum of candies required is " << candy2(nums) ;
+    // cout << "Total Sum of candies required is " << candy3(nums) ;
 
     return 0 ;
 }
