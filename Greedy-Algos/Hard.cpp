@@ -102,7 +102,7 @@ int candy3(vector<int>& nums){
     return sum ;
 }
 
-// Jump Game II ->
+// Jump Game II (Method 1) ->
 int jump(vector<int> nums){
     int n = nums.size() ;
     int jumps = 0 ;
@@ -120,6 +120,18 @@ int jump(vector<int> nums){
     return jumps ;
 }
 
+// Jump Game II (Method 2) ->
+int jump2(vector<int> nums , int ind , int jumps){
+    int n = nums.size() ;
+
+    if(ind >= n-1) return jumps ;
+    int mini = INT_MAX ;
+    for(int i = 1 ; i < nums[ind] ; i++){
+        mini = min(mini , jump2(nums , ind + 1 , jumps + 1)) ;
+    }
+    return mini ;
+}
+
 int main(){
 
     // candy Distribution (M1 and M2 and M3) ->
@@ -135,18 +147,20 @@ int main(){
     // cout << "Total Sum of candies required is " << candy2(nums) ;
     // cout << "Total Sum of candies required is " << candy3(nums) ;
 
-    // Jump Game II ->
-    int n ;
-    cout << "Enter the number of jumps available : " ;
-    cin >> n ;
-    vector<int> nums(n) ;
-    cout << "Enter the max limit to be jumped : " << endl ;
-    for(int i = 0 ; i < n ; i++){
-        cin >> nums[i] ;
-    }
-    cout << "Minimum Numbers of Jumps required to reach the end is " ;
-    int ans = jump(nums) ;
-    cout << ans ;
+    // Jump Game II (M1) ->
+    // int n ;
+    // cout << "Enter the number of jumps available : " ;
+    // cin >> n ;
+    // vector<int> nums(n) ;
+    // cout << "Enter the max limit to be jumped : " << endl ;
+    // for(int i = 0 ; i < n ; i++){
+    //     cin >> nums[i] ;
+    // }
+    // cout << "Minimum Numbers of Jumps required to reach the end is " ;
+    // int ans = jump(nums) ;
+    // cout << ans ;
 
+    // Jump Game II (M2) ->
+    
     return 0 ;
 }
