@@ -162,17 +162,17 @@ int main(){
     // cout << ans ;
 
     // Jump Game II (M2) ->
-    int n ;
-    cout << "Enter the number of elements in the array : " ;
-    cin >> n ;
-    vector<int> nums(n) ;
-    cout << "Enter the elements of the array : " << endl ;
-    for(int i = 0 ; i < n ; i++){
-        cin >> nums[i] ;
-    }
-    cout << "Minimum Numbers of Jumps required to reach the end is " ;
-    int ans = jump2(nums , 0 , 0) ;
-    cout << ans << endl ;
+    // int n ;
+    // cout << "Enter the number of elements in the array : " ;
+    // cin >> n ;
+    // vector<int> nums(n) ;
+    // cout << "Enter the elements of the array : " << endl ;
+    // for(int i = 0 ; i < n ; i++){
+    //     cin >> nums[i] ;
+    // }
+    // cout << "Minimum Numbers of Jumps required to reach the end is " ;
+    // int ans = jump2(nums , 0 , 0) ;
+    // cout << ans << endl ;
     
     return 0 ;
 }
