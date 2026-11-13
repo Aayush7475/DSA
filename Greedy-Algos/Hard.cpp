@@ -121,13 +121,14 @@ int jump(vector<int> nums){
 }
 
 // Jump Game II (Method 2) ->
-int jump2(vector<int> nums , int ind , int jumps){
+int jump2(vector<int>& nums , int ind , int jumps){
     int n = nums.size() ;
 
     if(ind >= n-1) return jumps ;
+    if(nums[ind] == 0) return INT_MAX ;
     int mini = INT_MAX ;
-    for(int i = 1 ; i < nums[ind] ; i++){
-        mini = min(mini , jump2(nums , ind + 1 , jumps + 1)) ;
+    for(int i = 1 ; i <= nums[ind] ; i++){
+        mini = min(mini , jump2(nums , ind + i , jumps + 1)) ;
     }
     return mini ;
 }
@@ -161,6 +162,17 @@ int main(){
     // cout << ans ;
 
     // Jump Game II (M2) ->
+    int n ;
+    cout << "Enter the number of elements in the array : " ;
+    cin >> n ;
+    vector<int> nums(n) ;
+    cout << "Enter the elements of the array : " << endl ;
+    for(int i = 0 ; i < n ; i++){
+        cin >> nums[i] ;
+    }
+    cout << "Minimum Numbers of Jumps required to reach the end is " ;
+    int ans = jump2(nums , 0 , 0) ;
+    cout << ans << endl ;
     
     return 0 ;
 }
