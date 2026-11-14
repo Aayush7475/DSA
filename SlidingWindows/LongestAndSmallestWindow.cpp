@@ -41,6 +41,28 @@ int lengthOfLongestSubstring(string s){
     return maxlen ;
 }
 
+// Longest SubString wihtout repeating charcaters (Method 2) ->
+int lengthOflongestSubString(string s){
+    int hash[256] = {-1} ;
+    int n = s.length() ;
+    int r = 0 ;
+    int l = 0 ;
+    int maxLen = 0 ;
+    
+    while(r < n){
+        if(hash[s[r]] != -1){
+            if(hash[s[r]] >= l){
+                l = hash[s[r]] + 1 ;
+            }
+        }
+        int len = r - l + 1 ;
+        maxLen = max(maxLen , len) ;
+        hash[s[r]] = r ;
+        r ++ ;
+    }
+    return maxLen ;
+}
+
 int main(){
 
     // Maximum points that can be obtained from cards ->
@@ -58,12 +80,14 @@ int main(){
     // cout << "Maximum Card Points that can be obtained is : " ;
     // cout << maxPoints(nums , k) ;
 
-    // Longest SubString wihtout repeating charcaters (M1) ->
-    string s ;
-    cout << "Enter the string : " ;
-    getline(cin , s) ;
-    cout << "Length of Longest Substring without Repeating Characters : " ;
-    cout << lengthOfLongestSubstring(s) ;
+    // Longest SubString wihtout repeating charcaters (M1 & M2) ->
+    // string s ;
+    // cout << "Enter the string : " ;
+    // getline(cin , s) ;
+    // cout << "Length of Longest Substring without Repeating Characters : " ;
+    // cout << lengthOfLongestSubstring(s) ;
+    // cout << lengthOflongestSubString(s) ;
+
 
     return 0 ;
 }
