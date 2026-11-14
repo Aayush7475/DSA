@@ -22,6 +22,25 @@ int maxPoints(vector<int>& nums , int k){
     return maxSum ;
 }
 
+// Longest SubString wihtout repeating charcaters (Method 1) ->
+int lengthOfLongestSubstring(string s){
+    int n = s.length() ;
+    int maxlen = 0 ;
+
+    for(int i = 0 ; i < n ; i++){
+        int hash[256] = {0} ;
+        for(int j = i ; j < n ; j++){
+            if(hash[s[j]] == 1) break;
+            else{
+                int len = j - i + 1 ;
+                maxlen = max(maxlen , len) ;
+                hash[s[j]] = 1 ;
+            }
+        }
+    }
+    return maxlen ;
+}
+
 int main(){
 
     // Maximum points that can be obtained from cards ->
@@ -38,6 +57,13 @@ int main(){
     // cin >> k ;
     // cout << "Maximum Card Points that can be obtained is : " ;
     // cout << maxPoints(nums , k) ;
+
+    // Longest SubString wihtout repeating charcaters (M1) ->
+    string s ;
+    cout << "Enter the string : " ;
+    getline(cin , s) ;
+    cout << "Length of Longest Substring without Repeating Characters : " ;
+    cout << lengthOfLongestSubstring(s) ;
 
     return 0 ;
 }
