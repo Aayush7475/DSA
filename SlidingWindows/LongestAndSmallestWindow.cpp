@@ -63,7 +63,7 @@ int lengthOflongestSubString(string s){
     return maxLen ;
 }
 
-// Max Consecutive Ones III (Method 1)->
+// Max Consecutive Ones III (Method 1) ->
 int longestOnes(vector<int> nums , int k){
     int n = nums.size() ;
     int maxlen = 0 ;
@@ -83,7 +83,7 @@ int longestOnes(vector<int> nums , int k){
     return maxlen ;
 }
 
-// Max Consecutive Ones III (Method 2)->
+// Max Consecutive Ones III (Method 2) ->
 int longestOnes2(vector<int> nums , int k){
     int n = nums.size() ;
     int maxlen = 0 ;
@@ -96,6 +96,30 @@ int longestOnes2(vector<int> nums , int k){
 
         while(zeroes > k){
             if(nums[l] == 0) zeroes -- ;
+            l ++ ;
+        }
+        if(zeroes <= k){
+            int len = r - l + 1 ;
+            maxlen = max(maxlen , len) ;
+        }
+        r ++ ;
+    }
+    return maxlen ;
+}
+
+// Max Consecutive Ones III (Method 3) ->
+int longestOnes3(vector<int> nums , int k){
+    int n = nums.size() ;
+    int maxlen = 0 ;
+    int zeroes = 0 ;
+    int r = 0 ;
+    int l = 0 ;
+    while(r < n){
+        if(nums[r] == 0) zeroes ++ ;
+        if(zeroes > k){
+            if(nums[l] == 0){
+                zeroes -- ;
+            }
             l ++ ;
         }
         if(zeroes <= k){
@@ -132,21 +156,22 @@ int main(){
     // cout << lengthOfLongestSubstring(s) ;
     // cout << lengthOflongestSubString(s) ;
 
-    // Max consecutive Ones III (M1) ->
-    int n ;
-    cout << "Enter the number of elements : " ;
-    cin >> n ;
-    vector<int> nums(n) ;
-    cout << "Enter the elements in the array : " ;
-    for(int i = 0 ; i < n ; i++){
-        cin >> nums[i] ;
-    }
-    int k ;
-    cout << "Enter the number of 0's that can be converted into 1 : " ;
-    cin >> k ;
-    cout << "Max Consecutive Ones after flipping " << k << " zeroes is : ";
+    // Max consecutive Ones III (M1 & M2 & M3) ->
+    // int n ;
+    // cout << "Enter the number of elements : " ;
+    // cin >> n ;
+    // vector<int> nums(n) ;
+    // cout << "Enter the elements in the array : " ;
+    // for(int i = 0 ; i < n ; i++){
+    //     cin >> nums[i] ;
+    // }
+    // int k ;
+    // cout << "Enter the number of 0's that can be converted into 1 : " ;
+    // cin >> k ;
+    // cout << "Max Consecutive Ones after flipping " << k << " zeroes is : ";
     // cout << longestOnes(nums , k) ;
-    cout << longestOnes2(nums , k) ;
+    // cout << longestOnes2(nums , k) ;
+    // cout << longestOnes3(nums , k) ;
 
     return 0 ;
 }
