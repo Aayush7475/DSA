@@ -63,6 +63,26 @@ int lengthOflongestSubString(string s){
     return maxLen ;
 }
 
+// Max Consecutive Ones III (Method 1)->
+int longestOnes(vector<int> nums , int k){
+    int n = nums.size() ;
+    int maxlen = 0 ;
+    for(int i = 0 ; i < n ; i++){
+        int zeroes = 0 ;
+        for(int j = i ; j < n ; j++){
+            if(nums[j] == 0) zeroes ++ ;
+            if(zeroes <= k){
+                int len = j - i + 1 ;
+                maxlen = max(maxlen , len) ;
+            }
+            else{
+                break ;
+            }
+        }
+    }
+    return maxlen ;
+}
+
 int main(){
 
     // Maximum points that can be obtained from cards ->
@@ -88,6 +108,20 @@ int main(){
     // cout << lengthOfLongestSubstring(s) ;
     // cout << lengthOflongestSubString(s) ;
 
+    // Max consecutive Ones III (M1) ->
+    int n ;
+    cout << "Enter the number of elements : " ;
+    cin >> n ;
+    vector<int> nums(n) ;
+    cout << "Enter the elements in the array : " ;
+    for(int i = 0 ; i < n ; i++){
+        cin >> nums[i] ;
+    }
+    int k ;
+    cout << "Enter the number of 0's that can be converted into 1 : " ;
+    cin >> k ;
+    cout << "Max Consecutive Ones after flipping " << k << " zeroes is : ";
+    cout << longestOnes(nums , k) ;
 
     return 0 ;
 }
