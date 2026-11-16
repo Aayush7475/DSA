@@ -179,6 +179,30 @@ int totalFruits(vector<int>& nums){
     return maxlen ;
 }
 
+// Fruits into Basket (Method 3) ->
+int Totalfruits(vector<int>& nums){
+    int n = nums.size() ;
+    map<int , int> mpp ;
+    int maxlen = 0 ;
+    int r = 0 ;
+    int l = 0 ;
+    while(r < n){
+        mpp[nums[r]] ++ ;
+        if(mpp.size() > 2){
+            mpp[nums[l]] -- ;
+            if(mpp[nums[l]] == 0){
+                mpp.erase(mpp[nums[l]]) ;
+                l ++ ;
+            }
+        }
+        if(mpp.size() <= 2){
+            int len = r - l + 1 ;
+            maxlen = max(maxlen , len) ;
+        }
+        r ++ ;
+    }
+    return maxlen ;
+}
 
 int main(){
 
@@ -223,17 +247,18 @@ int main(){
     // cout << longestOnes3(nums , k) ;
 
     // Fruits into Basket (M1 & M2) ->
-    int n ;
-    cout << "Enter the number of types of fruits : " ;
-    cin >> n ;
-    vector<int> nums(n) ;
-    cout << "Enter the type of fruits : " << endl ;
-    for(int i = 0 ; i < n ; i++){
-        cin >> nums[i] ;
-    }
-    cout << "Max number of fruits that can be picked : " ;
+    // int n ;
+    // cout << "Enter the number of types of fruits : " ;
+    // cin >> n ;
+    // vector<int> nums(n) ;
+    // cout << "Enter the type of fruits : " << endl ;
+    // for(int i = 0 ; i < n ; i++){
+    //     cin >> nums[i] ;
+    // }
+    // cout << "Max number of fruits that can be picked : " ;
     // cout << totalfruits(nums) ;
-    cout << totalFruits(nums) ;
+    // cout << totalFruits(nums) ;
+    // cout << Totalfruits(nums) ;
 
     return 0 ;
 }
