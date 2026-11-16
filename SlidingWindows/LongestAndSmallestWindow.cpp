@@ -204,6 +204,32 @@ int Totalfruits(vector<int>& nums){
     return maxlen ;
 }
 
+// Longest Substring with atmost K distinct Characters ->
+int longestSubstringAtMostKDistinct(string s , int k){
+    int n = s.size() ;
+    if(n == 0 || k <= 0){
+        return 0 ;
+    }
+    unordered_map<char , int> freq ;
+    int l = 0 ;
+    int maxlen = 0 ;
+
+    for(int r = 0 ; r < n ; r++){
+        freq[s[r]] ++ ;
+
+        while(freq.size() > k){
+            freq[s[l]] -- ;
+            if(freq[s[l]] == 0){
+                freq.erase(s[l]) ;
+            }
+            l ++ ;
+        }
+        int len = r - l + 1 ;
+        maxlen = max(maxlen , len) ;
+    }
+    return maxlen ;
+}
+
 int main(){
 
     // Maximum points that can be obtained from cards ->
@@ -246,7 +272,7 @@ int main(){
     // cout << longestOnes2(nums , k) ;
     // cout << longestOnes3(nums , k) ;
 
-    // Fruits into Basket (M1 & M2) ->
+    // Fruits into Basket (M1 & M2 & M3) ->
     // int n ;
     // cout << "Enter the number of types of fruits : " ;
     // cin >> n ;
@@ -259,6 +285,16 @@ int main(){
     // cout << totalfruits(nums) ;
     // cout << totalFruits(nums) ;
     // cout << Totalfruits(nums) ;
+
+    // Longest Substring with atmost K distinct Characters ->
+    // string s ;
+    // cout << "Enter the string : " ;
+    // getline(cin , s) ;
+    // int k ;
+    // cout << "Enter the number of distinct elements to be taken : " ;
+    // cin >> k ;
+    // cout << "Longest Substring with Atmost " << k << "distinct characters  " ;
+    // cout << longestSubstringAtMostKDistinct(s , k) ;
 
     return 0 ;
 }
