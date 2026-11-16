@@ -131,6 +131,26 @@ int longestOnes3(vector<int> nums , int k){
     return maxlen ;
 }
 
+// Fruits into Basket (Method 1) ->
+int totalfruits(vector<int>& nums){
+    int n = nums.size() ;
+    int maxlen = 0 ;
+    for(int i = 0 ; i < n ; i++){
+        set<int> s ;
+        for(int j = i ; j < n ; j++){
+            s.insert(nums[j]) ;
+            if(s.size() <= 2){
+                int len = j - i + 1 ;
+                maxlen = max(maxlen , len) ;
+            }
+            else{
+                break ;
+            }
+        }
+    }
+    return maxlen ;
+}
+
 int main(){
 
     // Maximum points that can be obtained from cards ->
@@ -172,6 +192,18 @@ int main(){
     // cout << longestOnes(nums , k) ;
     // cout << longestOnes2(nums , k) ;
     // cout << longestOnes3(nums , k) ;
+
+    // Fruits into Basket (M1) ->
+    int n ;
+    cout << "Enter the number of types of fruits : " ;
+    cin >> n ;
+    vector<int> nums(n) ;
+    cout << "Enter the type of fruits : " << endl ;
+    for(int i = 0 ; i < n ; i++){
+        cin >> nums[i] ;
+    }
+    cout << "Max number of fruits that can be picked : " ;
+    cout << totalfruits(nums) ;
 
     return 0 ;
 }
