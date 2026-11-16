@@ -151,6 +151,35 @@ int totalfruits(vector<int>& nums){
     return maxlen ;
 }
 
+// Fruits into Basket (Method 2) ->
+int totalFruits(vector<int>& nums){
+    map<int , int> mpp ;
+    int n = nums.size() ;
+    int maxlen = 0 ;
+    int r = 0 ;
+    int l = 0 ;
+    while(r < n){
+        mpp[nums[r]] ++ ;
+
+        if(nums[r] > 2){
+            while(nums[r] > 2){
+                mpp[nums[l]] -- ;
+                if(mpp[nums[l]] == 0){
+                    mpp.erase(nums[l] );
+                    l ++ ;
+                }
+            }
+        }
+        if(mpp.size() <= 2){
+            int len = r - l + 1 ;
+            maxlen = max(maxlen , len) ;
+        }
+        r ++ ;
+    }
+    return maxlen ;
+}
+
+
 int main(){
 
     // Maximum points that can be obtained from cards ->
@@ -193,7 +222,7 @@ int main(){
     // cout << longestOnes2(nums , k) ;
     // cout << longestOnes3(nums , k) ;
 
-    // Fruits into Basket (M1) ->
+    // Fruits into Basket (M1 & M2) ->
     int n ;
     cout << "Enter the number of types of fruits : " ;
     cin >> n ;
@@ -203,7 +232,8 @@ int main(){
         cin >> nums[i] ;
     }
     cout << "Max number of fruits that can be picked : " ;
-    cout << totalfruits(nums) ;
+    // cout << totalfruits(nums) ;
+    cout << totalFruits(nums) ;
 
     return 0 ;
 }
