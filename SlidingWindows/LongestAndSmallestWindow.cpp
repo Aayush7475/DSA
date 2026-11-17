@@ -230,6 +230,27 @@ int longestSubstringAtMostKDistinct(string s , int k){
     return maxlen ;
 }
 
+// Longest repeating Characters replacement (Method 1) ->
+int characterReplacement(string s, int k){
+    int n = s.size() ;
+    int maxlen = 0 ;
+    for(int i = 0 ; i < n ; i++){
+        int hash[26] = {0} ;
+        int maxfreq = 0 ;
+        for(int j = i ; j < n ; j++){
+            hash[s[j] - 'A'] ++ ;
+            maxfreq = max(maxfreq , hash[s[j] - 'A']) ;
+
+            int changes = (j - i + 1) - maxfreq ;
+            if(changes <= k) maxlen = max(maxlen , j - i + 1) ;
+            else{
+                break ;
+            }
+        }
+    }
+    return maxlen ;
+}
+
 int main(){
 
     // Maximum points that can be obtained from cards ->
@@ -295,6 +316,15 @@ int main(){
     // cin >> k ;
     // cout << "Longest Substring with Atmost " << k << "distinct characters  " ;
     // cout << longestSubstringAtMostKDistinct(s , k) ;
+
+    // Longest repeating Characters replacement ->
+    string s ;
+    cout << "Enter the string : " ;
+    getline(cin , s) ;
+    int k ;
+    cout << "Enter the number of characters that can be replaced : " ;
+    cin >> k ;
+    cout << "Longest Repeating Character Sequence is : " << characterReplacement(s , k) ;
 
     return 0 ;
 }
