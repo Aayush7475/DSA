@@ -251,6 +251,36 @@ int characterReplacement(string s, int k){
     return maxlen ;
 }
 
+// Longest repeating Characters replacement (Method 2) ->
+int CharacterReplacement(string s , int k){
+    int n = s.size() ;
+    int maxlen = 0 ;
+    int maxfreq = 0 ;
+    int hash[26] = {0} ;
+    int r = 0 ;
+    int l = 0 ;
+    while(r < n){
+        hash[s[r] - 'A'] ++ ;
+        maxfreq = max(maxfreq , hash[s[r] - 'A']) ;
+
+        while((r-l+1) - maxfreq > k){
+            hash[s[l] - 'A'] -- ;
+            maxfreq = 0 ;
+            
+            for(int i = 0 ; i < 26 ; i++){
+                maxfreq = max(maxfreq , hash[i]) ;
+            }
+            l ++ ;
+
+        }
+        if((r-l+1) - maxfreq <= k){
+            maxlen = max(maxlen , (r-l+1)) ;
+        }
+        r ++ ;
+    }
+    return maxlen ;
+}
+
 int main(){
 
     // Maximum points that can be obtained from cards ->
@@ -324,7 +354,8 @@ int main(){
     int k ;
     cout << "Enter the number of characters that can be replaced : " ;
     cin >> k ;
-    cout << "Longest Repeating Character Sequence is : " << characterReplacement(s , k) ;
+    // cout << "Longest Repeating Character Sequence is : " << characterReplacement(s , k) ;
+    // cout << "Longest Repeating Character Sequence is : " << CharacterReplacement(s , k) ;
 
     return 0 ;
 }
