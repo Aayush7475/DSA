@@ -281,6 +281,40 @@ int CharacterReplacement(string s , int k){
     return maxlen ;
 }
 
+// Minimum Window Substring (Method 1) ->
+string minWindow(string s, string t){
+    int m = s.size() ;
+    int n = t.size() ;
+    int minlen = INT_MAX ;
+    int sIndex = -1 ;
+
+    if(n == 0 || m < n) return "" ;
+
+    for(int i = 0 ; i < m ; i++){
+        int hash[256] = {0} ;
+        int cnt = 0 ;
+        for(int j = 0 ; j < n ; j++){
+            hash[t[j]] ++ ;
+        }
+        for(int j = i ; j < m ; j++){
+            if(hash[s[j]] > 0){
+                cnt ++ ;
+                hash[s[j]] -- ;
+            }
+            if(cnt == n){
+                if((j-i+1) < minlen){
+                    minlen = j-i+1 ;
+                    sIndex = i ;
+                }
+                break ;
+            }
+        }
+    }
+    if(sIndex == -1) return "" ;
+    return s.substr(sIndex , minlen) ;
+}
+
+
 int main(){
 
     // Maximum points that can be obtained from cards ->
@@ -348,14 +382,24 @@ int main(){
     // cout << longestSubstringAtMostKDistinct(s , k) ;
 
     // Longest repeating Characters replacement ->
-    string s ;
-    cout << "Enter the string : " ;
-    getline(cin , s) ;
-    int k ;
-    cout << "Enter the number of characters that can be replaced : " ;
-    cin >> k ;
+    // string s ;
+    // cout << "Enter the string : " ;
+    // getline(cin , s) ;
+    // int k ;
+    // cout << "Enter the number of characters that can be replaced : " ;
+    // cin >> k ;
     // cout << "Longest Repeating Character Sequence is : " << characterReplacement(s , k) ;
     // cout << "Longest Repeating Character Sequence is : " << CharacterReplacement(s , k) ;
+
+    // Minimum Window Substring ->
+    string s ;
+    cout << "Enter the main string : " ;
+    getline(cin , s) ;
+    string t ;
+    cout <<"Enter the small one string : " ;
+    getline(cin , t) ;
+    cout << "Substring with minimum length containing all the characters of t in s is : " ;
+    cout << minWindow(s , t) ;
 
     return 0 ;
 }
