@@ -314,6 +314,43 @@ string minWindow(string s, string t){
     return s.substr(sIndex , minlen) ;
 }
 
+// Minimum Window Substring (Method 2) ->
+string MinWindow(string s , string t){
+    int m = s.size() ;
+    int n = t.size() ;
+    int r = 0 ;
+    int l = 0 ;
+    int minlen = INT_MAX ;
+    int sIndex = -1 ;
+    int hash[256] = {0} ;
+    int cnt = 0 ;
+
+    if(n == 0 || m < n) return "" ; 
+
+    for(int i = 0 ; i < n ; i++){
+        hash[t[i]] ++ ;
+    }
+    while(r < m){
+        if(hash[s[r]] > 0){
+            cnt ++ ;
+        }
+        hash[s[r]] -- ;
+
+        while(cnt == n){
+            if((r-l+1) < minlen){
+                minlen = r-l+1 ;
+                sIndex = l ;
+            }
+            hash[s[l]] ++ ;
+            if(hash[s[l]] > 0){
+                cnt -- ;
+            }
+            l ++ ;
+        }
+        r ++ ;
+    }
+    return sIndex == -1 ? "" : s.substr(sIndex , minlen) ;
+}
 
 int main(){
 
@@ -391,15 +428,16 @@ int main(){
     // cout << "Longest Repeating Character Sequence is : " << characterReplacement(s , k) ;
     // cout << "Longest Repeating Character Sequence is : " << CharacterReplacement(s , k) ;
 
-    // Minimum Window Substring ->
-    string s ;
-    cout << "Enter the main string : " ;
-    getline(cin , s) ;
-    string t ;
-    cout <<"Enter the small one string : " ;
-    getline(cin , t) ;
-    cout << "Substring with minimum length containing all the characters of t in s is : " ;
-    cout << minWindow(s , t) ;
+    // Minimum Window Substring (M1 & M2) ->
+    // string s ;
+    // cout << "Enter the main string : " ;
+    // getline(cin , s) ;
+    // string t ;
+    // cout <<"Enter the small one string : " ;
+    // getline(cin , t) ;
+    // cout << "Substring with minimum length containing all the characters of t in s is : " ;
+    // cout << minWindow(s , t) ;
+    // cout << MinWindow(s , t) ;
 
     return 0 ;
 }
