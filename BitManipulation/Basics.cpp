@@ -336,6 +336,20 @@ vector<int> findErrorNums(vector<int>& nums) {
     return {duplicate, missing};
 }
 
+// Number of Steps to Reduce a Number to Zero ->
+int numberOfsteps(int num){
+    if(num == 0) return 0 ;
+    int steps = 0 ;
+    while(num > 0){
+        if(num & 1){
+            steps ++ ;
+        }
+        steps ++ ;
+        num >>= 1 ;
+    }
+    return (steps-1) ;
+}
+
 int main(){
     
     // Binary Addition ->
@@ -536,6 +550,13 @@ int main(){
     // vector<int> ans = findErrorNums(nums);
     // cout << "Duplicate: " << ans[0] << endl;
     // cout << "Missing: " << ans[1] << endl;
+
+    // Number of Steps to Reduce a Number to Zero ->
+    // int num = 0 ;
+    // cout << "Enter the number : " ;
+    // cin >> num ;
+    // cout << "Minimum number of steps required to convert "  << num << " -> 0 is : " ;
+    // cout << numberOfsteps(num) ;
 
     return 0 ;
 }
