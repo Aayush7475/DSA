@@ -352,6 +352,21 @@ string MinWindow(string s , string t){
     return sIndex == -1 ? "" : s.substr(sIndex , minlen) ;
 }
 
+// Number of substrings containing all three characters (Method 1) ->
+int numberOfSubstrings(string s){
+    int n = s.size() ;
+    int cnt = 0 ;
+    for(int i = 0 ; i < n ; i++){
+        int hash[3] = {0} ;
+        for(int j = i ; j < n ; j++){
+            if(hash[s[j] - 'a'] = 1){
+                if(hash[0] + hash[1] + hash[2] == 3) cnt ++ ;
+            }  
+        }
+    }
+    return cnt ++ ;
+}
+
 int main(){
 
     // Maximum points that can be obtained from cards ->
@@ -438,6 +453,13 @@ int main(){
     // cout << "Substring with minimum length containing all the characters of t in s is : " ;
     // cout << minWindow(s , t) ;
     // cout << MinWindow(s , t) ;
+
+    // Number of substrings containing all three characters ->
+    string s ;
+    cout << "Enter the string (containing only a,b,c) : " ;
+    getline(cin , s) ;
+    cout << "Number of SubStrings containing all three characters : " ;
+    cout << numberOfSubstrings(s) ;
 
     return 0 ;
 }
