@@ -53,6 +53,27 @@ int numSubarraysWithSum(vector<int>& nums, int goal){
     return atMost(nums , goal) - atMost(nums , goal - 1) ;
 }
 
+// Count Number of good Subarrays ->
+int AtMost(vector<int>& nums , int k){
+    int n = nums.size() ;
+    int cnt = 0 ;
+    int sum = 0 ;
+    int l = 0 ;
+    for(int r = 0 ; r < n ; r++){
+        sum += nums[r] % 2 ;
+
+        while(sum > k){
+            sum -= nums[l] % 2 ;
+            l ++ ;
+        }
+        cnt += (r - l + 1) ;
+    }
+    return cnt ;
+}
+int numberOfSubArrays(vector<int>& nums , int k){
+    return AtMost(nums , k) - AtMost(nums , k - 1) ;
+}
+
 int main(){
 
     // Number of substrings containing all three characters (M1 & M2) ->
@@ -77,6 +98,21 @@ int main(){
     // cin >> goal ;
     // cout << "Number of Binary SubArrays with Given Sum : " ;
     // cout << numSubarraysWithSum(nums , goal) ;
+
+    // Count Number of good Subarrays ->
+    // int n ;
+    // cout << "Enter the number of elements in the Array : " ;
+    // cin >> n ;
+    // vector<int> nums(n) ;
+    // cout << "Enter the elements in the array : " << endl ;
+    // for(int i = 0 ; i < n ; i++){
+    //     cin >> nums[i] ;
+    // }
+    // int k ;
+    // cout << "Enter the sum to be required : " ;
+    // cin >> k ;
+    // cout << "Number of Good Sub Arrays : " ;
+    // cout << numberOfSubArrays(nums , k) ;
 
     return 0 ;
 }
