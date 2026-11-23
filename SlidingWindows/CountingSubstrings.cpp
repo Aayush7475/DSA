@@ -74,6 +74,7 @@ int numberOfSubArrays(vector<int>& nums , int k){
     return AtMost(nums , k) - AtMost(nums , k - 1) ;
 }
 
+
 int main(){
 
     // Number of substrings containing all three characters (M1 & M2) ->
