@@ -350,6 +350,12 @@ int numberOfsteps(int num){
     return (steps-1) ;
 }
 
+// Has Alternating Bits ->
+bool hasAlternatingBits(int n){
+    long long x = n ^ (n+1) ;
+    return(x & (x+1)) == 0 ;
+}
+
 int main(){
     
     // Binary Addition ->
@@ -557,6 +563,18 @@ int main(){
     // cin >> num ;
     // cout << "Minimum number of steps required to convert "  << num << " -> 0 is : " ;
     // cout << numberOfsteps(num) ;
+
+    // Has Alternating Bits ->
+    // int n ;
+    // cout << "Enter the number : " ;
+    // cin >> n ;
+    // bool result = hasAlternatingBits(n) ;
+    // if(result == true){
+    //     cout << "Has Alternating Bits " ;
+    // }
+    // else{
+    //     cout << "Does not have Alternating Bits " ;
+    // }
 
     return 0 ;
 }
