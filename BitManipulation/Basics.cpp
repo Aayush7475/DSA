@@ -356,6 +356,33 @@ bool hasAlternatingBits(int n){
     return(x & (x+1)) == 0 ;
 }
 
+// Prime Number of Set Bits ->
+int NumberofSetBits(int n){
+    int count = 0 ;
+    while(n > 0){
+        n = n & (n - 1) ;
+        count ++ ;
+    }
+    return count ++ ;
+}
+bool isPrime(int n){
+    if(n <= 1) return false ;
+    for(int i = 2 ; i*i <= n ; i++){
+        if(n % i == 0) return false ;
+    }
+    return true ;
+}
+int PrimeSetbits(int left , int right){
+    int ans = 0 ;
+    for(int i = left ; i <= right ; i++){
+        int bits = NumberofSetBits(i) ;
+        if(isPrime(bits)){
+            ans ++ ;
+        }
+    }
+    return ans ;
+}
+
 int main(){
     
     // Binary Addition ->
@@ -575,6 +602,15 @@ int main(){
     // else{
     //     cout << "Does not have Alternating Bits " ;
     // }
+
+    // Prime Numbers of Set Bits in Binary Representation ->
+    // int left , right ;
+    // cout << "Enter the number where to start : " ;
+    // cin >> left ;
+    // cout << "Enter the number where to end : " ;
+    // cin >> right ;
+    // cout << "Number of Prime Numbers in the given range is : " ;
+    // cout << PrimeSetbits(left , right) ;
 
     return 0 ;
 }
