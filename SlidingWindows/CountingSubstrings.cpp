@@ -74,6 +74,20 @@ int numberOfSubArrays(vector<int>& nums , int k){
     return AtMost(nums , k) - AtMost(nums , k - 1) ;
 }
 
+// SubArrays with K Different Elements (Method 1) ->
+int subarraysWithKDistinct(vector<int>& nums, int k){
+    int n = nums.size() ;
+    int cnt = 0 ;
+    for(int i = 0 ; i < n ; i++){
+        unordered_set<int> mpp ;
+        for(int j = i ; j < n ; j++){
+            mpp.insert(nums[j]) ;
+            if(mpp.size() == k) cnt ++ ;
+            else if(mpp.size() > k) break ;
+        }
+    }
+    return cnt ;
+}
 
 int main(){
 
@@ -114,6 +128,21 @@ int main(){
     // cin >> k ;
     // cout << "Number of Good Sub Arrays : " ;
     // cout << numberOfSubArrays(nums , k) ;
+
+    // SubArrays with K Different Elements (M1) ->
+    int n ;
+    cout << "Enter the number of elements in the Array : " ;
+    cin >> n ;
+    vector<int> nums(n) ;
+    cout << "Enter the elements in the array : " << endl ;
+    for(int i = 0 ; i < n ; i++){
+        cin >> nums[i] ;
+    }
+    int k ;
+    cout << "Enter the sum to be required : " ;
+    cin >> k ;
+    cout << "Number of Good Sub Arrays : " ;
+    cout << subarraysWithKDistinct(nums , k) ;
 
     return 0 ;
 }
