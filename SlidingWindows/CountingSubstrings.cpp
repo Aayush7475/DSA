@@ -89,6 +89,31 @@ int subarraysWithKDistinct(vector<int>& nums, int k){
     return cnt ;
 }
 
+// SubArrays with K Different Elements (Method 2) ->
+int func(vector<int>& nums , int k){
+    int n = nums.size() ;
+    int cnt = 0 ;
+    int r = 0 ;
+    int l = 0 ;
+    unordered_map<int , int> mpp ;
+    while(r < n){
+        mpp[nums[r]] ++ ;
+        while(mpp.size() > k){
+            mpp[nums[l]] -- ;
+            if(mpp[nums[l]] == 0) {
+                mpp.erase(nums[l]) ;
+            }
+            l ++ ;
+        }
+        cnt += (r-l+1) ;
+        r ++ ;
+    }
+    return cnt ;
+}
+int SubArrayWithKDistinct(vector<int>& nums , int k){
+    return func(nums , k) - func(nums  , k-1) ;
+}
+
 int main(){
 
     // Number of substrings containing all three characters (M1 & M2) ->
@@ -129,20 +154,21 @@ int main(){
     // cout << "Number of Good Sub Arrays : " ;
     // cout << numberOfSubArrays(nums , k) ;
 
-    // SubArrays with K Different Elements (M1) ->
-    int n ;
-    cout << "Enter the number of elements in the Array : " ;
-    cin >> n ;
-    vector<int> nums(n) ;
-    cout << "Enter the elements in the array : " << endl ;
-    for(int i = 0 ; i < n ; i++){
-        cin >> nums[i] ;
-    }
-    int k ;
-    cout << "Enter the sum to be required : " ;
-    cin >> k ;
-    cout << "Number of Good Sub Arrays : " ;
-    cout << subarraysWithKDistinct(nums , k) ;
+    // SubArrays with K Different Elements (M1 & M2) ->
+    // int n ;
+    // cout << "Enter the number of elements in the Array : " ;
+    // cin >> n ;
+    // vector<int> nums(n) ;
+    // cout << "Enter the elements in the array : " << endl ;
+    // for(int i = 0 ; i < n ; i++){
+    //     cin >> nums[i] ;
+    // }
+    // int k ;
+    // cout << "Enter the sum to be required : " ;
+    // cin >> k ;
+    // cout << "Number of Good Sub Arrays : " ;
+    // cout << subarraysWithKDistinct(nums , k) ;
+    // cout << SubArrayWithKDistinct(nums , k) ;
 
     return 0 ;
 }
